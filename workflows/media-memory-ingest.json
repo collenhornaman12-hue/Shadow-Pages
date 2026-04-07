@@ -1,0 +1,376 @@
+{
+  "name": "Media Memory — Telegram Ingest",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "id": "node-telegram-trigger",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1,
+      "position": [0, 300],
+      "webhookId": "media-memory-telegram-trigger",
+      "credentials": {
+        "telegramApi": {
+          "id": "cred-telegram-001",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "rules",
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.photo }}",
+                    "rightValue": "",
+                    "operator": { "type": "exists", "operation": "exists" }
+                  }
+                ]
+              },
+              "output": 0,
+              "renameOutput": true,
+              "outputKey": "photo"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.video }}",
+                    "rightValue": "",
+                    "operator": { "type": "exists", "operation": "exists" }
+                  }
+                ]
+              },
+              "output": 1,
+              "renameOutput": true,
+              "outputKey": "video"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.document }}",
+                    "rightValue": "",
+                    "operator": { "type": "exists", "operation": "exists" }
+                  }
+                ]
+              },
+              "output": 2,
+              "renameOutput": true,
+              "outputKey": "document"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.voice }}",
+                    "rightValue": "",
+                    "operator": { "type": "exists", "operation": "exists" }
+                  }
+                ]
+              },
+              "output": 3,
+              "renameOutput": true,
+              "outputKey": "voice"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "node-switch-media-type",
+      "name": "Route by Media Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "fileId": "={{ $json.message.photo[$json.message.photo.length - 1].file_id }}"
+      },
+      "id": "node-getfile-photo",
+      "name": "Get Photo File",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [440, 100],
+      "credentials": {
+        "telegramApi": {
+          "id": "cred-telegram-001",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "fileId": "={{ $json.message.video.file_id }}"
+      },
+      "id": "node-getfile-video",
+      "name": "Get Video File",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [440, 220],
+      "credentials": {
+        "telegramApi": {
+          "id": "cred-telegram-001",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "fileId": "={{ $json.message.document.file_id }}"
+      },
+      "id": "node-getfile-document",
+      "name": "Get Document File",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [440, 340],
+      "credentials": {
+        "telegramApi": {
+          "id": "cred-telegram-001",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "fileId": "={{ $json.message.voice.file_id }}"
+      },
+      "id": "node-getfile-voice",
+      "name": "Get Voice File",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [440, 460],
+      "credentials": {
+        "telegramApi": {
+          "id": "cred-telegram-001",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Merge all branches and normalise fields\nconst item = $input.item.json;\nconst timestamp = Date.now();\nconst fileResult = item;\n\n// Determine media type from upstream branch name\nconst branchNode = $prevNode.name;\nlet mediaType = 'document';\nif (branchNode.toLowerCase().includes('photo')) mediaType = 'image';\nelse if (branchNode.toLowerCase().includes('video')) mediaType = 'video';\nelse if (branchNode.toLowerCase().includes('voice')) mediaType = 'audio';\n\nconst filePath = fileResult.file_path || '';\nconst filename = `${timestamp}_${filePath.split('/').pop() || 'file'}`;\n\nreturn [{\n  json: {\n    ...item,\n    _timestamp: timestamp,\n    _filename: filename,\n    _mediaType: mediaType,\n    _filePath: filePath,\n    _telegramFileUrl: `https://api.telegram.org/file/bot${process.env.TELEGRAM_BOT_TOKEN || 'TOKEN'}/${filePath}`,\n    _chatId: item.message?.chat?.id || item.chat?.id || ''\n  }\n}];"
+      },
+      "id": "node-normalise",
+      "name": "Normalise Fields",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json._telegramFileUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "node-download-file",
+      "name": "Download File",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [880, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Route: skip Haiku for audio, proceed for everything else\nconst item = $input.item.json;\nconst mediaType = item._mediaType;\n\nif (mediaType === 'audio') {\n  return [{\n    json: {\n      ...item,\n      _description: 'Audio message received.',\n      _tags: 'audio,voice,message'\n    }\n  }];\n}\n\n// Pass through — will be described by Claude Haiku next\nreturn [{ json: item }];"
+      },
+      "id": "node-audio-gate",
+      "name": "Audio Gate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1100, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-api-key", "value": "={{ $env.ANTHROPIC_API_KEY }}" },
+            { "name": "anthropic-version", "value": "2023-06-01" },
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"model\": \"claude-haiku-4-5-20251001\",\n  \"max_tokens\": 300,\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": [\n      {\n        \"type\": \"image\",\n        \"source\": {\n          \"type\": \"base64\",\n          \"media_type\": \"image/jpeg\",\n          \"data\": \"{{ $binary.data.toString('base64') }}\"\n        }\n      },\n      {\n        \"type\": \"text\",\n        \"text\": \"Describe this media in 2-3 sentences. List 5-8 semantic tags relevant to the content. Format: DESCRIPTION: [text] TAGS: [comma-separated tags]\"\n      }\n    ]\n  }]\n}",
+        "options": {}
+      },
+      "id": "node-haiku-vision",
+      "name": "Claude Haiku Vision",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1320, 220]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Haiku response or pass through audio description\nconst item = $input.item.json;\n\nlet description = item._description || '';\nlet tags = item._tags || '';\n\nif (!description && item.content) {\n  // Parse from Haiku response\n  const text = item.content[0]?.text || '';\n  const descMatch = text.match(/DESCRIPTION:\\s*(.+?)(?=TAGS:|$)/s);\n  const tagsMatch = text.match(/TAGS:\\s*(.+)/s);\n  description = descMatch ? descMatch[1].trim() : text.slice(0, 200);\n  tags = tagsMatch ? tagsMatch[1].trim() : '';\n}\n\nreturn [{\n  json: {\n    ...item,\n    _description: description,\n    _tags: tags\n  }\n}];"
+      },
+      "id": "node-parse-description",
+      "name": "Parse Description",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1540, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:11434/api/embeddings",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ model: 'nomic-embed-text', prompt: $json._description + ' ' + $json._tags }) }}",
+        "options": {}
+      },
+      "id": "node-ollama-embed",
+      "name": "Ollama Embed",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1760, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/api/v1/collections/media_memory/upsert",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"ids\": [\"{{ $json._filename }}\"],\n  \"embeddings\": [{{ JSON.stringify($json.embedding) }}],\n  \"metadatas\": [{\n    \"filename\": \"{{ $json._filename }}\",\n    \"type\": \"{{ $json._mediaType }}\",\n    \"timestamp\": \"{{ $json._timestamp }}\",\n    \"source\": \"telegram\",\n    \"description\": \"{{ $json._description.replace(/\"/g, \"'\") }}\",\n    \"tags\": \"{{ $json._tags }}\",\n    \"file_path\": \"/media-memory/{{ $json._filename }}\"\n  }],\n  \"documents\": [\"{{ ($json._description + ' ' + $json._tags).replace(/\"/g, \"'\") }}\"]\n}",
+        "options": {}
+      },
+      "id": "node-chroma-upsert",
+      "name": "ChromaDB Upsert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1980, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Append entry to /media-memory/index.jsonl\nconst fs = require('fs');\nconst item = $input.item.json;\n\nconst entry = JSON.stringify({\n  id: item._filename,\n  filename: item._filename,\n  type: item._mediaType,\n  timestamp: item._timestamp,\n  source: 'telegram',\n  description: item._description,\n  tags: item._tags ? item._tags.split(',').map(t => t.trim()) : [],\n  path: `/media-memory/${item._filename}`\n});\n\nconst indexPath = '/media-memory/index.jsonl';\ntry {\n  fs.appendFileSync(indexPath, entry + '\\n', 'utf8');\n} catch (err) {\n  console.error('Failed to append to index.jsonl:', err.message);\n}\n\nreturn [{ json: item }];"
+      },
+      "id": "node-append-index",
+      "name": "Append to Index",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2200, 300]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "={{ $json._chatId }}",
+        "text": "=✓ Stored: {{ $json._filename }}\n{{ $json._description.split('.')[0] + '.' }}"
+      },
+      "id": "node-telegram-reply",
+      "name": "Telegram Reply",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [2420, 300],
+      "credentials": {
+        "telegramApi": {
+          "id": "cred-telegram-001",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [{ "node": "Route by Media Type", "type": "main", "index": 0 }]
+      ]
+    },
+    "Route by Media Type": {
+      "main": [
+        [{ "node": "Get Photo File",    "type": "main", "index": 0 }],
+        [{ "node": "Get Video File",    "type": "main", "index": 0 }],
+        [{ "node": "Get Document File", "type": "main", "index": 0 }],
+        [{ "node": "Get Voice File",    "type": "main", "index": 0 }]
+      ]
+    },
+    "Get Photo File": {
+      "main": [[{ "node": "Normalise Fields", "type": "main", "index": 0 }]]
+    },
+    "Get Video File": {
+      "main": [[{ "node": "Normalise Fields", "type": "main", "index": 0 }]]
+    },
+    "Get Document File": {
+      "main": [[{ "node": "Normalise Fields", "type": "main", "index": 0 }]]
+    },
+    "Get Voice File": {
+      "main": [[{ "node": "Normalise Fields", "type": "main", "index": 0 }]]
+    },
+    "Normalise Fields": {
+      "main": [[{ "node": "Download File", "type": "main", "index": 0 }]]
+    },
+    "Download File": {
+      "main": [[{ "node": "Audio Gate", "type": "main", "index": 0 }]]
+    },
+    "Audio Gate": {
+      "main": [
+        [{ "node": "Claude Haiku Vision", "type": "main", "index": 0 }],
+        [{ "node": "Parse Description",  "type": "main", "index": 0 }]
+      ]
+    },
+    "Claude Haiku Vision": {
+      "main": [[{ "node": "Parse Description", "type": "main", "index": 0 }]]
+    },
+    "Parse Description": {
+      "main": [[{ "node": "Ollama Embed", "type": "main", "index": 0 }]]
+    },
+    "Ollama Embed": {
+      "main": [[{ "node": "ChromaDB Upsert", "type": "main", "index": 0 }]]
+    },
+    "ChromaDB Upsert": {
+      "main": [[{ "node": "Append to Index", "type": "main", "index": 0 }]]
+    },
+    "Append to Index": {
+      "main": [[{ "node": "Telegram Reply", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "media-memory-ingest-v1",
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "shadow-pages-local"
+  },
+  "id": "workflow-media-memory-ingest",
+  "tags": [
+    { "createdAt": "2026-01-01T00:00:00.000Z", "updatedAt": "2026-01-01T00:00:00.000Z", "id": "tag-media-memory", "name": "media-memory" }
+  ]
+}

@@ -1,0 +1,25 @@
+[
+  {
+    "id": "cuttingedge",
+    "name": "CuttingEdgeOfAI",
+    "igAccountId": "17841439475534779",
+    "igTokenEnvVar": "IG_TOKEN_CUTTINGEDGE",
+    "niche": "AI and productivity tools",
+    "bgFolder": "./assets/backgrounds/ai-tools",
+    "textColor": "#FFFFFF",
+    "affiliateLink": "stan.store/cuttingedgeofai",
+    "postSchedule": ["07:00", "12:00", "18:00", "21:00"],
+    "carouselTopics": [
+      "AI tools most people don't know exist",
+      "ChatGPT prompts that save 10 hours a week",
+      "How to use AI to write better in half the time",
+      "The AI tools replacing entire job functions",
+      "Free AI tools that beat the paid ones",
+      "How to automate your morning routine with AI",
+      "AI tools for content creators",
+      "The prompts that get 10x better ChatGPT responses",
+      "AI tools for making more money online",
+      "How to build a second brain with AI"
+    ]
+  }
+]

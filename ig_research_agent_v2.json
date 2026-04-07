@@ -1,0 +1,294 @@
+{
+  "name": "IG Research Agent — CuttingEdgeOfAI + EdgeOfTheWealthy",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 0"
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Every Sunday 9am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://api.apify.com/v2/datasets/lEMJdYpLKlbuXVETq/items",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "YOUR_APIFY_KEY"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "clean",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "read-competitor-ai",
+      "name": "Read Competitor AI Dataset",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 200]
+    },
+    {
+      "parameters": {
+        "url": "https://api.apify.com/v2/datasets/ccbuvF8MP5gpfsYIU/items",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "YOUR_APIFY_KEY"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "clean",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "read-competitor-wealthy",
+      "name": "Read Competitor Wealthy Dataset",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://api.apify.com/v2/datasets/gBa89dtRb3PAKyIT8/items",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "token",
+              "value": "YOUR_APIFY_KEY"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "clean",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "read-my-reels",
+      "name": "Read My Reels Dataset",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 600]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst reels = items.map(i => i.json);\nreels.sort((a, b) => (b.videoPlayCount || 0) - (a.videoPlayCount || 0));\nconst top = reels.slice(0, 15);\nreturn top.map(r => ({ json: r }));"
+      },
+      "id": "sort-competitor-ai",
+      "name": "Sort AI Competitors Top 15",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst reels = items.map(i => i.json);\nreels.sort((a, b) => (b.videoPlayCount || 0) - (a.videoPlayCount || 0));\nconst top = reels.slice(0, 15);\nreturn top.map(r => ({ json: r }));"
+      },
+      "id": "sort-competitor-wealthy",
+      "name": "Sort Wealthy Competitors Top 15",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst reels = items.map(i => i.json);\nreels.sort((a, b) => (b.videoPlayCount || 0) - (a.videoPlayCount || 0));\nconst top = reels.slice(0, 10);\nreturn top.map(r => ({ json: r }));"
+      },
+      "id": "sort-my-reels",
+      "name": "Sort My Reels Top 10",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 600]
+    },
+    {
+      "parameters": {
+        "jsCode": "const aiReels = $('Sort AI Competitors Top 15').all().map(i => i.json);\nconst wealthyReels = $('Sort Wealthy Competitors Top 15').all().map(i => i.json);\nconst myReels = $('Sort My Reels Top 10').all().map(i => i.json);\n\nconst formatReel = (r) => ({\n  url: r.url || r.shortCode || 'N/A',\n  caption: (r.caption || '').slice(0, 200),\n  views: r.videoPlayCount || 0,\n  likes: r.likesCount || 0,\n  comments: r.commentsCount || 0,\n  engagement: r.videoPlayCount > 0 ? (((r.likesCount || 0) + (r.commentsCount || 0)) / r.videoPlayCount * 100).toFixed(2) + '%' : '0%',\n  ownerUsername: r.ownerUsername || r.username || 'unknown',\n  timestamp: r.timestamp || r.takenAtTimestamp || 'unknown'\n});\n\nreturn [{\n  json: {\n    ai_competitors: aiReels.map(formatReel),\n    wealthy_competitors: wealthyReels.map(formatReel),\n    my_reels: myReels.map(formatReel)\n  }\n}];"
+      },
+      "id": "combine-data",
+      "name": "Combine All Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 400]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are an Instagram Reels viral content analysis specialist for faceless automated shadow pages. Analyze the data and return a JSON object only with no markdown. Return: {\"ai_report\": \"...\", \"wealthy_report\": \"...\"}"
+            },
+            {
+              "role": "user",
+              "content": "Analyze this Instagram data and create two separate weekly reports.\n\nFor each report use this exact format (plain text, use emojis):\n\n🔥 TOP COMPETITOR REELS\nList top 5 by engagement % with: title/hook, views, engagement %, why it worked\n\n💡 WINNING PATTERNS\nTopics, Hooks, Triggers, Power Words, Trends\n\n🎯 10 HOOK IDEAS\nNumbered list of hooks with why each works\n\n📌 3 COPY-READY CAPTIONS\nReady to post with hashtags\n\nDATA:\n\nAI NICHE COMPETITORS:\n{{ JSON.stringify($json.ai_competitors) }}\n\nWEALTHY NICHE COMPETITORS:\n{{ JSON.stringify($json.wealthy_competitors) }}\n\nMY REELS:\n{{ JSON.stringify($json.my_reels) }}"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 4000
+        }
+      },
+      "id": "ideation-agent",
+      "name": "GPT Ideation Agent",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [1180, 400],
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-cred",
+          "name": "OpenAI API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json.message?.content?.[0]?.text || $input.first().json.choices?.[0]?.message?.content || '{}';\nlet parsed;\ntry {\n  parsed = JSON.parse(raw);\n} catch(e) {\n  parsed = { ai_report: raw, wealthy_report: raw };\n}\nreturn [{ json: parsed }];"
+      },
+      "id": "parse-response",
+      "name": "Parse Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1400, 400]
+    },
+    {
+      "parameters": {
+        "chatId": "5488630825",
+        "text": "=🤖 *IG RESEARCH REPORT — @CuttingEdgeOfAI*\n\n{{ $json.ai_report }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-ai",
+      "name": "Telegram — AI Report",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1620, 200],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-cred",
+          "name": "Telegram Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "5488630825",
+        "text": "=💰 *IG RESEARCH REPORT — @EdgeOfTheWealthy*\n\n{{ $json.wealthy_report }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-wealthy",
+      "name": "Telegram — Wealthy Report",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1620, 600],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-cred",
+          "name": "Telegram Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every Sunday 9am": {
+      "main": [
+        [
+          { "node": "Read Competitor AI Dataset", "type": "main", "index": 0 },
+          { "node": "Read Competitor Wealthy Dataset", "type": "main", "index": 0 },
+          { "node": "Read My Reels Dataset", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Read Competitor AI Dataset": {
+      "main": [
+        [{ "node": "Sort AI Competitors Top 15", "type": "main", "index": 0 }]
+      ]
+    },
+    "Read Competitor Wealthy Dataset": {
+      "main": [
+        [{ "node": "Sort Wealthy Competitors Top 15", "type": "main", "index": 0 }]
+      ]
+    },
+    "Read My Reels Dataset": {
+      "main": [
+        [{ "node": "Sort My Reels Top 10", "type": "main", "index": 0 }]
+      ]
+    },
+    "Sort AI Competitors Top 15": {
+      "main": [
+        [{ "node": "Combine All Data", "type": "main", "index": 0 }]
+      ]
+    },
+    "Sort Wealthy Competitors Top 15": {
+      "main": [
+        [{ "node": "Combine All Data", "type": "main", "index": 0 }]
+      ]
+    },
+    "Sort My Reels Top 10": {
+      "main": [
+        [{ "node": "Combine All Data", "type": "main", "index": 0 }]
+      ]
+    },
+    "Combine All Data": {
+      "main": [
+        [{ "node": "GPT Ideation Agent", "type": "main", "index": 0 }]
+      ]
+    },
+    "GPT Ideation Agent": {
+      "main": [
+        [{ "node": "Parse Response", "type": "main", "index": 0 }]
+      ]
+    },
+    "Parse Response": {
+      "main": [
+        [
+          { "node": "Telegram — AI Report", "type": "main", "index": 0 },
+          { "node": "Telegram — Wealthy Report", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "staticData": null,
+  "pinData": {},
+  "tags": []
+}

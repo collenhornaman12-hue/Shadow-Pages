@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head><title>Shadow Pages Uploader</title></head>
+<body>
+<input type="file" id="imgInput" accept="image/*">
+<div id="status">Waiting for file...</div>
+<script>
+window.__result = null;
+window.__ready = false;
+
+const CLOUDINARY_NAME = 'dbqu7xgib';
+const CLOUDINARY_API_KEY = '466682416588161';
+const CLOUDINARY_TS = '1774321743';
+const CLOUDINARY_SIG = 'd71a0f1d5e1100494f4e13496ce013c88cf748db';
+const CLOUDINARY_FOLDER = 'shadow-pages';
+
+const IG_ID = '17841439475534779';
+const IG_TOKEN = 'EAALL1lWv28MBRO6DajVJZAMVAZAnUiI8SsIUnQ8tZB0TsnVBc4kJaVRWboChD643jdqf4v9bJCfRbUAENYZCjwYXSYmRCxFZBRmf2YU4KXXAY6migRc0Lg3l9WlchjUKn62MZBNZAQs4VmMM6beU9etgftbrQM4jVeLy2U0nxhZAA1QglC9aB7MYSexYaAJHe3kT';
+const BASE = 'https://graph.facebook.com/v25.0';
+
+const CAPTION = `Your competitor uses AI. You use Google.
+
+The gap isn't closing. It's widening. Every day you wait, they automate another process, cut another cost, move another 10x faster.
+
+This isn't about hype. It's about leverage.
+
+The question isn't whether AI will change your industry. It already did.
+
+@CuttingEdgeOfAI | Follow for the signals that matter.`;
+
+document.getElementById('imgInput').addEventListener('change', async function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  document.getElementById('status').textContent = 'Uploading to Cloudinary...';
+
+  try {
+    // Step 1: Upload to Cloudinary
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('api_key', CLOUDINARY_API_KEY);
+    fd.append('timestamp', CLOUDINARY_TS);
+    fd.append('signature', CLOUDINARY_SIG);
+    fd.append('folder', CLOUDINARY_FOLDER);
+
+    const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_NAME}/image/upload`, {
+      method: 'POST',
+      body: fd
+    });
+    const uploadData = await uploadRes.json();
+    if (uploadData.error) throw new Error('Cloudinary error: ' + JSON.stringify(uploadData.error));
+
+    const imageUrl = uploadData.secure_url;
+    document.getElementById('status').textContent = 'Cloudinary OK: ' + imageUrl;
+
+    // Step 2: Create IG media container
+    const createRes = await fetch(`${BASE}/${IG_ID}/media`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ image_url: imageUrl, caption: CAPTION, access_token: IG_TOKEN })
+    });
+    const createData = await createRes.json();
+    if (createData.error) throw new Error('IG create error: ' + JSON.stringify(createData.error));
+
+    const containerId = createData.id;
+    document.getElementById('status').textContent = 'Container created: ' + containerId + '. Waiting...';
+
+    // Step 3: Wait for container
+    for (let i = 0; i < 24; i++) {
+      await new Promise(r => setTimeout(r, 5000));
+      const statusRes = await fetch(`${BASE}/${containerId}?fields=status_code&access_token=${IG_TOKEN}`);
+      const statusData = await statusRes.json();
+      document.getElementById('status').textContent = 'Container status: ' + statusData.status_code;
+      if (statusData.status_code === 'FINISHED') break;
+      if (statusData.status_code === 'ERROR') throw new Error('Container error: ' + JSON.stringify(statusData));
+    }
+
+    // Step 4: Publish
+    const pubRes = await fetch(`${BASE}/${IG_ID}/media_publish`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ creation_id: containerId, access_token: IG_TOKEN })
+    });
+    const pubData = await pubRes.json();
+    if (pubData.error) throw new Error('Publish error: ' + JSON.stringify(pubData.error));
+
+    window.__result = 'SUCCESS|imageUrl=' + imageUrl + '|mediaId=' + pubData.id;
+    document.getElementById('status').textContent = window.__result;
+
+  } catch(err) {
+    window.__result = 'ERROR: ' + err.message;
+    document.getElementById('status').textContent = window.__result;
+  }
+
+  window.__ready = true;
+});
+
+window.__ready = false;
+</script>
+</body>
+</html>
