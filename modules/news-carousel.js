@@ -456,4 +456,4 @@ async function renderNewsCarouselV2(story, gptData, outputFolder = null) {
   return paths;
 }
 
-module.exports = { renderNewsCarouselV2, renderCoverSlide, renderInnerSlide, renderCtaSlide };
+module.exports = { renderNewsCarouselV2, renderCoverSlide, renderInnerSlide, renderCtaSlide, fetchPressPhoto };
