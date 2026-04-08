@@ -345,8 +345,11 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
     ctx.fillStyle = '#111111';
     ctx.fillRect(0, 0, W, H);
 
-    // Inset card
-    const cardX = 60, cardY = Math.round(H * 0.28), cardW = W - 120, cardH = Math.round(H * 0.44);
+    // Inset card — taller and wider than before
+    const cardX = 40;
+    const cardY = Math.round(H * 0.20);
+    const cardW = W - 80;
+    const cardH = Math.round(H * 0.60);
     ctx.fillStyle = '#1a1a1a';
     ctx.strokeStyle = GOLD;
     ctx.lineWidth = 1;
@@ -355,17 +358,17 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
     ctx.fill();
     ctx.stroke();
 
-    const innerX  = cardX + 40;
-    const innerW  = cardW - 80;
-    let   cursorY = cardY + 48;
+    const innerX  = cardX + 48;
+    const innerW  = cardW - 96;
+    let   cursorY = cardY + 56;
 
-    // Outlet name — gold, Arial Black, 28px, all caps
-    ctx.font         = `bold 28px ${FONT_DISPLAY}`;
+    // Outlet name — gold, Arial Black, 36px, all caps
+    ctx.font         = `bold 36px ${FONT_DISPLAY}`;
     ctx.fillStyle    = GOLD;
     ctx.textAlign    = 'left';
     ctx.textBaseline = 'top';
     ctx.fillText(String(data.source_name || 'SOURCE').toUpperCase(), innerX, cursorY);
-    cursorY += 36;
+    cursorY += 50;
 
     // Thin gold divider
     ctx.save();
@@ -377,22 +380,22 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
     ctx.lineTo(innerX + innerW, cursorY);
     ctx.stroke();
     ctx.restore();
-    cursorY += 20;
+    cursorY += 28;
 
-    // Headline — white, Arial, 32px, max 2 lines
-    ctx.font         = `32px ${FONT_BODY}`;
+    // Headline — white, Arial, 36px, max 3 lines
+    ctx.font         = `36px ${FONT_BODY}`;
     ctx.fillStyle    = WHITE;
     ctx.textAlign    = 'left';
     ctx.textBaseline = 'top';
-    const hLines = wrapLines(ctx, String(data.source_headline || ''), innerW).slice(0, 2);
+    const hLines = wrapLines(ctx, String(data.source_headline || ''), innerW).slice(0, 3);
     for (const ln of hLines) {
       ctx.fillText(ln, innerX, cursorY);
-      cursorY += 42;
+      cursorY += 48;
     }
-    cursorY += 16;
+    cursorY += 20;
 
-    // Footer — grey "via [source] — AI News", 18px
-    ctx.font         = `18px ${FONT_BODY}`;
+    // Footer — grey "via [source] — AI News", 20px
+    ctx.font         = `20px ${FONT_BODY}`;
     ctx.fillStyle    = 'rgba(255,255,255,0.40)';
     ctx.textAlign    = 'left';
     ctx.textBaseline = 'top';
