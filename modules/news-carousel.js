@@ -311,6 +311,7 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
     cursorY += 36;
 
     // Thin gold divider
+    ctx.save();
     ctx.strokeStyle = GOLD;
     ctx.lineWidth   = 1;
     ctx.globalAlpha = 0.5;
@@ -318,7 +319,7 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
     ctx.moveTo(innerX, cursorY);
     ctx.lineTo(innerX + innerW, cursorY);
     ctx.stroke();
-    ctx.globalAlpha = 1;
+    ctx.restore();
     cursorY += 20;
 
     // Headline — white, Arial, 32px, max 2 lines
@@ -362,6 +363,7 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
       ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
       lines    = wrapLines(ctx, textStr, textMaxW);
     }
+    lines = lines.slice(0, 4);
 
     const lh     = Math.round(fontSize * 1.15);
     const totalH = lines.length * lh;
@@ -494,6 +496,9 @@ async function renderNewsCarouselV2(story, gptData, outputFolder = null) {
   const d      = gptData || {};
 
   const innerSlides  = Array.isArray(d.slides) ? d.slides : [];
+  if (innerSlides.length === 0) {
+    console.warn('[news-carousel-v2] No inner slides in gptData — carousel will have only cover + CTA');
+  }
   const totalSlides  = 1 + innerSlides.length + 1; // cover + inner + CTA
   const paths        = [];
 
@@ -512,7 +517,7 @@ async function renderNewsCarouselV2(story, gptData, outputFolder = null) {
       slideData = {
         type:            'source',
         source_name:     d.source_name     || 'AI News',
-        source_headline: d.source_headline || innerSlides[0],
+        source_headline: d.source_headline || (typeof innerSlides[0] === 'string' ? innerSlides[0] : innerSlides[0]?.text) || '',
       };
     } else {
       // Slides 3+ = Type B: Dark text
