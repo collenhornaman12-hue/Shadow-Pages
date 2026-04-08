@@ -160,7 +160,7 @@ HEADLINE FORMULA (cover slide):
 
 SUBTITLE LINE (below headline on cover):
 - 6-8 words max, smaller text, describes the hook angle
-- Example: "THIS IS ONE OF THE CLEAREST SIGNS OF THE AI SHIFT"
+- Example: "The shift that changes everything this year"
 
 INNER SLIDES (slides array, slides 2 through N-1):
 - Each slide covers ONE idea only — punchy declarative fragment, no full sentences, no subordinate clauses
@@ -223,7 +223,7 @@ HEADLINE FORMULA:
 - Maximum 10 words, all caps
 - Must make someone stop scrolling
 - Examples:
-  "THIS GUY TAUGHT CLAUDE TO TALK LIKE A CAVEMAN AND CUT COSTS 75%"
+  "THIS GUY MADE CLAUDE TALK LIKE A CAVEMAN"
   "SOMEONE MADE A DIGITAL WHIP TO MAKE CLAUDE WORK FASTER"
   "TESLA AI AVOIDS CRASH WITH AN OVERTURNED TRUCK IN ZERO VISIBILITY"
   "AI JUST REBUILT MICROSOFT CLIPPY AS A CLAUDE CODE COMPANION"
