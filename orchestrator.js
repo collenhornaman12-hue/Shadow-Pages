@@ -121,14 +121,18 @@ const POSTED_STORIES_PATH = path.join(__dirname, 'memory', 'posted-stories.json'
 
 function loadPostedStories() {
   try { return JSON.parse(fs.readFileSync(POSTED_STORIES_PATH, 'utf8')); }
-  catch { return []; }
+  catch (err) { console.warn('[dedup] posted-stories.json unreadable, starting fresh:', err.message); return []; }
 }
 
 function savePostedStories(entries) {
   const cutoff = Date.now() - 48 * 60 * 60 * 1000;
   const trimmed = entries.filter(e => e.timestamp > cutoff);
-  fs.mkdirSync(path.dirname(POSTED_STORIES_PATH), { recursive: true });
-  fs.writeFileSync(POSTED_STORIES_PATH, JSON.stringify(trimmed, null, 2));
+  try {
+    fs.mkdirSync(path.dirname(POSTED_STORIES_PATH), { recursive: true });
+    fs.writeFileSync(POSTED_STORIES_PATH, JSON.stringify(trimmed, null, 2));
+  } catch (err) {
+    console.warn('[dedup] Failed to write posted-stories.json:', err.message);
+  }
 }
 
 function storyKey(headline) {
@@ -212,7 +216,7 @@ async function runSlot(page, slotIndex) {
         console.log(`[${page.name}] Skipping duplicate story: ${stories[si].title}`);
       }
       if (!story) {
-        console.log(`[${page.name}] All stories are duplicates — slot skipped`);
+        console.log(`[${page.name}] No non-duplicate story available — slot skipped`);
         return;
       }
       console.log('[' + page.name + '] News carousel: ' + story.title);
@@ -260,7 +264,7 @@ async function runSlot(page, slotIndex) {
         ? gptData.caption
         : await generateCaption(page.niche, story.title, retryOptions);
       await postCarousel({ igId: page.igAccountId, token, imageUrls, caption }, retryOptions);
-      markStoryPosted(story.title);
+      if (story.title) markStoryPosted(story.title);
       console.log('[' + page.name + '] News carousel posted');
 
     } else if (format === 'resource-carousel') {
