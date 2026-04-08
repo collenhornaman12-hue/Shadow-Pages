@@ -80,6 +80,54 @@ function roundRectFill(ctx, x, y, w, h, r) {
   ctx.fill();
 }
 
+// ── Photo validation ──────────────────────────────────────────────────────────
+// Returns { valid: true, buf } on pass, or { valid: false, reason } on reject.
+// Rejection criteria:
+//   - URL contains 'logo', 'icon', 'badge', or 'avatar'
+//   - Content-Length < 50KB (when header is present)
+//   - Image width/height ratio > 1.5 (landscape banner/logo)
+async function validatePhoto(imageUrl) {
+  // 1. URL keyword check (fast, no network)
+  const urlLower = imageUrl.toLowerCase();
+  for (const bad of ['logo', 'icon', 'badge', 'avatar']) {
+    if (urlLower.includes(bad)) return { valid: false, reason: `URL contains "${bad}"` };
+  }
+
+  // 2. Fetch the image (single request covers size + ratio checks)
+  let buf;
+  try {
+    const res = await fetch(imageUrl);
+    if (!res.ok) return { valid: false, reason: `HTTP ${res.status}` };
+
+    // Size check via Content-Length header when available
+    const contentLength = parseInt(res.headers.get('content-length') || '0', 10);
+    if (contentLength > 0 && contentLength < 51200) {
+      return { valid: false, reason: `Too small: ${contentLength} bytes` };
+    }
+
+    buf = Buffer.from(await res.arrayBuffer());
+  } catch (err) {
+    return { valid: false, reason: `Fetch error: ${err.message}` };
+  }
+
+  // Size check via actual buffer when header was absent
+  if (buf.length < 51200) {
+    return { valid: false, reason: `Too small: ${buf.length} bytes` };
+  }
+
+  // 3. Ratio check — load image and measure dimensions
+  try {
+    const img = await loadImage(buf);
+    if (img.width / img.height > 1.5) {
+      return { valid: false, reason: `Landscape ratio ${(img.width / img.height).toFixed(2)}` };
+    }
+  } catch (err) {
+    return { valid: false, reason: `Image decode failed: ${err.message}` };
+  }
+
+  return { valid: true, buf };
+}
+
 // ── Photo fetching ────────────────────────────────────────────────────────────
 // Tries SerpApi Google Images first (if key present), falls back to Pexels.
 // Person name is always passed raw — no transformation.
@@ -97,10 +145,12 @@ async function fetchPressPhoto(subject) {
         const data   = await res.json();
         const imgUrl = data.images_results?.[0]?.original;
         if (imgUrl) {
-          const imgRes = await fetch(imgUrl);
-          if (imgRes.ok) {
+          const check = await validatePhoto(imgUrl);
+          if (!check.valid) {
+            console.warn(`[photo] SerpApi rejected (${check.reason}): ${subject}`);
+          } else {
             const tmpPath = path.join(os.tmpdir(), `serpapi_${Date.now()}.jpg`);
-            fs.writeFileSync(tmpPath, Buffer.from(await imgRes.arrayBuffer()));
+            fs.writeFileSync(tmpPath, check.buf);
             console.log(`[photo] SerpApi hit for: ${subject}`);
             return tmpPath;
           }
@@ -522,4 +572,4 @@ async function renderNewsCarouselV2(story, gptData, outputFolder = null) {
   return paths;
 }
 
-module.exports = { renderNewsCarouselV2, renderCoverSlide, renderInnerSlide, renderCtaSlide, fetchPressPhoto };
+module.exports = { renderNewsCarouselV2, renderCoverSlide, renderInnerSlide, renderCtaSlide, fetchPressPhoto, validatePhoto };
