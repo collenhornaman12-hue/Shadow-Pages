@@ -198,10 +198,10 @@ Return ONLY valid JSON. No markdown, no code fences, no commentary:
   "source_name": "TechCrunch",
   "source_headline": "Original article title, max 15 words",
   "slides": [
-    "First inner slide text — key fact proving the headline. Max 40 words.",
-    "Second inner slide — context or detail. Max 40 words.",
-    "Third inner slide — who is affected or what changed. Max 40 words.",
-    "Fourth inner slide — why this matters or what happens next. Max 40 words."
+    "First inner slide text — key fact proving the headline. Max 12 words.",
+    "Second inner slide — context or detail. Max 12 words.",
+    "Third inner slide — who is affected or what changed. Max 12 words.",
+    "Fourth inner slide — why this matters or what happens next. Max 12 words."
   ],
   "caption": "Full Instagram caption text with paragraphs separated by newlines. End with follow instruction and source.",
   "cta_keyword": "BREAKING"
