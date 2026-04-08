@@ -26,7 +26,7 @@ async function testNewsCarousel() {
     source_name:     'TechCrunch',
     source_headline: 'OpenAI confirms GPT-5 arriving in Q3 2026',
     slides: [
-      'GPT-5 launches Q3 2026 per OpenAI',  // slide[0] is used by Type A (source card) — keep as string
+      'GPT-5 launches Q3 2026 per OpenAI',  // legacy string format — Type A source card uses source_name/source_headline, not this value
       { label: 'CONTEXT',     primary: 'Context window triples to 300k tokens',     secondary: '10x larger than GPT-4o context' },
       { label: 'PERFORMANCE', primary: 'Reasoning beats o3 by 40 percent',          secondary: 'Highest score on MMLU and HumanEval' },
       { label: 'PRICING',     primary: 'Enterprise pricing double GPT-4o',          secondary: 'Plus users get day-one access' },
