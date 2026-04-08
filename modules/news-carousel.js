@@ -521,7 +521,8 @@ async function renderNewsCarouselV2(story, gptData, outputFolder = null) {
       };
     } else {
       // Slides 3+ = Type B: Dark text
-      slideData = { type: 'text', text: innerSlides[i] };
+      const rawSlide = innerSlides[i];
+      slideData = { type: 'text', text: typeof rawSlide === 'string' ? rawSlide : (rawSlide?.text || '') };
     }
     paths.push(await renderInnerSlide(slideData, slideNum, totalSlides, folder));
     console.log(`[news-carousel-v2] Inner slide ${slideNum} done`);
