@@ -163,9 +163,8 @@ SUBTITLE LINE (below headline on cover):
 - Example: "THIS IS ONE OF THE CLEAREST SIGNS OF THE AI SHIFT"
 
 INNER SLIDES (slides array, slides 2 through N-1):
-- Each slide covers ONE idea only
-- Large clean text on dark background
-- No more than 40 words per slide
+- Each slide covers ONE idea only — punchy declarative fragment, no full sentences, no subordinate clauses
+- HARD LIMIT: 12 words maximum per slide. Count the words. Do not exceed 12.
 - Lead with the most alarming or surprising fact first
 - Include specific numbers, names, dollar amounts wherever possible
 - First inner slide should be the key fact that proves the headline
@@ -186,12 +185,18 @@ NAMED PERSON for photo sourcing:
 - This will be used to fetch a press photo
 - Example: "photo_subject": "Sam Altman" or "photo_subject": "OpenAI"
 
+SOURCE INFO:
+- "source_name": the outlet name where this story originated (e.g. "TechCrunch", "Bloomberg", "r/ClaudeAI")
+- "source_headline": the actual article or post title, max 15 words, verbatim or close paraphrase
+
 Return ONLY valid JSON. No markdown, no code fences, no commentary:
 
 {
   "headline": "ALL CAPS HEADLINE MAX 12 WORDS",
   "subtitle": "6-8 word subtitle describing hook angle",
   "photo_subject": "Full Name or Company",
+  "source_name": "TechCrunch",
+  "source_headline": "Original article title, max 15 words",
   "slides": [
     "First inner slide text — key fact proving the headline. Max 40 words.",
     "Second inner slide — context or detail. Max 40 words.",
@@ -234,6 +239,8 @@ CAPTION:
 
 IMAGE DIRECTION:
 - If the post is about a named real person (CEO, researcher, public figure), output their full name in "person_name" (e.g. "Sam Altman", "Elon Musk"). Otherwise leave "person_name" as null.
+- "source_name": the subreddit (e.g. "r/ChatGPT") or site where this story came from
+- "source_headline": the original post or article title, max 15 words
 - Output a "visual_description" field describing what the cover image should look like as a fallback.
 
 Return ONLY valid JSON. No markdown, no code fences:
@@ -243,6 +250,8 @@ Return ONLY valid JSON. No markdown, no code fences:
   "subtitle": "6-8 word subtitle",
   "person_name": "Full Name or null",
   "visual_description": "specific description of the cover image to fetch",
+  "source_name": "r/ChatGPT",
+  "source_headline": "Original post title, max 15 words",
   "caption": "Full Instagram caption with paragraphs separated by newlines.",
   "post_type": "single_image"
 }`,
