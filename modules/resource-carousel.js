@@ -205,8 +205,9 @@ async function renderResourceCoverSlide(postType, hookText, folder) {
   return saveCanvas(canvas, path.join(folder, 'slide_01.jpg'));
 }
 
-// ── Inner slide (Type B spec: gold top strip, label, white bold centered text) ─
-async function renderResourceInnerSlide(text, label, slideNum, totalSlides, folder) {
+// ── Inner slide ───────────────────────────────────────────────────────────────
+// data: { label?, primary?, secondary? } | { label?, text? } | string
+async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
   const canvas = createCanvas(W, H);
   const ctx    = canvas.getContext('2d');
 
@@ -215,45 +216,107 @@ async function renderResourceInnerSlide(text, label, slideNum, totalSlides, fold
   // Gold top strip
   ctx.fillStyle = GOLD; ctx.fillRect(0, 0, W, 4);
 
-  // Label — gold, Arial Black, 16px, letter-spaced, top center
-  const labelText    = (label || 'HOW TO GUIDE').toUpperCase();
-  ctx.font           = `bold 16px ${FONT_DISPLAY}`;
-  ctx.fillStyle      = GOLD;
-  ctx.textBaseline   = 'top';
-  ctx.textAlign      = 'left';
-  const labelLetters = labelText.split('');
-  const charSpacing  = 3;
-  const rawLabelW    = ctx.measureText(labelText).width;
-  const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
-  let   lx           = W / 2 - labelW / 2;
-  const labelY       = PAD + 10;
-  for (const ch of labelLetters) {
-    ctx.fillText(ch, lx, labelY);
-    lx += ctx.measureText(ch).width + charSpacing;
+  // Normalise: plain string → legacy compat object
+  if (typeof data === 'string') data = { text: data };
+
+  const hasPrimary  = data.primary && String(data.primary).trim().length > 0;
+  const labelText   = String(data.label || 'HOW TO GUIDE').toUpperCase();
+  const textMaxW    = W - 2 * (PAD + 20);
+
+  if (!hasPrimary) {
+    // ── BACKWARD COMPAT: legacy single centered text block ──────────────────
+    // Draw label at top
+    ctx.font = `bold 16px ${FONT_DISPLAY}`; ctx.fillStyle = GOLD;
+    ctx.textBaseline = 'top'; ctx.textAlign = 'left';
+    const labelLetters = labelText.split('');
+    const charSpacing  = 3;
+    const rawLabelW    = ctx.measureText(labelText).width;
+    const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
+    let   lx           = W / 2 - labelW / 2;
+    const labelY       = PAD + 10;
+    for (const ch of labelLetters) {
+      ctx.fillText(ch, lx, labelY);
+      lx += ctx.measureText(ch).width + charSpacing;
+    }
+
+    const rawWords = String(data.text || '').split(/\s+/).slice(0, 12);
+    const textStr  = rawWords.join(' ');
+
+    let fontSize = 64;
+    ctx.font     = `bold ${fontSize}px ${FONT_DISPLAY}`;
+    let lines    = wrapLines(ctx, textStr, textMaxW);
+    while (lines.length > 4 && fontSize > 36) {
+      fontSize -= 4;
+      ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
+      lines    = wrapLines(ctx, textStr, textMaxW);
+    }
+    lines = lines.slice(0, 4);
+
+    const lh     = Math.round(fontSize * 1.15);
+    const totalH = lines.length * lh;
+    let   ty     = (H - totalH) / 2;
+
+    ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    for (const ln of lines) { ctx.fillText(ln, W / 2, ty); ty += lh; }
+
+  } else {
+    // ── NEW THREE-LAYER LAYOUT ──────────────────────────────────────────────
+    // Layer 1: Label — GOLD, Arial Black, 16px, letter-spaced, centered at top
+    const labelSize    = 16;
+    const labelY       = PAD + 16;
+    ctx.font           = `bold ${labelSize}px ${FONT_DISPLAY}`;
+    ctx.fillStyle      = GOLD;
+    ctx.textBaseline   = 'top';
+    ctx.textAlign      = 'left';
+    const labelLetters = labelText.split('');
+    const charSpacing  = 3;
+    const rawLabelW    = ctx.measureText(labelText).width;
+    const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
+    let   lx           = W / 2 - labelW / 2;
+    for (const ch of labelLetters) {
+      ctx.fillText(ch, lx, labelY);
+      lx += ctx.measureText(ch).width + charSpacing;
+    }
+
+    // Layer 2: Primary — WHITE, Arial Black, large, vertically centered
+    const primaryWords = String(data.primary).split(/\s+/).slice(0, 10);
+    const primaryStr   = primaryWords.join(' ');
+
+    let fontSize = 64;
+    ctx.font     = `bold ${fontSize}px ${FONT_DISPLAY}`;
+    let pLines   = wrapLines(ctx, primaryStr, textMaxW);
+    while (pLines.length > 4 && fontSize > 36) {
+      fontSize -= 4;
+      ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
+      pLines   = wrapLines(ctx, primaryStr, textMaxW);
+    }
+    pLines = pLines.slice(0, 4);
+
+    const pLH     = Math.round(fontSize * 1.15);
+    const pTotalH = pLines.length * pLH;
+
+    const hasSecondary    = data.secondary && String(data.secondary).trim().length > 0;
+    const secondarySize   = 28;
+    const secondaryLH     = secondarySize * 1.35;
+    const secondaryReserve = hasSecondary ? secondaryLH + 20 : 0;
+    let   ty = (H - pTotalH - secondaryReserve) / 2;
+
+    ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    for (const ln of pLines) { ctx.fillText(ln, W / 2, ty); ty += pLH; }
+
+    // Layer 3: Secondary — GOLD, italic Arial, 28px, below primary
+    if (hasSecondary) {
+      ty += 20;
+      ctx.font = `italic ${secondarySize}px ${FONT_BODY}`; ctx.fillStyle = GOLD;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+      const secWords = String(data.secondary).split(/\s+/).slice(0, 12);
+      const secStr   = secWords.join(' ');
+      const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 2);
+      for (const ln of secLines) { ctx.fillText(ln, W / 2, ty); ty += secondaryLH; }
+    }
   }
-
-  // Body — white, Arial Black, max 12 words, centered
-  const rawWords = String(text || '').split(/\s+/).slice(0, 12);
-  const textStr  = rawWords.join(' ');
-  const textMaxW = W - 2 * (PAD + 20);
-
-  let fontSize = 64;
-  ctx.font     = `bold ${fontSize}px ${FONT_DISPLAY}`;
-  let lines    = wrapLines(ctx, textStr, textMaxW);
-  while (lines.length > 4 && fontSize > 36) {
-    fontSize -= 4;
-    ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
-    lines    = wrapLines(ctx, textStr, textMaxW);
-  }
-  lines = lines.slice(0, 4);
-
-  const lh     = Math.round(fontSize * 1.15);
-  const totalH = lines.length * lh;
-  let   ty     = (H - totalH) / 2;
-
-  ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;
-  ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-  for (const ln of lines) { ctx.fillText(ln, W / 2, ty); ty += lh; }
 
   // Slide counter
   ctx.font = `14px "Courier New", monospace`; ctx.fillStyle = 'rgba(255,255,255,0.20)';
@@ -368,10 +431,25 @@ async function renderResourceCarousel(content, folder) {
 
   for (let i = 0; i < innerCount; i++) {
     const slideData = slides[i];
-    const text = typeof slideData === 'string'
-      ? slideData
-      : (slideData?.one_liner || slideData?.stat || slideData?.text || '');
-    paths.push(await renderResourceInnerSlide(text, label, i + 2, totalSlides, folder));
+    let slideObj;
+    if (typeof slideData === 'string') {
+      // Legacy plain string
+      slideObj = { label, text: slideData };
+    } else if (slideData?.primary) {
+      // New object format
+      slideObj = {
+        label:     slideData.label     || label,
+        primary:   slideData.primary   || '',
+        secondary: slideData.secondary || '',
+      };
+    } else {
+      // Object without primary — backward compat
+      slideObj = {
+        label,
+        text: slideData?.one_liner || slideData?.stat || slideData?.text || '',
+      };
+    }
+    paths.push(await renderResourceInnerSlide(slideObj, i + 2, totalSlides, folder));
     console.log(`[resource-carousel] Inner slide ${i + 2} done`);
   }
 

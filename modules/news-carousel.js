@@ -410,32 +410,107 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
     ctx.fillStyle = GOLD;
     ctx.fillRect(0, 0, W, 4);
 
-    // Text — centered, Arial Black, max 12 words enforced by truncation
-    const textMaxW = W - 2 * (PAD + 20);
-    const rawWords = String(data.text || '').split(/\s+/).slice(0, 12);
-    const textStr  = rawWords.join(' ');
+    const hasPrimary = data.primary && String(data.primary).trim().length > 0;
 
-    let fontSize = 64;
-    ctx.font     = `bold ${fontSize}px ${FONT_DISPLAY}`;
-    let lines    = wrapLines(ctx, textStr, textMaxW);
-    while (lines.length > 4 && fontSize > 36) {
-      fontSize -= 4;
-      ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
-      lines    = wrapLines(ctx, textStr, textMaxW);
-    }
-    lines = lines.slice(0, 4);
+    if (!hasPrimary) {
+      // ── BACKWARD COMPAT: legacy text-only slide ──────────────────────────
+      const textMaxW = W - 2 * (PAD + 20);
+      const rawWords = String(data.text || '').split(/\s+/).slice(0, 12);
+      const textStr  = rawWords.join(' ');
 
-    const lh     = Math.round(fontSize * 1.15);
-    const totalH = lines.length * lh;
-    let   ty     = (H - totalH) / 2;
+      let fontSize = 64;
+      ctx.font     = `bold ${fontSize}px ${FONT_DISPLAY}`;
+      let lines    = wrapLines(ctx, textStr, textMaxW);
+      while (lines.length > 4 && fontSize > 36) {
+        fontSize -= 4;
+        ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
+        lines    = wrapLines(ctx, textStr, textMaxW);
+      }
+      lines = lines.slice(0, 4);
 
-    ctx.font         = `bold ${fontSize}px ${FONT_DISPLAY}`;
-    ctx.fillStyle    = WHITE;
-    ctx.textAlign    = 'center';
-    ctx.textBaseline = 'top';
-    for (const ln of lines) {
-      ctx.fillText(ln, W / 2, ty);
-      ty += lh;
+      const lh     = Math.round(fontSize * 1.15);
+      const totalH = lines.length * lh;
+      let   ty     = (H - totalH) / 2;
+
+      ctx.font         = `bold ${fontSize}px ${FONT_DISPLAY}`;
+      ctx.fillStyle    = WHITE;
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'top';
+      for (const ln of lines) {
+        ctx.fillText(ln, W / 2, ty);
+        ty += lh;
+      }
+
+    } else {
+      // ── NEW THREE-LAYER LAYOUT ────────────────────────────────────────────
+      const textMaxW = W - 2 * (PAD + 20);
+
+      // Layer 1: Label — GOLD, Arial Black, 16px, letter-spaced, centered at top
+      const labelText    = String(data.label || 'FACT').toUpperCase();
+      const labelSize    = 16;
+      const labelY       = PAD + 16;
+      ctx.font           = `bold ${labelSize}px ${FONT_DISPLAY}`;
+      ctx.fillStyle      = GOLD;
+      ctx.textBaseline   = 'top';
+      ctx.textAlign      = 'left';
+      const labelLetters = labelText.split('');
+      const charSpacing  = 3;
+      const rawLabelW    = ctx.measureText(labelText).width;
+      const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
+      let   lx           = W / 2 - labelW / 2;
+      for (const ch of labelLetters) {
+        ctx.fillText(ch, lx, labelY);
+        lx += ctx.measureText(ch).width + charSpacing;
+      }
+
+      // Layer 2: Primary — WHITE, Arial Black, large, vertically centered
+      const primaryWords = String(data.primary).split(/\s+/).slice(0, 10);
+      const primaryStr   = primaryWords.join(' ');
+
+      let fontSize = 64;
+      ctx.font     = `bold ${fontSize}px ${FONT_DISPLAY}`;
+      let pLines   = wrapLines(ctx, primaryStr, textMaxW);
+      while (pLines.length > 4 && fontSize > 36) {
+        fontSize -= 4;
+        ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
+        pLines   = wrapLines(ctx, primaryStr, textMaxW);
+      }
+      pLines = pLines.slice(0, 4);
+
+      const pLH     = Math.round(fontSize * 1.15);
+      const pTotalH = pLines.length * pLH;
+
+      // Center primary block vertically, offset up to leave room for secondary
+      const hasSecondary     = data.secondary && String(data.secondary).trim().length > 0;
+      const secondarySize    = 28;
+      const secondaryLH      = secondarySize * 1.35;
+      const secondaryReserve = hasSecondary ? secondaryLH + 20 : 0;
+      let   ty               = (H - pTotalH - secondaryReserve) / 2;
+
+      ctx.font         = `bold ${fontSize}px ${FONT_DISPLAY}`;
+      ctx.fillStyle    = WHITE;
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'top';
+      for (const ln of pLines) {
+        ctx.fillText(ln, W / 2, ty);
+        ty += pLH;
+      }
+
+      // Layer 3: Secondary — GOLD, italic Arial, 28px, below primary
+      if (hasSecondary) {
+        ty += 20;
+        ctx.font         = `italic ${secondarySize}px ${FONT_BODY}`;
+        ctx.fillStyle    = GOLD;
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'top';
+        const secWords = String(data.secondary).split(/\s+/).slice(0, 12);
+        const secStr   = secWords.join(' ');
+        const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 2);
+        for (const ln of secLines) {
+          ctx.fillText(ln, W / 2, ty);
+          ty += secondaryLH;
+        }
+      }
     }
   }
 
