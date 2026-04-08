@@ -276,51 +276,113 @@ async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = t
   return saveCanvas(canvas, path.join(folder, filename));
 }
 
-// ── Inner slide — text on dark background ─────────────────────────────────────
-async function renderInnerSlide(text, slideNum, totalSlides, folder) {
+// ── Inner slides ──────────────────────────────────────────────────────────────
+// data: { type: 'source', source_name, source_headline } | { type: 'text', text }
+
+async function renderInnerSlide(data, slideNum, totalSlides, folder) {
   const canvas = createCanvas(W, H);
   const ctx    = canvas.getContext('2d');
 
-  ctx.fillStyle = '#0a0a0a';
-  ctx.fillRect(0, 0, W, H);
+  if (data.type === 'source') {
+    // ── Type A: Source Receipt Card ──────────────────────────────────────────
+    ctx.fillStyle = '#111111';
+    ctx.fillRect(0, 0, W, H);
 
-  // Gold top strip
-  ctx.fillStyle = GOLD;
-  ctx.fillRect(0, 0, W, 4);
+    // Inset card
+    const cardX = 60, cardY = Math.round(H * 0.28), cardW = W - 120, cardH = Math.round(H * 0.44);
+    ctx.fillStyle = '#1a1a1a';
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.rect(cardX, cardY, cardW, cardH);
+    ctx.fill();
+    ctx.stroke();
 
-  // Slide counter (bottom-right, subtle)
+    const innerX  = cardX + 40;
+    const innerW  = cardW - 80;
+    let   cursorY = cardY + 48;
+
+    // Outlet name — gold, Arial Black, 28px, all caps
+    ctx.font         = `bold 28px ${FONT_DISPLAY}`;
+    ctx.fillStyle    = GOLD;
+    ctx.textAlign    = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(String(data.source_name || 'SOURCE').toUpperCase(), innerX, cursorY);
+    cursorY += 36;
+
+    // Thin gold divider
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth   = 1;
+    ctx.globalAlpha = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(innerX, cursorY);
+    ctx.lineTo(innerX + innerW, cursorY);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    cursorY += 20;
+
+    // Headline — white, Arial, 32px, max 2 lines
+    ctx.font         = `32px ${FONT_BODY}`;
+    ctx.fillStyle    = WHITE;
+    ctx.textAlign    = 'left';
+    ctx.textBaseline = 'top';
+    const hLines = wrapLines(ctx, String(data.source_headline || ''), innerW).slice(0, 2);
+    for (const ln of hLines) {
+      ctx.fillText(ln, innerX, cursorY);
+      cursorY += 42;
+    }
+    cursorY += 16;
+
+    // Footer — grey "via [source] — AI News", 18px
+    ctx.font         = `18px ${FONT_BODY}`;
+    ctx.fillStyle    = 'rgba(255,255,255,0.40)';
+    ctx.textAlign    = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`via ${String(data.source_name || 'Source')} — AI News`, innerX, cursorY);
+
+  } else {
+    // ── Type B: Dark Text Slide ──────────────────────────────────────────────
+    ctx.fillStyle = '#0d0d0d';
+    ctx.fillRect(0, 0, W, H);
+
+    // Gold top strip
+    ctx.fillStyle = GOLD;
+    ctx.fillRect(0, 0, W, 4);
+
+    // Text — centered, Arial Black, max 12 words enforced by truncation
+    const textMaxW = W - 2 * (PAD + 20);
+    const rawWords = String(data.text || '').split(/\s+/).slice(0, 12);
+    const textStr  = rawWords.join(' ');
+
+    let fontSize = 64;
+    ctx.font     = `bold ${fontSize}px ${FONT_DISPLAY}`;
+    let lines    = wrapLines(ctx, textStr, textMaxW);
+    while (lines.length > 4 && fontSize > 36) {
+      fontSize -= 4;
+      ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
+      lines    = wrapLines(ctx, textStr, textMaxW);
+    }
+
+    const lh     = Math.round(fontSize * 1.15);
+    const totalH = lines.length * lh;
+    let   ty     = (H - totalH) / 2;
+
+    ctx.font         = `bold ${fontSize}px ${FONT_DISPLAY}`;
+    ctx.fillStyle    = WHITE;
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'top';
+    for (const ln of lines) {
+      ctx.fillText(ln, W / 2, ty);
+      ty += lh;
+    }
+  }
+
+  // Slide number — faded, bottom-right, "N / M" format, 20% opacity
   ctx.font         = `14px "Courier New", monospace`;
-  ctx.fillStyle    = 'rgba(255,255,255,0.25)';
+  ctx.fillStyle    = 'rgba(255,255,255,0.20)';
   ctx.textAlign    = 'right';
   ctx.textBaseline = 'bottom';
   ctx.fillText(`${slideNum} / ${totalSlides}`, W - PAD, H - PAD);
-
-  // Text — centered, auto-sized, word-wrapped
-  const textMaxW = W - 2 * (PAD + 20);
-  const textStr  = String(text || '');
-  let fontSize   = 64;
-  ctx.font       = `bold ${fontSize}px ${FONT_DISPLAY}`;
-  let lines      = wrapLines(ctx, textStr, textMaxW);
-
-  // Shrink until lines fit or minimum size reached
-  while (lines.length > 5 && fontSize > 36) {
-    fontSize -= 4;
-    ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`;
-    lines    = wrapLines(ctx, textStr, textMaxW);
-  }
-
-  const lh         = Math.round(fontSize * 1.15);
-  const totalH     = lines.length * lh;
-  let ty           = (H - totalH) / 2;
-
-  ctx.font         = `bold ${fontSize}px ${FONT_DISPLAY}`;
-  ctx.fillStyle    = WHITE;
-  ctx.textAlign    = 'center';
-  ctx.textBaseline = 'top';
-  for (const ln of lines) {
-    ctx.fillText(ln, W / 2, ty);
-    ty += lh;
-  }
 
   const filename = `slide_${String(slideNum).padStart(2, '0')}.jpg`;
   return saveCanvas(canvas, path.join(folder, filename));
@@ -443,8 +505,21 @@ async function renderNewsCarouselV2(story, gptData, outputFolder = null) {
 
   // Slides 2 through N-1: Inner content slides
   for (let i = 0; i < innerSlides.length; i++) {
-    paths.push(await renderInnerSlide(innerSlides[i], i + 2, totalSlides, folder));
-    console.log(`[news-carousel-v2] Inner slide ${i + 2} done`);
+    const slideNum = i + 2;
+    let slideData;
+    if (i === 0) {
+      // Slide 2 = Type A: Source Receipt Card
+      slideData = {
+        type:            'source',
+        source_name:     d.source_name     || 'AI News',
+        source_headline: d.source_headline || innerSlides[0],
+      };
+    } else {
+      // Slides 3+ = Type B: Dark text
+      slideData = { type: 'text', text: innerSlides[i] };
+    }
+    paths.push(await renderInnerSlide(slideData, slideNum, totalSlides, folder));
+    console.log(`[news-carousel-v2] Inner slide ${slideNum} done`);
   }
 
   // Final slide: CTA
