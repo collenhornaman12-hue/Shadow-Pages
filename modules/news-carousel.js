@@ -499,7 +499,6 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   let cy = Math.round(H * 0.54);
 
   // Split-color render: surrounding text WHITE, quoted keyword GOLD
-  ctx.font         = `bold ${ctaSize}px ${FONT_DISPLAY}`;
   ctx.textBaseline = 'top';
   ctx.textAlign    = 'left';
   const beforeW  = ctx.measureText(beforeKeyword).width;
@@ -518,6 +517,7 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
 
   ctx.fillStyle = WHITE;
   ctx.fillText(afterKeyword, lx, cy);
+  lx += afterW;
 
   cy += ctaSize * 1.2 + 12;
 
