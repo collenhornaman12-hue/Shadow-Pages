@@ -2,7 +2,8 @@ require('dotenv').config();
 const fs   = require('fs');
 const path = require('path');
 const OpenAI = require('openai');
-const { renderResourceCarousel, getOutputFolder } = require('./image-renderer');
+const { renderResourceCarousel } = require('./resource-carousel');
+const { getOutputFolder }        = require('./image-renderer');
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
