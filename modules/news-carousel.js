@@ -484,19 +484,41 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   }
 
   // ── CTA block — pinned around 54% ────────────────────────────────────────
-  const keyword  = (ctaKeyword || 'BREAKING').toUpperCase();
-  const ctaLine1 = `Comment "${keyword}" below`;
+  const keyword       = (ctaKeyword || 'BREAKING').toUpperCase();
+  const beforeKeyword = 'Comment ';
+  const keywordPart   = `"${keyword}"`;
+  const afterKeyword  = ' below';
+  const fullCtaLine   = `${beforeKeyword}${keywordPart}${afterKeyword}`;
+
   let ctaSize = 40;
   ctx.font    = `bold ${ctaSize}px ${FONT_DISPLAY}`;
-  while (ctx.measureText(ctaLine1).width > textMaxW && ctaSize > 24) {
+  while (ctx.measureText(fullCtaLine).width > textMaxW && ctaSize > 24) {
     ctaSize -= 4;
     ctx.font = `bold ${ctaSize}px ${FONT_DISPLAY}`;
   }
   let cy = Math.round(H * 0.54);
-  ctx.fillStyle    = GOLD;
-  ctx.textAlign    = 'center';
+
+  // Split-color render: surrounding text WHITE, quoted keyword GOLD
+  ctx.font         = `bold ${ctaSize}px ${FONT_DISPLAY}`;
   ctx.textBaseline = 'top';
-  ctx.fillText(ctaLine1, W / 2, cy);
+  ctx.textAlign    = 'left';
+  const beforeW  = ctx.measureText(beforeKeyword).width;
+  const keywordW = ctx.measureText(keywordPart).width;
+  const afterW   = ctx.measureText(afterKeyword).width;
+  const totalCtaW = beforeW + keywordW + afterW;
+  let lx = W / 2 - totalCtaW / 2;
+
+  ctx.fillStyle = WHITE;
+  ctx.fillText(beforeKeyword, lx, cy);
+  lx += beforeW;
+
+  ctx.fillStyle = GOLD;
+  ctx.fillText(keywordPart, lx, cy);
+  lx += keywordW;
+
+  ctx.fillStyle = WHITE;
+  ctx.fillText(afterKeyword, lx, cy);
+
   cy += ctaSize * 1.2 + 12;
 
   ctx.font         = `28px ${FONT_BODY}`;
