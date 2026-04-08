@@ -233,7 +233,7 @@ async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
     const rawLabelW    = ctx.measureText(labelText).width;
     const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
     let   lx           = W / 2 - labelW / 2;
-    const labelY       = PAD + 10;
+    const labelY       = PAD + 16;
     for (const ch of labelLetters) {
       ctx.fillText(ch, lx, labelY);
       lx += ctx.measureText(ch).width + charSpacing;
@@ -299,7 +299,7 @@ async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
     const hasSecondary    = data.secondary && String(data.secondary).trim().length > 0;
     const secondarySize   = 28;
     const secondaryLH     = secondarySize * 1.35;
-    const secondaryReserve = hasSecondary ? secondaryLH + 20 : 0;
+    const secondaryReserve = hasSecondary ? secondaryLH * 2 + 20 : 0;
     let   ty = (H - pTotalH - secondaryReserve) / 2;
 
     ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;

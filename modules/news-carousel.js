@@ -484,7 +484,7 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
       const hasSecondary     = data.secondary && String(data.secondary).trim().length > 0;
       const secondarySize    = 28;
       const secondaryLH      = secondarySize * 1.35;
-      const secondaryReserve = hasSecondary ? secondaryLH + 20 : 0;
+      const secondaryReserve = hasSecondary ? secondaryLH * 2 + 20 : 0;
       let   ty               = (H - pTotalH - secondaryReserve) / 2;
 
       ctx.font         = `bold ${fontSize}px ${FONT_DISPLAY}`;
