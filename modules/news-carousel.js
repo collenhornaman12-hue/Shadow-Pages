@@ -423,20 +423,6 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
     ty += qLH;
   }
 
-  // ── Subtext — pinned around 38% ──────────────────────────────────────────
-  const subText  = 'Join 100,000+ followers staying ahead of the curve.';
-  const subY     = Math.round(H * 0.38);
-  ctx.font       = `32px ${FONT_BODY}`;
-  ctx.fillStyle  = 'rgba(255,255,255,0.70)';
-  ctx.textAlign  = 'center';
-  ctx.textBaseline = 'top';
-  const subLines = wrapLines(ctx, subText, textMaxW);
-  let sy = subY;
-  for (const ln of subLines) {
-    ctx.fillText(ln, W / 2, sy);
-    sy += 44;
-  }
-
   // ── CTA block — pinned around 54% ────────────────────────────────────────
   const keyword  = (ctaKeyword || 'BREAKING').toUpperCase();
   const ctaLine1 = `Comment "${keyword}" below`;
