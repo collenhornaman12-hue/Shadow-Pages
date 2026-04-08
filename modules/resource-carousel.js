@@ -147,7 +147,7 @@ async function renderResourceCoverSlide(postType, hookText, folder) {
   grad.addColorStop(1,    'rgba(0,0,0,0.85)');
   ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
 
-  drawWatermark(ctx);
+  try { drawWatermark(ctx); } catch (err) { console.warn('[resource-carousel] Watermark failed:', err.message); }
 
   // Headline — bottom 40%
   const zoneTop  = Math.round(H * 0.60);
@@ -175,6 +175,7 @@ async function renderResourceCoverSlide(postType, hookText, folder) {
   const totalTextH = hLines.length * hLH + (subLines.length > 0 ? 16 + subLines.length * subLH : 0);
   const blockStartY = zoneTop + (zoneH - totalTextH) / 2;
 
+  ctx.save();
   let ty = blockStartY;
   ctx.font = `bold ${hSize}px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;
   ctx.textAlign = 'center'; ctx.textBaseline = 'top';
@@ -185,8 +186,10 @@ async function renderResourceCoverSlide(postType, hookText, folder) {
     ctx.font = `${subSize}px ${FONT_BODY}`; ctx.fillStyle = 'rgba(255,255,255,0.75)';
     for (const ln of subLines) { ctx.fillText(ln, W / 2, ty); ty += subLH; }
   }
+  ctx.restore();
 
   // SWIPE badge (bottom-right)
+  ctx.save();
   const badgeW = 100, badgeH = 36;
   const badgeX = W - PAD - badgeW, badgeY = H - PAD - badgeH;
   ctx.fillStyle = GOLD;
@@ -194,6 +197,7 @@ async function renderResourceCoverSlide(postType, hookText, folder) {
   ctx.font = `bold 20px ${FONT_DISPLAY}`; ctx.fillStyle = '#000000';
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText('SWIPE', badgeX + badgeW / 2, badgeY + badgeH / 2);
+  ctx.restore();
 
   return saveCanvas(canvas, path.join(folder, 'slide_01.jpg'));
 }
@@ -317,8 +321,13 @@ async function renderResourceCtaSlide(folder, slideNum, totalSlides) {
 // content: { post_type, hook_text, slides, caption_cta }
 async function renderResourceCarousel(content, folder) {
   const { post_type, hook_text, slides = [] } = content;
+  if (!hook_text) throw new Error('[resource-carousel] content.hook_text is required');
+  if (!post_type) throw new Error('[resource-carousel] content.post_type is required');
   const label       = post_type === 'tool-spotlight' ? 'TOOL SPOTLIGHT' : 'HOW TO GUIDE';
   const innerCount  = Math.min(slides.length, 5);
+  if (slides.length > 5) {
+    console.warn(`[resource-carousel] ${slides.length} slides provided; only first 5 rendered`);
+  }
   const totalSlides = 1 + innerCount + 1;
   const paths       = [];
 
