@@ -99,6 +99,12 @@ async function validatePhoto(imageUrl) {
     const res = await fetch(imageUrl);
     if (!res.ok) return { valid: false, reason: `HTTP ${res.status}` };
 
+    // Content-type check — must be an image
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.startsWith('image/')) {
+      return { valid: false, reason: `Non-image content-type: ${contentType.split(';')[0]}` };
+    }
+
     // Size check via Content-Length header when available
     const contentLength = parseInt(res.headers.get('content-length') || '0', 10);
     if (contentLength > 0 && contentLength < 51200) {
