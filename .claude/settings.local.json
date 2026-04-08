@@ -7,7 +7,15 @@
       "Bash(pm2 logs:*)",
       "Bash(pm2 list:*)",
       "Bash(pm2 start:*)",
-      "Bash(powershell.exe:*)"
+      "Bash(powershell.exe:*)",
+      "Bash(claude mcp:*)",
+      "Bash(gh repo:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(claude plugin:*)",
+      "Bash(node:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

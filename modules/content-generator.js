@@ -233,15 +233,15 @@ CAPTION:
 - Source cited
 
 IMAGE DIRECTION:
-- Output a "visual_description" field describing what the cover image should look like
-- This will be used to fetch a relevant image
-- Be specific: "dashcam footage of Tesla avoiding crash", "Claude terminal screenshot", "AI-generated anime character"
+- If the post is about a named real person (CEO, researcher, public figure), output their full name in "person_name" (e.g. "Sam Altman", "Elon Musk"). Otherwise leave "person_name" as null.
+- Output a "visual_description" field describing what the cover image should look like as a fallback.
 
 Return ONLY valid JSON. No markdown, no code fences:
 
 {
   "headline": "ALL CAPS HEADLINE MAX 10 WORDS",
   "subtitle": "6-8 word subtitle",
+  "person_name": "Full Name or null",
   "visual_description": "specific description of the cover image to fetch",
   "caption": "Full Instagram caption with paragraphs separated by newlines.",
   "post_type": "single_image"

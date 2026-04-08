@@ -81,12 +81,13 @@ async function generateViralDemoPost(niche = 'AI and productivity tools') {
   }
 
   // 3. Render single cover image (no SWIPE badge — post_type: single_image)
+  // Always use the real person's name for SerpApi photo fetch when available.
   const folder = getOutputFolder('viral-demo', gptData.headline || topPost.title);
   const imgPath = await renderCoverSlide(
     {
       headline:      gptData.headline || topPost.title.toUpperCase(),
       subtitle:      gptData.subtitle || '',
-      photo_subject: gptData.visual_description || topPost.title,
+      photo_subject: gptData.person_name || gptData.visual_description || topPost.title,
     },
     folder,
     1,

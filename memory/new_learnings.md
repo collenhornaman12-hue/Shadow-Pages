@@ -20,3 +20,27 @@ Expired findings are older than 14 days with no confirmation.
 **Score:** 2
 **Status:** staged
 ---
+## [2026-04-08 01:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sf8fwi/meta_ads_not_spending_despite_balance_support_not/
+**Finding:** Meta Ads Not Spending Despite Balance – Support Not Helping, Money Stuck. Need Advice
+**Score:** 2
+**Status:** staged
+---
+## [2026-04-08 03:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sf8fwi/meta_ads_not_spending_despite_balance_support_not/
+**Finding:** Meta Ads Not Spending Despite Balance – Support Not Helping, Money Stuck. Need Advice
+**Score:** 2
+**Status:** staged
+---
+## [2026-04-08 05:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sfmw6f/how_do_i_gain_follower_on_my_ai_influencer/
+**Finding:** how do i gain follower on my Ai influencer
+**Score:** 2
+**Status:** staged
+---
+## [2026-04-08 05:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sf8fwi/meta_ads_not_spending_despite_balance_support_not/
+**Finding:** Meta Ads Not Spending Despite Balance – Support Not Helping, Money Stuck. Need Advice
+**Score:** 2
+**Status:** staged
+---

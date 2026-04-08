@@ -81,34 +81,33 @@ function roundRectFill(ctx, x, y, w, h, r) {
 }
 
 // ── Photo fetching ────────────────────────────────────────────────────────────
-// Tries Google Custom Search API first (if keys present), falls back to Pexels.
+// Tries SerpApi Google Images first (if key present), falls back to Pexels.
 // Person name is always passed raw — no transformation.
 
 async function fetchPressPhoto(subject) {
   if (!subject) return null;
 
-  // 1. Google Custom Search API
-  const gKey = process.env.GOOGLE_CSE_API_KEY;
-  const gCx  = process.env.GOOGLE_CSE_CX;
-  if (gKey && gCx) {
+  // 1. SerpApi Google Images
+  const serpKey = process.env.SERPAPI_KEY;
+  if (serpKey) {
     try {
-      const url = `https://www.googleapis.com/customsearch/v1?key=${gKey}&cx=${gCx}&searchType=image&q=${encodeURIComponent(subject)}&num=1&imgSize=large`;
+      const url = `https://serpapi.com/search.json?engine=google_images&q=${encodeURIComponent(subject)}&api_key=${serpKey}`;
       const res  = await fetch(url);
       if (res.ok) {
-        const data = await res.json();
-        const imgUrl = data.items?.[0]?.link;
+        const data   = await res.json();
+        const imgUrl = data.images_results?.[0]?.original;
         if (imgUrl) {
           const imgRes = await fetch(imgUrl);
           if (imgRes.ok) {
-            const tmpPath = path.join(os.tmpdir(), `gcse_${Date.now()}.jpg`);
+            const tmpPath = path.join(os.tmpdir(), `serpapi_${Date.now()}.jpg`);
             fs.writeFileSync(tmpPath, Buffer.from(await imgRes.arrayBuffer()));
-            console.log(`[photo] Google CSE hit for: ${subject}`);
+            console.log(`[photo] SerpApi hit for: ${subject}`);
             return tmpPath;
           }
         }
       }
     } catch (err) {
-      console.warn('[photo] Google CSE failed:', err.message);
+      console.warn('[photo] SerpApi failed:', err.message);
     }
   }
 
