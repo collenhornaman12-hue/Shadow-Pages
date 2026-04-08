@@ -116,6 +116,37 @@ const FORMAT_SCHEDULE = ['viral_demo', 'news-carousel', 'resource-carousel', 'ne
 // Daily news stories cache — shared between slots 1 and 3
 let _newsCache = { date: null, stories: null };
 
+// ── Duplicate story prevention ────────────────────────────────────────────────
+const POSTED_STORIES_PATH = path.join(__dirname, 'memory', 'posted-stories.json');
+
+function loadPostedStories() {
+  try { return JSON.parse(fs.readFileSync(POSTED_STORIES_PATH, 'utf8')); }
+  catch { return []; }
+}
+
+function savePostedStories(entries) {
+  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+  const trimmed = entries.filter(e => e.timestamp > cutoff);
+  fs.mkdirSync(path.dirname(POSTED_STORIES_PATH), { recursive: true });
+  fs.writeFileSync(POSTED_STORIES_PATH, JSON.stringify(trimmed, null, 2));
+}
+
+function storyKey(headline) {
+  return String(headline || '').trim().split(/\s+/).slice(0, 8).join(' ').toLowerCase();
+}
+
+function isDuplicateStory(headline) {
+  const key    = storyKey(headline);
+  const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+  return loadPostedStories().some(e => e.timestamp > cutoff && storyKey(e.headline) === key);
+}
+
+function markStoryPosted(headline) {
+  const posted = loadPostedStories();
+  posted.push({ headline: String(headline), timestamp: Date.now() });
+  savePostedStories(posted);
+}
+
 async function getNewsStories() {
   const today = new Date().toISOString().slice(0, 10);
   if (_newsCache.date === today && _newsCache.stories) {
@@ -174,8 +205,16 @@ async function runSlot(page, slotIndex) {
     } else if (format === 'news-carousel') {
       const stories = await getNewsStories();
       // Slot 1 → story[0], slot 3 → story[1]
-      const storyIndex = (slotIndex % FORMAT_SCHEDULE.length) === 1 ? 0 : 1;
-      const story = stories[storyIndex];
+      const preferredIndex = (slotIndex % FORMAT_SCHEDULE.length) === 1 ? 0 : 1;
+      let story = null;
+      for (let si = preferredIndex; si < stories.length; si++) {
+        if (!isDuplicateStory(stories[si].title)) { story = stories[si]; break; }
+        console.log(`[${page.name}] Skipping duplicate story: ${stories[si].title}`);
+      }
+      if (!story) {
+        console.log(`[${page.name}] All stories are duplicates — slot skipped`);
+        return;
+      }
       console.log('[' + page.name + '] News carousel: ' + story.title);
 
       // Generate 5-slide content (legacy fallback) + 7-slide JSON (v2)
@@ -221,6 +260,7 @@ async function runSlot(page, slotIndex) {
         ? gptData.caption
         : await generateCaption(page.niche, story.title, retryOptions);
       await postCarousel({ igId: page.igAccountId, token, imageUrls, caption }, retryOptions);
+      markStoryPosted(story.title);
       console.log('[' + page.name + '] News carousel posted');
 
     } else if (format === 'resource-carousel') {
