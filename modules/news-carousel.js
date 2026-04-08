@@ -521,10 +521,10 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
 
   cy += ctaSize * 1.2 + 12;
 
-  ctx.font         = `28px ${FONT_BODY}`;
-  ctx.fillStyle    = WHITE;
   ctx.textAlign    = 'center';
   ctx.textBaseline = 'top';
+  ctx.font         = `28px ${FONT_BODY}`;
+  ctx.fillStyle    = WHITE;
   const ctaLines2 = wrapLines(ctx, "and we'll send you our top AI tools & updates", textMaxW);
   for (const ln of ctaLines2) {
     ctx.fillText(ln, W / 2, cy);
