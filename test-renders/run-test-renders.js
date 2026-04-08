@@ -26,11 +26,11 @@ async function testNewsCarousel() {
     source_name:     'TechCrunch',
     source_headline: 'OpenAI confirms GPT-5 arriving in Q3 2026',
     slides: [
-      'GPT-5 launches Q3 2026 per OpenAI',
-      'Context window triples to 300k tokens',
-      'Reasoning beats o3 by 40 percent',
-      'Enterprise pricing double GPT-4o',
-      'All ChatGPT Plus users get access day one',
+      'GPT-5 launches Q3 2026 per OpenAI',  // slide[0] is used by Type A (source card) — keep as string
+      { label: 'CONTEXT',     primary: 'Context window triples to 300k tokens',     secondary: '10x larger than GPT-4o context' },
+      { label: 'PERFORMANCE', primary: 'Reasoning beats o3 by 40 percent',          secondary: 'Highest score on MMLU and HumanEval' },
+      { label: 'PRICING',     primary: 'Enterprise pricing double GPT-4o',          secondary: 'Plus users get day-one access' },
+      { label: "WHAT'S NEXT", primary: 'All ChatGPT Plus users get access day one', secondary: 'API rollout follows two weeks later' },
     ],
     caption:     'OpenAI just confirmed the date.\n\nGPT-5 is coming Q3 2026.\n\nFollow us (@cuttingedgeofai) for everything latest from the AI world.\nSource: TechCrunch',
     cta_keyword: 'BREAKING',
@@ -67,11 +67,11 @@ async function testResourceCarousel() {
     post_type:   'how-to-guide',
     hook_text:   'DO THIS WITH AI EVERY MORNING',
     slides: [
-      'Dump your full task list into Claude first',
-      'Sort by impact then by time required',
-      'Build schedule around top three tasks',
-      'Draft your hardest email with AI help',
-      'Review outputs before touching inbox',
+      { label: 'STEP 1', primary: 'Dump your full task list into Claude', secondary: 'Use a daily brain dump prompt' },
+      { label: 'STEP 2', primary: 'Sort by impact then by time required', secondary: 'Focus on top 3 high-leverage items' },
+      { label: 'STEP 3', primary: 'Build schedule around top three tasks', secondary: 'Block deep work time before inbox' },
+      { label: 'STEP 4', primary: 'Draft your hardest email with AI help', secondary: 'Give Claude the context and the ask' },
+      { label: 'STEP 5', primary: 'Review outputs before touching inbox', secondary: 'Protect the first 90 minutes daily' },
     ],
     caption_cta: "Save this. Comment WORKFLOW and I'll send you 5 more",
   };
