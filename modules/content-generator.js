@@ -163,13 +163,18 @@ SUBTITLE LINE (below headline on cover):
 - Example: "The shift that changes everything this year"
 
 INNER SLIDES (slides array, slides 2 through N-1):
-- Each slide covers ONE idea only — punchy declarative fragment, no full sentences, no subordinate clauses
-- HARD LIMIT: 12 words maximum per slide. Count the words. Do not exceed 12.
+Each slide is an object with three fields:
+- "label": 1-3 word category tag in ALL CAPS (e.g. "BREAKING", "CONTEXT", "IMPACT", "WHAT'S NEXT", "BIG PICTURE")
+- "primary": The main bold fact — maximum 10 words, declarative statement, specific numbers/names
+- "secondary": 6-10 word supporting detail or consequence — expands on primary
+
+Rules:
 - Lead with the most alarming or surprising fact first
 - Include specific numbers, names, dollar amounts wherever possible
 - First inner slide should be the key fact that proves the headline
 - Last inner slide should be a "why this matters" or forward-looking statement
 - Provide 4 to 6 inner slides
+- No exclamation marks
 
 CAPTION:
 - 4-5 short paragraphs
@@ -198,10 +203,10 @@ Return ONLY valid JSON. No markdown, no code fences, no commentary:
   "source_name": "TechCrunch",
   "source_headline": "Original article title, max 15 words",
   "slides": [
-    "First inner slide text — key fact proving the headline. Max 12 words.",
-    "Second inner slide — context or detail. Max 12 words.",
-    "Third inner slide — who is affected or what changed. Max 12 words.",
-    "Fourth inner slide — why this matters or what happens next. Max 12 words."
+    { "label": "BREAKING", "primary": "Key fact proving headline. Max 10 words.", "secondary": "Supporting detail or consequence, 6-10 words." },
+    { "label": "CONTEXT", "primary": "Background that makes it bigger. Max 10 words.", "secondary": "Who or what is affected, 6-10 words." },
+    { "label": "IMPACT", "primary": "Who is affected and how. Max 10 words.", "secondary": "Scale or consequence, 6-10 words." },
+    { "label": "WHAT'S NEXT", "primary": "Forward-looking implication. Max 10 words.", "secondary": "Why this matters now, 6-10 words." }
   ],
   "caption": "Full Instagram caption text with paragraphs separated by newlines. End with follow instruction and source.",
   "cta_keyword": "BREAKING"

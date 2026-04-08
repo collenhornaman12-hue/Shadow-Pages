@@ -585,12 +585,24 @@ async function renderNewsCarouselV2(story, gptData, outputFolder = null) {
       slideData = {
         type:            'source',
         source_name:     d.source_name     || 'AI News',
-        source_headline: d.source_headline || (typeof innerSlides[0] === 'string' ? innerSlides[0] : innerSlides[0]?.text) || '',
+        source_headline: d.source_headline || (typeof innerSlides[0] === 'string' ? innerSlides[0] : (innerSlides[0]?.primary || innerSlides[0]?.text || '')) || '',
       };
     } else {
-      // Slides 3+ = Type B: Dark text
+      // Slides 3+ = Type B: three-layer or legacy text
       const rawSlide = innerSlides[i];
-      slideData = { type: 'text', text: typeof rawSlide === 'string' ? rawSlide : (rawSlide?.text || '') };
+      if (typeof rawSlide === 'string') {
+        // Legacy format: plain string → backward compat path
+        slideData = { type: 'text', text: rawSlide };
+      } else {
+        // New format: object with label/primary/secondary
+        slideData = {
+          type:      'text',
+          label:     rawSlide.label     || '',
+          primary:   rawSlide.primary   || '',
+          secondary: rawSlide.secondary || '',
+          text:      rawSlide.text      || '',  // backward compat field preserved
+        };
+      }
     }
     paths.push(await renderInnerSlide(slideData, slideNum, totalSlides, folder));
     console.log(`[news-carousel-v2] Inner slide ${slideNum} done`);
