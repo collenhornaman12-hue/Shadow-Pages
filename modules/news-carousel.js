@@ -203,17 +203,18 @@ async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = t
   ctx.fillStyle = fallbackGrad;
   ctx.fillRect(0, 0, W, H);
 
-  // Full-bleed press photo
+  // Full-bleed press photo + overlay (only when photo is available)
   const img = await loadPhotoImage(d.photo_subject || d.person_name || null);
-  if (img) drawImageCover(ctx, img, 0, 0, W, H);
-
-  // Dark gradient overlay: transparent at top, rgba(0,0,0,0.75) from 50% down
-  const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0,    'rgba(0,0,0,0.05)');
-  grad.addColorStop(0.50, 'rgba(0,0,0,0.55)');
-  grad.addColorStop(1,    'rgba(0,0,0,0.85)');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, W, H);
+  if (img) {
+    drawImageCover(ctx, img, 0, 0, W, H);
+    // Dark gradient overlay: transparent at top → 85% opacity at bottom
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0,    'rgba(0,0,0,0.05)');
+    grad.addColorStop(0.50, 'rgba(0,0,0,0.55)');
+    grad.addColorStop(1,    'rgba(0,0,0,0.85)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+  }
 
   // ── Watermark (top center) ────────────────────────────────────────────────
   const wmText  = 'CUTTING EDGE OF AI';

@@ -140,14 +140,15 @@ async function renderResourceCoverSlide(postType, hookText, folder) {
   // Photo — search on tool/concept from hookText
   const query = hookText.toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
   const img   = await fetchResourcePhoto(query);
-  if (img) drawImageCover(ctx, img, 0, 0, W, H);
-
-  // Dark overlay (match news carousel cover)
-  const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0,    'rgba(0,0,0,0.05)');
-  grad.addColorStop(0.50, 'rgba(0,0,0,0.55)');
-  grad.addColorStop(1,    'rgba(0,0,0,0.85)');
-  ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+  if (img) {
+    drawImageCover(ctx, img, 0, 0, W, H);
+    // Dark overlay only when photo is present
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0,    'rgba(0,0,0,0.05)');
+    grad.addColorStop(0.50, 'rgba(0,0,0,0.55)');
+    grad.addColorStop(1,    'rgba(0,0,0,0.85)');
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+  }
 
   try { drawWatermark(ctx); } catch (err) { console.warn('[resource-carousel] Watermark failed:', err.message); }
 
