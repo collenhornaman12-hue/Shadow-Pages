@@ -4,7 +4,7 @@ const fs   = require('fs');
 const path = require('path');
 const { generateContent } = require('./content-generator');
 const { getOutputFolder }  = require('./image-renderer');
-const { renderCoverSlide, validatePhoto } = require('./news-carousel');
+const { renderCoverSlide } = require('./news-carousel');
 
 // ── Reddit fetch ──────────────────────────────────────────────────────────────
 // Pulls top posts from the past 24 hours from AI subreddits.

@@ -4,6 +4,7 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
 const fs   = require('fs');
 const { fetchSlideImage } = require('./carousel-builder');
+const { validatePhoto } = require('./news-carousel');
 
 // ── Font registration ─────────────────────────────────────────────────────────
 for (const f of [
@@ -70,11 +71,12 @@ async function fetchResourcePhoto(query) {
         const data   = await res.json();
         const imgUrl = data.images_results?.[0]?.original;
         if (imgUrl) {
-          const imgRes = await fetch(imgUrl);
-          if (imgRes.ok) {
-            const buf = Buffer.from(await imgRes.arrayBuffer());
+          const check = await validatePhoto(imgUrl);
+          if (!check.valid) {
+            console.warn(`[resource-carousel] SerpApi rejected (${check.reason}): ${query}`);
+          } else {
             console.log(`[resource-carousel] SerpApi photo: ${query}`);
-            return await loadImage(buf);
+            return await loadImage(check.buf);
           }
         }
       }
