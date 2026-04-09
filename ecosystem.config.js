@@ -23,5 +23,12 @@ module.exports = {
       autorestart: false,
       watch: false,
     },
+    {
+      name: 'seed-bank-generator',
+      script: 'scripts/seed-bank-generator.js',
+      cron_restart: '0 2 1 * *',   // 2am on the 1st of every month
+      autorestart: false,
+      watch: false,
+    },
   ],
 };
