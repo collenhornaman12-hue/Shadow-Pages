@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "category": "Breaking News",
+    "hook": "Amazon’s CEO challenges Nvidia—unexpected implications for cloud AI pricing",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 2,
+    "category": "Breaking News",
+    "hook": "AWS invests billions in OpenAI, triggering market shifts",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 3,
+    "category": "Breaking News",
+    "hook": "Google’s offline AI dictation app could disrupt transcription tools",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 4,
+    "category": "Breaking News",
+    "hook": "Databricks co-founder's claim: AGI is already here, not hypothetical",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 6,
+    "category": "Tool Workflows",
+    "hook": "Handle remote work like a pro with Astropad's AI Workbench",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 7,
+    "category": "Tool Workflows",
+    "hook": "Use Poke for AI agents faster than texting—transform your workflow",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 8,
+    "category": "Tool Workflows",
+    "hook": "Confluence's visual AI tools streamline documentation—time to integrate",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 9,
+    "category": "Head-to-Head Comparisons",
+    "hook": "AWS vs Azure—Anthropic model outperforms both on privacy",
+    "keyword": "TOOLS",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 10,
+    "category": "Head-to-Head Comparisons",
+    "hook": "Google’s dictation app beats others—works offline and faster",
+    "keyword": "TOOLS",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 11,
+    "category": "True Contrarian",
+    "hook": "ChatGPT integration in Tubi doesn't enhance user experience—here’s why",
+    "keyword": "NONE",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 12,
+    "category": "Insider / Early Signal",
+    "hook": "Firmus’ $5.5B valuation marks a rare win for startup AI",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 13,
+    "category": "Insider / Early Signal",
+    "hook": "OpenAI’s new safety measures could redefine child safety protocols",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 14,
+    "category": "Insider / Early Signal",
+    "hook": "Meta’s Muse Spark—quietly reshapes AI creative tools",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 15,
+    "category": "Consequence Framing",
+    "hook": "If you’re not using AI in project management yet, you’re losing clients",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 16,
+    "category": "Consequence Framing",
+    "hook": "Ignoring AI dictation tools? You’re slowing down your content strategy",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 19,
+    "category": "Tool Workflows",
+    "hook": "Upgrade your tasks with Gemini’s project notebooks—productivity boost guaranteed",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 20,
+    "category": "Tool Workflows",
+    "hook": "Automate your emails using Atlassian’s AI tools—avoid response drop-offs",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 21,
+    "category": "Head-to-Head Comparisons",
+    "hook": "Suno vs Spotify—AI music sharing users prefer one over the other",
+    "keyword": "TOOLS",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 22,
+    "category": "Head-to-Head Comparisons",
+    "hook": "Claude excels in document length, while GPT-4o outpaces on speed",
+    "keyword": "TOOLS",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 23,
+    "category": "True Contrarian",
+    "hook": "AI prompt engineering is outdated—tools are evolving past it",
+    "keyword": "NONE",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 24,
+    "category": "Insider / Early Signal",
+    "hook": "Tubi's app integration with AI is a game-changer for viewers",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 25,
+    "category": "Insider / Early Signal",
+    "hook": "The rise of tiny AI models—don't underestimate Arcee's potential",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 26,
+    "category": "Consequence Framing",
+    "hook": "Failing to adopt AI tools? Expect a 30% productivity drop by summer",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 27,
+    "category": "Consequence Framing",
+    "hook": "If your cybersecurity isn’t AI-driven, expect an attack—sooner than later",
+    "keyword": "WORKFLOW",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 28,
+    "category": "Breaking News",
+    "hook": "Intel joins Musk's chip project—game-changer for AI hardware landscape",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 29,
+    "category": "Breaking News",
+    "hook": "Unionization at ProPublica over AI layoffs—what it means for the industry",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  },
+  {
+    "id": 30,
+    "category": "Breaking News",
+    "hook": "Child safety blueprint from OpenAI may redefine platform standards",
+    "keyword": "BREAKING",
+    "generated_at": "2026-04-09",
+    "used": false
+  }
+]

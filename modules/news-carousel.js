@@ -533,6 +533,18 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   ctx.fillStyle = BG;
   ctx.fillRect(0, 0, W, H);
 
+  const keyword = (ctaKeyword || 'BREAKING').toUpperCase();
+  console.log(`[cta] post_type=news_carousel keyword=${keyword}`);
+
+  // Ghost keyword watermark — 96px, 4% opacity, centered
+  ctx.save();
+  ctx.font         = `bold 96px ${FONT_DISPLAY}`;
+  ctx.fillStyle    = 'rgba(255,255,255,0.04)';
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(keyword, W / 2, H / 2);
+  ctx.restore();
+
   const textPad  = 60;
   const textMaxW = W - 2 * textPad;
 
@@ -559,10 +571,9 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   }
 
   // ── CTA block — pinned around 54% ────────────────────────────────────────
-  const keyword       = (ctaKeyword || 'BREAKING').toUpperCase();
   const beforeKeyword = 'Comment ';
   const keywordPart   = `"${keyword}"`;
-  const afterKeyword  = ' below';
+  const afterKeyword  = ' for daily drops';
   const fullCtaLine   = `${beforeKeyword}${keywordPart}${afterKeyword}`;
 
   let ctaSize = 40;
@@ -594,18 +605,6 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   ctx.fillText(afterKeyword, lx, cy);
   lx += afterW;
 
-  cy += ctaSize * 1.2 + 12;
-
-  ctx.textAlign    = 'center';
-  ctx.textBaseline = 'top';
-  ctx.font         = `28px ${FONT_BODY}`;
-  ctx.fillStyle    = WHITE;
-  const ctaLines2 = wrapLines(ctx, "and we'll send you our top AI tools & updates", textMaxW);
-  for (const ln of ctaLines2) {
-    ctx.fillText(ln, W / 2, cy);
-    cy += 38;
-  }
-
   // ── Bottom account info — pinned to bottom 15% ───────────────────────────
   const bottomY = Math.round(H * 0.82);
 
@@ -613,7 +612,7 @@ async function renderCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   ctx.fillStyle    = WHITE;
   ctx.textAlign    = 'center';
   ctx.textBaseline = 'top';
-  ctx.fillText('@CuttingEdgeOfAI', W / 2, bottomY);
+  ctx.fillText('@cuttingedgeofai', W / 2, bottomY);
 
   ctx.font         = `22px ${FONT_BODY}`;
   ctx.fillStyle    = GOLD;

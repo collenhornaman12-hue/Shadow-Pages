@@ -1,0 +1,4 @@
+[2026-04-09 17:11] REJECTED: "Anthropic’s new AI model found security flaws everywhere—are you safe?" — reason: ends with question mark
+[2026-04-09 17:11] REJECTED: "New AI model Mythos targets cybersecurity—are you updated?" — reason: ends with question mark
+[2026-04-09 17:11] REJECTED: "Spotify's playlists use AI to curate—stay ahead of trends effortlessly" — reason: contains "effortlessly"
+[2026-04-09 17:11] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"

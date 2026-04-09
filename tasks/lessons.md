@@ -107,3 +107,18 @@ News carousel format change (April 2026):
 - CTA final slide replaces old slide 7: "WANT THE LATEST AI NEWS EVERY DAY?" + follow CTA + account handle + stan.store link
 - Caption sourced from GPT inline (gptData.caption), falls back to caption-generator if absent
 - Canvas size changed from 1080x1080 to 1080x1350 (4:5 portrait) for all carousel slides
+
+---
+
+## Brief 4 complete [2026-04-09]
+
+- Seed filter added to seed-bank-generator.js — rejects banned hook patterns after parse, before json write. Rejections and timestamps logged to memory/seed-filter-log.txt.
+- Filter validation: known-bad test seed confirmed rejected (matched "effortlessly" pattern).
+- Curly/smart quote normalization added to isValidSeed — GPT output uses curly apostrophes; normalized to straight before pattern matching.
+- CTA keywords wired by post type from within each generator: news=BREAKING, resource=PROMPTS, viral=WORKFLOW
+- Both visible keyword text (split-color CTA line) and ghost keyword layer (96px, 4% opacity) driven by same ctaKeyword param.
+- CTA copy updated per type: news asks for daily drops, resource offers prompt stack, viral offers DM workflow.
+- ctaLines2 "and we'll send you..." removed from both CTA functions.
+- Handle updated to lowercase @cuttingedgeofai in both CTA functions.
+- Files changed: scripts/seed-bank-generator.js, modules/news-carousel.js, modules/resource-carousel.js, test-renders/run-test-renders.js
+- Seed count from test run: 27/30 valid seeds (3 rejected by filter)

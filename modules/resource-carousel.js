@@ -327,17 +327,29 @@ async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
 }
 
 // ── CTA slide (matches news carousel CTA — no follower count) ─────────────────
-async function renderResourceCtaSlide(folder, slideNum, totalSlides) {
+async function renderResourceCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   const canvas = createCanvas(W, H);
   const ctx    = canvas.getContext('2d');
 
   ctx.fillStyle = '#0d0d0d'; ctx.fillRect(0, 0, W, H);
 
+  const keyword = (ctaKeyword || 'PROMPTS').toUpperCase();
+  console.log(`[cta] post_type=resource_carousel keyword=${keyword}`);
+
+  // Ghost keyword watermark — 96px, 4% opacity, centered
+  ctx.save();
+  ctx.font         = `bold 96px ${FONT_DISPLAY}`;
+  ctx.fillStyle    = 'rgba(255,255,255,0.04)';
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(keyword, W / 2, H / 2);
+  ctx.restore();
+
   const textPad  = 60;
   const textMaxW = W - 2 * textPad;
 
   // Top question — vertically centered in top 35%
-  const question = 'WANT THE BEST AI TOOLS EVERY WEEK?';
+  const question = 'WANT THE FULL PROMPT STACK?';
   let qSize = 52;
   ctx.font  = `bold ${qSize}px ${FONT_DISPLAY}`;
   while (ctx.measureText(question).width > textMaxW && qSize > 32) {
@@ -352,8 +364,8 @@ async function renderResourceCtaSlide(folder, slideNum, totalSlides) {
 
   // CTA block — pinned around 54%
   const beforeKeyword = 'Comment ';
-  const keywordPart   = '"WORKFLOW"';
-  const afterKeyword  = ' below';
+  const keywordPart   = `"${keyword}"`;
+  const afterKeyword  = ' and I will send it';
   const fullCtaLine   = `${beforeKeyword}${keywordPart}${afterKeyword}`;
 
   let ctaSize = 40;
@@ -384,20 +396,11 @@ async function renderResourceCtaSlide(folder, slideNum, totalSlides) {
   ctx.fillText(afterKeyword, lx, cy);
   lx += afterW;
 
-  cy += ctaSize * 1.2 + 12;
-
-  ctx.textAlign    = 'center';
-  ctx.textBaseline = 'top';
-  ctx.font         = `28px ${FONT_BODY}`;
-  ctx.fillStyle    = WHITE;
-  const ctaLines2 = wrapLines(ctx, "and we'll send you our top AI tools & updates", textMaxW);
-  for (const ln of ctaLines2) { ctx.fillText(ln, W / 2, cy); cy += 38; }
-
   // Account info — bottom ~18%
   const bottomY = Math.round(H * 0.82);
   ctx.font = `bold 26px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;
   ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-  ctx.fillText('@CuttingEdgeOfAI', W / 2, bottomY);
+  ctx.fillText('@cuttingedgeofai', W / 2, bottomY);
 
   ctx.font = `22px ${FONT_BODY}`; ctx.fillStyle = GOLD;
   ctx.fillText('stan.store/cuttingedgeofai', W / 2, bottomY + 40);
@@ -453,7 +456,7 @@ async function renderResourceCarousel(content, folder) {
     console.log(`[resource-carousel] Inner slide ${i + 2} done`);
   }
 
-  paths.push(await renderResourceCtaSlide(folder, totalSlides, totalSlides));
+  paths.push(await renderResourceCtaSlide('PROMPTS', folder, totalSlides, totalSlides));
   console.log('[resource-carousel] CTA done');
 
   return paths;

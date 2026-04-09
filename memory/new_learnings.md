@@ -44,3 +44,33 @@ Expired findings are older than 14 days with no confirmation.
 **Score:** 2
 **Status:** staged
 ---
+## [2026-04-09 01:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sgcc10/anyone_else_have_0_non_follower_views_on_carousels/
+**Finding:** Anyone else have 0 non follower views on carousels?
+**Score:** 3
+**Status:** staged
+---
+## [2026-04-09 03:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sgi36z/carousels_is_better/
+**Finding:** Carousels is better
+**Score:** 3
+**Status:** staged
+---
+## [2026-04-09 03:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sgcc10/anyone_else_have_0_non_follower_views_on_carousels/
+**Finding:** Anyone else have 0 non follower views on carousels?
+**Score:** 3
+**Status:** staged
+---
+## [2026-04-09 05:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sgi36z/carousels_is_better/
+**Finding:** Carousels is better
+**Score:** 3
+**Status:** staged
+---
+## [2026-04-09 05:00] — Reddit/r/InstagramMarketing
+**URL:** https://www.reddit.com/r/InstagramMarketing/comments/1sgcc10/anyone_else_have_0_non_follower_views_on_carousels/
+**Finding:** Anyone else have 0 non follower views on carousels?
+**Score:** 3
+**Status:** staged
+---

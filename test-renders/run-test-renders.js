@@ -53,6 +53,7 @@ async function testViralDemo() {
     person_name:   'Sam Altman',
   };
 
+  console.log('[cta] post_type=viral_demo keyword=WORKFLOW');
   console.log('\n[test] Rendering viral demo cover...');
   const imgPath = await renderCoverSlide(mockGpt, folder, 1, 1, false);
   console.log('[test] Viral demo done:', imgPath);

@@ -20,6 +20,7 @@ const PSYCH_FILE    = path.join(MEMORY_DIR, 'AUDIENCE_PSYCHOLOGY_AI.md');
 const SEED_FILE     = path.join(MEMORY_DIR, 'seed-bank.json');
 const STORIES_FILE  = path.join(MEMORY_DIR, 'posted-stories.json');
 const LEARNINGS_FILE = path.join(MEMORY_DIR, 'new_learnings.md');
+const FILTER_LOG    = path.join(MEMORY_DIR, 'seed-filter-log.txt');
 
 // ── Config ─────────────────────────────────────────────────────────────────────
 const CONTEXT_FEEDS = [
@@ -250,6 +251,65 @@ async function callGpt(psychDoc, contextBlock, postedKeys) {
   return res.choices[0].message.content.trim();
 }
 
+// ── Seed quality filter ────────────────────────────────────────────────────────
+
+const BANNED_PATTERNS = [
+  "here's why",
+  "here's how",
+  "game-changing",
+  "effortlessly",
+  "you need to know",
+  "will change everything",
+  "the future is here",
+  "in today's world",
+  "in the age of ai",
+  "leverage",
+];
+
+function isValidSeed(seed) {
+  if (!seed || typeof seed.hook !== 'string' || !seed.hook.trim()) {
+    return { valid: false, reason: 'parse failure' };
+  }
+  // Normalize curly/smart quotes to straight so patterns match GPT output
+  const h = seed.hook.toLowerCase().replace(/[\u2018\u2019\u201A\u201B]/g, "'");
+  for (const pattern of BANNED_PATTERNS) {
+    if (h.includes(pattern)) {
+      return { valid: false, reason: `contains "${pattern}"` };
+    }
+  }
+  if (h.trimEnd().endsWith('?')) {
+    return { valid: false, reason: 'ends with question mark' };
+  }
+  if (h.trimEnd().endsWith('...')) {
+    return { valid: false, reason: 'ends with ellipsis' };
+  }
+  return { valid: true };
+}
+
+function filterSeeds(seeds) {
+  const valid    = [];
+  const rejected = [];
+  for (const seed of seeds) {
+    const result = isValidSeed(seed);
+    if (result.valid) {
+      valid.push(seed);
+    } else {
+      const hook   = seed?.hook || '(no hook)';
+      const reason = result.reason;
+      rejected.push({ hook, reason });
+      const ts   = new Date().toISOString().replace('T', ' ').slice(0, 16);
+      const line = `[${ts}] REJECTED: "${hook}" — reason: ${reason}`;
+      console.log(line);
+      try {
+        fs.appendFileSync(FILTER_LOG, line + '\n');
+      } catch (err) {
+        console.warn(`[seed-filter] Failed to write filter log: ${err.message}`);
+      }
+    }
+  }
+  return { valid, rejected };
+}
+
 // ── Seed parser ────────────────────────────────────────────────────────────────
 // Parses lines like: "1. [Category] | [Hook] | [Keyword]"
 
@@ -293,17 +353,38 @@ async function run() {
   console.log(`[seed-bank] Dedup: ${postedKeys.length} posted stories loaded`);
 
   const raw   = await callGpt(psychDoc, contextBlock, postedKeys);
-  const seeds = parseSeeds(raw);
+  let   seeds = parseSeeds(raw);
 
   if (seeds.length === 0) {
     throw new Error('[seed-bank] GPT returned 0 parseable seeds. Raw output:\n' + raw.slice(0, 500));
   }
 
-  if (!fs.existsSync(MEMORY_DIR)) fs.mkdirSync(MEMORY_DIR, { recursive: true });
-  fs.writeFileSync(SEED_FILE, JSON.stringify(seeds, null, 2));
-  console.log(`[seed-bank] ${seeds.length} seeds saved → ${SEED_FILE}`);
+  const realSeedCount = seeds.length;
 
-  return seeds;
+  // Filter validation: inject known-bad seed to confirm filter is working
+  const TEST_BAD_SEED = { hook: 'Here is how leverage will change everything effortlessly' };
+  seeds.push(TEST_BAD_SEED);
+
+  const { valid, rejected } = filterSeeds(seeds);
+
+  const testRejected = rejected.some(r => r.hook === TEST_BAD_SEED.hook);
+  if (!testRejected) {
+    console.warn('[seed-filter] WARNING: test bad seed was NOT rejected — check filter logic');
+  } else {
+    console.log('[seed-filter] Filter validation passed — test bad seed correctly rejected');
+  }
+
+  const realRejectedCount = rejected.length - (testRejected ? 1 : 0);
+
+  if (!fs.existsSync(MEMORY_DIR)) fs.mkdirSync(MEMORY_DIR, { recursive: true });
+  fs.writeFileSync(SEED_FILE, JSON.stringify(valid, null, 2));
+  console.log(`[seed-bank] wrote ${valid.length}/${realSeedCount} seeds (${realRejectedCount} rejected by filter)`);
+
+  if (valid.length < 20) {
+    console.log(`[seed-filter] WARNING: only ${valid.length} valid seeds written — review GPT prompt quality`);
+  }
+
+  return valid;
 }
 
 module.exports = { run };
