@@ -152,19 +152,89 @@ function loadPostedKeys() {
 
 // ── GPT call ───────────────────────────────────────────────────────────────────
 
+const SYSTEM_PROMPT =
+  'You are a sharp, opinionated content strategist for @CuttingEdgeOfAI, an Instagram ' +
+  'account in the AI and productivity niche. Your job is to generate seed topics that stop ' +
+  'the scroll, speak to professionals who are aware of AI but haven\'t fully acted on it, ' +
+  'and feel like insider intelligence — not press releases. You have high standards. Vague ' +
+  'seeds get discarded. Generic hooks get rewritten. Every seed must have a specific ' +
+  'surprising element that justifies stopping the scroll.';
+
+// Extracts a ## section up to the next ## heading or end of document.
+function extractH2(doc, heading) {
+  const re = new RegExp(`## ${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?(?=\\n## |$)`);
+  const m  = doc.match(re);
+  return m ? m[0].trim() : '';
+}
+
+// Extracts a ### subsection up to the next ### or ## heading or end of document.
+function extractH3(doc, heading) {
+  const re = new RegExp(`### ${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?(?=\\n### |\\n## |$)`);
+  const m  = doc.match(re);
+  return m ? m[0].trim() : '';
+}
+
+// Extracts just the current month's row from the AI Content Calendar table.
+function extractCurrentMonthGuidance(doc) {
+  const month = new Date().toLocaleString('en-US', { month: 'long' });
+  for (const line of doc.split('\n')) {
+    if (line.includes('|') && line.toLowerCase().includes(month.toLowerCase())) {
+      return `${month} seasonal guidance: ${line.replace(/\|/g, ' ').replace(/\s+/g, ' ').trim()}`;
+    }
+  }
+  return '';
+}
+
+// Extracts the "Natural keyword fits by category" bullet list from Monetization section.
+function extractKeywordMap(doc) {
+  const m = doc.match(/Natural keyword fits by category[\s\S]*?(?=\n---|\n## |$)/);
+  return m ? m[0].trim() : '';
+}
+
+// Assembles Section 2 from specific psychDoc extracts only — not the full doc.
+function buildCreativeConstraints(psychDoc) {
+  return [
+    extractH2(psychDoc,  'The Core Tension (Most Important Section)'),
+    extractH3(psychDoc,  '5. The Scroll-Stop Trigger'),
+    extractH2(psychDoc,  'Contrarian Content — Defined for This Niche'),
+    extractH3(psychDoc,  'Cover / Caption Voice'),
+    extractH2(psychDoc,  'Seed Bank Content Categories'),
+    extractCurrentMonthGuidance(psychDoc),
+    extractH2(psychDoc,  'Banned Content Directions'),
+    extractKeywordMap(psychDoc),
+  ].filter(Boolean).join('\n\n---\n\n');
+}
+
+const GENERATION_INSTRUCTION =
+  'Generate exactly 30 seeds now. Apply every rule above without exception. ' +
+  'If a seed fails the hook-first rule, rewrite it before including it. ' +
+  'If a seed fails the anchor test, discard it and generate a replacement. ' +
+  'If you cannot produce a true contrarian seed with a specific target this month, ' +
+  'reallocate those slots to Insider or Breaking News — do not generate fake contrarian ' +
+  'seeds to hit a number.\n\n' +
+  'Required format for every seed:\n' +
+  '[Category] | [Hook-first topic sentence, max 12 words] | [Keyword]\n\n' +
+  'Output the 30 seeds and nothing else. No preamble. No explanation. No commentary after.';
+
 async function callGpt(psychDoc, contextBlock, postedKeys) {
   const postedSection = postedKeys.length > 0
-    ? `\n\n---\n## RECENTLY POSTED — DO NOT REPEAT THESE TOPICS\n${postedKeys.join('\n')}\n---`
+    ? `RECENTLY POSTED — DO NOT REPEAT THESE TOPICS:\n${postedKeys.join('\n')}`
     : '';
 
-  // The psych doc already contains all GPT instructions.
-  // We prepend the context block and append the dedup list.
-  const prompt = `${contextBlock}\n\n${psychDoc}${postedSection}`;
+  const userPrompt = [
+    contextBlock,
+    '---\n## CREATIVE CONSTRAINTS\n\n' + buildCreativeConstraints(psychDoc),
+    ...(postedSection ? [postedSection] : []),
+    '---\n' + GENERATION_INSTRUCTION,
+  ].join('\n\n');
 
   const res = await client.chat.completions.create({
     model:       'gpt-4o-mini',
-    messages:    [{ role: 'user', content: prompt }],
-    temperature: 0.85,
+    messages:    [
+      { role: 'system', content: SYSTEM_PROMPT },
+      { role: 'user',   content: userPrompt },
+    ],
+    temperature: 0.9,
     max_tokens:  3500,
   });
 
