@@ -214,6 +214,12 @@ const GENERATION_INSTRUCTION =
   'seeds to hit a number.\n\n' +
   'Required format for every seed:\n' +
   '[Category] | [Hook-first topic sentence, max 12 words] | [Keyword]\n\n' +
+  'Banned endings: never end a seed with "here\'s why", "here\'s how", "don\'t miss it", ' +
+  '"find out why", "which wins?", "a new era", or any question mark. The seed must state ' +
+  'a position or consequence, not tease one.\n\n' +
+  'Comparison seeds must declare a winner or a specific advantage — not pose a question. ' +
+  'Bad: "Claude vs GPT-4o — which is better?" Good: "Claude wins on long-document tasks ' +
+  '— GPT-4o still leads on speed."\n\n' +
   'Output the 30 seeds and nothing else. No preamble. No explanation. No commentary after.';
 
 async function callGpt(psychDoc, contextBlock, postedKeys) {
@@ -261,7 +267,7 @@ function parseSeeds(raw) {
 
     seeds.push({
       id:           seeds.length + 1,
-      category:     (parts[0] || 'Unknown').replace(/\*\*/g, '').trim(),
+      category:     (parts[0] || 'Unknown').replace(/\*\*/g, '').replace(/^\[+|\]+$/g, '').trim(),
       hook:         parts[1] || '',
       keyword:      (parts[2] || 'NONE').replace(/^NONE$/i, 'NONE'),
       generated_at: new Date().toISOString().split('T')[0],
