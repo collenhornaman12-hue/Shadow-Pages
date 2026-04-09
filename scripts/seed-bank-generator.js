@@ -191,7 +191,7 @@ function parseSeeds(raw) {
 
     seeds.push({
       id:           seeds.length + 1,
-      category:     parts[0] || 'Unknown',
+      category:     (parts[0] || 'Unknown').replace(/\*\*/g, '').trim(),
       hook:         parts[1] || '',
       keyword:      (parts[2] || 'NONE').replace(/^NONE$/i, 'NONE'),
       generated_at: new Date().toISOString().split('T')[0],
