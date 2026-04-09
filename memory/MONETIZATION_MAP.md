@@ -151,3 +151,155 @@ Stan Store traffic. Don't dilute the funnel until the core product converts.
 - ManyChat PRO trial expires April 23, 2026 — cancel or convert
 - IG token expires May 2026 — renew before monetization compounds
 - Do not wire affiliate links into pipeline until MONETIZATION_MAP v2
+
+
+## @EdgeOfTheWealthy Monetization Architecture
+
+*Added: April 9, 2026*
+
+---
+
+### Current State
+
+| Layer | Status |
+|---|---|
+| Instagram account | ✅ Live — @edgeofthewealthy |
+| Facebook Page | ✅ Live — Edge of the Wealthy |
+| Pipeline | ✅ Live — confirmed April 9, 2026 |
+| Stan Store page | ❌ Not created — maximum 30 days before creating |
+| ManyChat triggers | ❌ Not wired — requires 7+ days posting data first |
+| Products | ❌ None yet |
+
+---
+
+### Stan Store Strategy
+
+**Temporary bridge (now — 30 days max):**
+Point all @EdgeOfTheWealthy CTAs to stan.store/cuttingedgeofai
+until a wealth-specific page exists. This is a placeholder only.
+
+WARNING: stan.store/edgeofthewealthy does not exist yet. Do not
+use this URL in any pipeline or CTA until the page is confirmed
+live.
+
+**Dedicated page (create at same time as ManyChat setup):**
+Build a new Stan Store page at stan.store/edgeofthewealthy with
+wealth-specific products and branding. Do not delay this past the
+30-day bridge period — sending wealth followers to an AI-branded
+page undermines the account positioning.
+
+---
+
+### ManyChat — @EdgeOfTheWealthy
+
+**Prerequisites before wiring (all three must be true):**
+1. Account has 7+ days of consistent posting data
+2. A wealth-specific product exists on Stan Store
+3. Dedicated Stan Store page is live
+
+**Keyword trigger map (planned — not yet live):**
+
+| Keyword | Post Type | DM Action |
+|---|---|---|
+| BREAKING | Wealth news carousels | Send Stan Store link + follow nudge |
+| PROMPTS | Framework and strategy posts | Send Stan Store link + follow nudge |
+| WORKFLOW | System and process posts | Send Stan Store link + follow nudge |
+| LINK | Any post | Send Stan Store link + follow nudge |
+| WEALTH | Catch-all wealth trigger | Send Stan Store link + follow nudge |
+
+WEALTH is a fifth keyword unique to this account. Add it at the
+same time as the other four triggers when ManyChat is wired —
+not separately.
+
+**DM copy template:**
+"You asked for it 👇
+
+Here is your link: stan.store/cuttingedgeofai
+
+Follow @edgeofthewealthy for daily wealth strategies 💰"
+
+---
+
+### Affiliate Programs
+
+Activate after 30 days of consistent posting AND ManyChat is live
+and generating clicks. Do not activate before both conditions are
+met — diluting the funnel before it converts is a waste.
+
+| Program | Commission | Best CTA | Activate When |
+|---|---|---|---|
+| Webull | $12–20 per signup | "Start investing free — link in bio" | ManyChat live |
+| ClickBank wealth courses | 50–75% per sale | "Full wealth blueprint — link in bio" | ManyChat live |
+| Fundrise (real estate) | 1% referral | "How the wealthy invest in real estate" | ManyChat live |
+| NordVPN | 40–100% first sale | Privacy as wealth protection angle | 500 followers |
+| Seeking Alpha | 30% recurring | "Best wealth research tool" | 1K followers |
+
+Sign up for Webull and ClickBank first — highest commission and
+easiest to integrate into wealth content naturally.
+
+---
+
+### Product Ladder
+
+Build in this order. Do not skip ahead.
+
+**$17 — Wealth Mindset Starter Pack**
+20 wealth principles the top 1% operate by, formatted as a
+reference card. Quick to build, strong perceived value for the
+aspirational audience.
+Build when: @EdgeOfTheWealthy has 30 days of posting data and
+ManyChat prerequisites are met.
+
+**$27 — The Wealth Contrast Framework**
+The contrast structure this account uses ("Most people do X,
+wealthy do Y") packaged as a 30-post content system for followers
+who want to apply the same thinking to their own life.
+Build when: Wealth Mindset Starter Pack is live and converting.
+
+**$47 — Wealth Stack Blueprint**
+Complete breakdown of how wealthy people structure their financial
+life — accounts, assets, protection, growth. Delivered as a
+Notion template plus PDF guide.
+Build when: Account reaches 2K followers.
+
+**Long-term cross-account note:**
+The AI News Workflow Kit (Option 1 on the @CuttingEdgeOfAI
+product ladder) documents how to build automated Instagram
+pipelines for any niche. Both accounts can eventually point to it
+as a shared premium product.
+
+---
+
+### Revenue Sequencing
+
+Now:
+  Pipeline posting daily on PM2 schedule
+  CTAs pointing to stan.store/cuttingedgeofai as 30-day bridge
+  No ManyChat yet
+
+30 days:
+  Dedicated Stan Store page live at stan.store/edgeofthewealthy
+  ManyChat wired with 5 keywords (BREAKING, PROMPTS, WORKFLOW,
+  LINK, WEALTH)
+  Webull and ClickBank affiliate links in bio
+  $17 Wealth Mindset Starter Pack live
+
+60-90 days:
+  $27 Wealth Contrast Framework live
+  Affiliate revenue beginning to compound
+  Both accounts cross-promoting where natural
+
+6 months:
+  $47 Wealth Stack Blueprint live
+  Full affiliate stack active
+  Dual-account pipeline running independently
+
+---
+
+### Key Dates and Reminders
+
+- IG_TOKEN_WEALTHYEDGE expires approximately June 8, 2026 —
+  renew before end of May
+- Stan Store wealth page: create within 30 days of first post
+- ManyChat: wire after 7+ days posting data confirmed clean
+- AUDIENCE_PSYCHOLOGY_WEALTHY.md: written April 9, 2026 ✅
