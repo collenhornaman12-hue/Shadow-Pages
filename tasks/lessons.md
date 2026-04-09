@@ -122,3 +122,28 @@ News carousel format change (April 2026):
 - Handle updated to lowercase @cuttingedgeofai in both CTA functions.
 - Files changed: scripts/seed-bank-generator.js, modules/news-carousel.js, modules/resource-carousel.js, test-renders/run-test-renders.js
 - Seed count from test run: 27/30 valid seeds (3 rejected by filter)
+
+---
+
+## Brief 5 complete [2026-04-09]
+
+- config/accounts.js created with both account configs (cuttingedgeofai + wealthyedge)
+- orchestrator-wealthy.js created for @edgeofthewealthy
+- PM2 schedule: 8am viral demo / 1pm news carousel / 5pm resource carousel / 8pm news carousel
+- Wealth niche GPT context wired into all generation calls via WEALTH_SYSTEM_PROMPT system message
+- Wealth RSS feeds: Bloomberg markets, Business Insider markets, Forbes (403 — unreliable).
+  Fallback: Yahoo Finance, CNBC.
+- Feed failure handling: falls back to secondary feeds automatically; logs and skips slot if all fail
+- Forbes feed currently returns 403 — Bloomberg + Business Insider are carrying the slot
+- Custom wealth CTA slide renderer (renderWealthCtaSlide) renders @edgeofthewealthy handle;
+  does not modify existing news-carousel.js (additive only)
+- Separate duplicate prevention file: memory/posted-stories-wealthy.json (never touches CuttingEdge's file)
+- fixCaptionHandle() post-processes shared module output to replace AI handles/hashtags with wealth equivalents
+- AUDIENCE_PSYCHOLOGY_WEALTHY.md not yet created — using SOUL.md fallback
+  ACTION REQUIRED NEXT SESSION: Create memory/AUDIENCE_PSYCHOLOGY_WEALTHY.md
+- Test post carousel ID: 18098680996838307
+- Test post hook ID: 17959137753073649
+- IG_TOKEN_WEALTHYEDGE expires ~June 8 2026 — set renewal reminder
+- Files changed: config/accounts.js (created), orchestrator-wealthy.js (created),
+  ecosystem.config.js (added shadow-pages-wealthy entry), .env (IG_ACCOUNT_ID_WEALTHYEDGE +
+  IG_TOKEN_WEALTHYEDGE added in previous session)

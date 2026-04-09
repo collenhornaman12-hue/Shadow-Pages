@@ -30,5 +30,14 @@ module.exports = {
       autorestart: false,
       watch: false,
     },
+    {
+      name: 'shadow-pages-wealthy',
+      script: 'orchestrator-wealthy.js',
+      autorestart: true,
+      watch: false,
+      env: {
+        NODE_ENV: 'production',
+      },
+    },
   ],
 };
