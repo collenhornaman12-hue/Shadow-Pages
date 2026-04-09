@@ -147,3 +147,39 @@ News carousel format change (April 2026):
 - Files changed: config/accounts.js (created), orchestrator-wealthy.js (created),
   ecosystem.config.js (added shadow-pages-wealthy entry), .env (IG_ACCOUNT_ID_WEALTHYEDGE +
   IG_TOKEN_WEALTHYEDGE added in previous session)
+
+---
+
+## Brief 6 complete [2026-04-09]
+
+- Watermark fixed: EDGE OF THE WEALTHY (WEALTH_WATERMARK constant in orchestrator-wealthy.js)
+  passed as 6th optional param to renderCoverSlide — default unchanged ('CUTTING EDGE OF AI')
+- renderResourceCarousel: 3rd optional param watermarkText added, flows to drawWatermark
+- @CuttingEdgeOfAI regression confirmed clean — all 15 test renders error-free
+- WEALTH_SYSTEM_PROMPT backup saved to memory/wealthy-prompt-backup.md
+- News scoring augmented with wealth mindset criteria (prepended): billionaire decisions,
+  luxury markets, named investment strategies SCORE HIGH; geopolitical conflicts, banking
+  scandals, legal enforcement actions SCORE LOW
+- Min score threshold: local variable (not constant), base 7, adaptive to 5 if < 2 qualify
+- Slot skips and photo rejections logged to memory/wealthy-errors.log with timestamps
+  [YYYY-MM-DD HH:mm] format
+- Log rotation: file renamed to wealthy-errors-archive-[date].log at 100KB
+- Source label fixed: renderInnerSlide now accepts sourceSuffix param (default ' — AI News');
+  wealthy carousel passes '' — clean "via Bloomberg" output, no AI News suffix
+- buildWealthNewsCarousel now adds source receipt card as slide 2 (was missing in Brief 5)
+- Photo validation: checks Pexels API alt text for crypto keywords, avg_color for CGI
+  dark backgrounds (#000000-#111111 range) — does NOT check URL patterns
+- Enhanced fallback chain: SerpApi → Pexels (full subject) → Pexels (simplified subject)
+  → Pexels ("wealth") → gradient
+- simplifySubject: strips common/generic words, uses first significant word;
+  GENERIC_FINANCE set maps financial-only terms → "wealth" search
+- Forbes feed still returns 403 — Bloomberg + Business Insider primary feeds working
+- Test post carousel ID: 17883098559525077
+- Test post hook ID: 17920085847300247
+- Threshold adaptive log confirmed: "lowered to 5" fired during test run (Bloomberg stories
+  scoring 6-7, below base threshold of 7 for investment niche content)
+  ACTION REQUIRED: Manually DM anyone who commented on @EdgeOfTheWealthy posts before
+  ManyChat went live — check all 5 existing posts and send Stan Store link manually
+  to anyone who used a keyword
+- Files changed: modules/news-carousel.js, modules/resource-carousel.js,
+  orchestrator-wealthy.js, memory/wealthy-prompt-backup.md, tasks/lessons.md

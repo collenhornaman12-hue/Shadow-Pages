@@ -98,8 +98,7 @@ async function fetchResourcePhoto(query) {
 }
 
 // ── Watermark (top center, "CUTTING EDGE OF AI" with flanking lines) ──────────
-function drawWatermark(ctx) {
-  const wmText = 'CUTTING EDGE OF AI';
+function drawWatermark(ctx, wmText = 'CUTTING EDGE OF AI') {
   const wmSize = 22;
   ctx.font     = `bold ${wmSize}px ${FONT_DISPLAY}`;
   const wmW    = ctx.measureText(wmText).width;
@@ -128,7 +127,7 @@ function drawWatermark(ctx) {
 }
 
 // ── Cover slide ───────────────────────────────────────────────────────────────
-async function renderResourceCoverSlide(postType, hookText, folder) {
+async function renderResourceCoverSlide(postType, hookText, folder, watermarkText = 'CUTTING EDGE OF AI') {
   const canvas = createCanvas(W, H);
   const ctx    = canvas.getContext('2d');
 
@@ -150,7 +149,7 @@ async function renderResourceCoverSlide(postType, hookText, folder) {
     ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
   }
 
-  try { drawWatermark(ctx); } catch (err) { console.warn('[resource-carousel] Watermark failed:', err.message); }
+  try { drawWatermark(ctx, watermarkText); } catch (err) { console.warn('[resource-carousel] Watermark failed:', err.message); }
 
   // Headline — bottom 40%
   const zoneTop  = Math.round(H * 0.60);
@@ -415,7 +414,7 @@ async function renderResourceCtaSlide(ctaKeyword, folder, slideNum, totalSlides)
 
 // ── Main export ───────────────────────────────────────────────────────────────
 // content: { post_type, hook_text, slides, caption_cta }
-async function renderResourceCarousel(content, folder) {
+async function renderResourceCarousel(content, folder, watermarkText = 'CUTTING EDGE OF AI') {
   const { post_type, hook_text, slides = [] } = content;
   if (!hook_text) throw new Error('[resource-carousel] content.hook_text is required');
   if (!post_type) throw new Error('[resource-carousel] content.post_type is required');
@@ -429,7 +428,7 @@ async function renderResourceCarousel(content, folder) {
 
   console.log(`[resource-carousel] Rendering ${totalSlides} slides (${post_type})...`);
 
-  paths.push(await renderResourceCoverSlide(post_type, hook_text, folder));
+  paths.push(await renderResourceCoverSlide(post_type, hook_text, folder, watermarkText));
   console.log('[resource-carousel] Cover done');
 
   for (let i = 0; i < innerCount; i++) {

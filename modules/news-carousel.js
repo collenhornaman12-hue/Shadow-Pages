@@ -192,7 +192,7 @@ async function loadPhotoImage(subject) {
 }
 
 // ── SLIDE 1 — Cover (full-bleed press photo) ─────────────────────────────────
-async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = true) {
+async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = true, watermarkText = 'CUTTING EDGE OF AI') {
   const canvas = createCanvas(W, H);
   const ctx    = canvas.getContext('2d');
 
@@ -217,7 +217,7 @@ async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = t
   }
 
   // ── Watermark (top center) ────────────────────────────────────────────────
-  const wmText  = 'CUTTING EDGE OF AI';
+  const wmText  = watermarkText;
   const wmSize  = 22;
   ctx.font      = `bold ${wmSize}px ${FONT_DISPLAY}`;
   ctx.fillStyle = WHITE;
@@ -336,7 +336,7 @@ async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = t
 // ── Inner slides ──────────────────────────────────────────────────────────────
 // data: { type: 'source', source_name, source_headline } | { type: 'text', text }
 
-async function renderInnerSlide(data, slideNum, totalSlides, folder) {
+async function renderInnerSlide(data, slideNum, totalSlides, folder, sourceSuffix = ' — AI News') {
   const canvas = createCanvas(W, H);
   const ctx    = canvas.getContext('2d');
 
@@ -399,7 +399,7 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder) {
     ctx.fillStyle    = 'rgba(255,255,255,0.40)';
     ctx.textAlign    = 'left';
     ctx.textBaseline = 'top';
-    ctx.fillText(`via ${String(data.source_name || 'Source')} — AI News`, innerX, cursorY);
+    ctx.fillText(`via ${String(data.source_name || 'Source')}${sourceSuffix}`, innerX, cursorY);
 
   } else {
     // ── Type B: Dark Text Slide ──────────────────────────────────────────────

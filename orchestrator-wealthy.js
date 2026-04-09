@@ -18,21 +18,22 @@ const cron = require('node-cron');
 const Parser = require('rss-parser');
 const OpenAI = require('openai');
 
-const { upload }                     = require('./modules/uploader');
-const { postImage, postCarousel }    = require('./modules/instagram-publisher');
-const { generateCaption }            = require('./modules/caption-generator');
-const { logError }                   = require('./modules/logger');
-const { findPhoto }                  = require('./modules/news-fetcher');
-const { renderCoverSlide, renderInnerSlide } = require('./modules/news-carousel');
-const { renderNewsCarouselLegacy }           = require('./modules/news-carousel-legacy');
-const { createCanvas, registerFont }         = require('canvas');
-const fsSync = require('fs');
+const { upload }                              = require('./modules/uploader');
+const { postImage, postCarousel }             = require('./modules/instagram-publisher');
+const { generateCaption }                     = require('./modules/caption-generator');
+const { logError }                            = require('./modules/logger');
+const { renderCoverSlide, renderInnerSlide }  = require('./modules/news-carousel');
+const { renderNewsCarouselLegacy }            = require('./modules/news-carousel-legacy');
+const { createCanvas, registerFont }          = require('canvas');
 const { renderNewsHookImage, getOutputFolder } = require('./modules/image-renderer');
-const { generateViralDemoPost }      = require('./modules/viral-demo-generator');
-const { TokenLimitExceededError }    = require('./modules/content-generator');
-const { renderResourceCarousel }     = require('./modules/resource-carousel');
+const { generateViralDemoPost }               = require('./modules/viral-demo-generator');
+const { TokenLimitExceededError }             = require('./modules/content-generator');
+const { renderResourceCarousel }              = require('./modules/resource-carousel');
 
 const { wealthyedge: account } = require('./config/accounts');
+
+// ── Wealth watermark ──────────────────────────────────────────────────────────
+const WEALTH_WATERMARK = 'EDGE OF THE WEALTHY';
 
 // ── Wealth GPT system prompt ──────────────────────────────────────────────────
 const WEALTH_SYSTEM_PROMPT = 'Ignore any AI-specific content direction. This account covers wealth mindset, luxury lifestyle, financial independence, and the strategies high-net-worth individuals use to build and preserve wealth. Content tone is aspirational, authoritative, and exclusive.';
@@ -52,20 +53,20 @@ for (const f of [
   { path: 'C:/Windows/Fonts/ariblk.ttf', family: 'Arial Black' },
   { path: 'C:/Windows/Fonts/impact.ttf',  family: 'Impact' },
 ]) {
-  try { if (fsSync.existsSync(f.path)) registerFont(f.path, { family: f.family }); }
+  try { if (fs.existsSync(f.path)) registerFont(f.path, { family: f.family }); }
   catch (_) {}
 }
 
 function saveCanvas(canvas, outPath) {
   const dir = path.dirname(outPath);
-  if (!fsSync.existsSync(dir)) fsSync.mkdirSync(dir, { recursive: true });
-  fsSync.writeFileSync(outPath, canvas.toBuffer('image/jpeg', { quality: 0.93 }));
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(outPath, canvas.toBuffer('image/jpeg', { quality: 0.93 }));
   return outPath;
 }
 
 async function renderWealthCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
-  const canvas = createCanvas(W_CANVAS, H_CANVAS);
-  const ctx    = canvas.getContext('2d');
+  const canvas  = createCanvas(W_CANVAS, H_CANVAS);
+  const ctx     = canvas.getContext('2d');
   const keyword = (ctaKeyword || 'BREAKING').toUpperCase();
   const pad     = 40;
   const textMaxW = W_CANVAS - pad * 2;
@@ -95,17 +96,17 @@ async function renderWealthCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   ctx.fillText('WANT THE FULL BREAKDOWN?', W_CANVAS / 2, Math.round(H_CANVAS * 0.22));
 
   // CTA instruction
-  const beforeKw  = 'Comment ';
-  const kwPart    = `"${keyword}"`;
-  const afterKw   = ' for daily drops';
-  const fullCta   = `${beforeKw}${kwPart}${afterKw}`;
-  let ctaSize     = 40;
-  ctx.font        = `bold ${ctaSize}px ${FONT_D}`;
+  const beforeKw = 'Comment ';
+  const kwPart   = `"${keyword}"`;
+  const afterKw  = ' for daily drops';
+  const fullCta  = `${beforeKw}${kwPart}${afterKw}`;
+  let ctaSize    = 40;
+  ctx.font       = `bold ${ctaSize}px ${FONT_D}`;
   while (ctx.measureText(fullCta).width > textMaxW && ctaSize > 24) {
     ctaSize -= 4;
     ctx.font = `bold ${ctaSize}px ${FONT_D}`;
   }
-  const cy = Math.round(H_CANVAS * 0.54);
+  const cy       = Math.round(H_CANVAS * 0.54);
   const beforeW  = ctx.measureText(beforeKw).width;
   const kwW      = ctx.measureText(kwPart).width;
   const afterW   = ctx.measureText(afterKw).width;
@@ -147,22 +148,34 @@ async function renderWealthCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   return saveCanvas(canvas, path.join(folder, filename));
 }
 
-// Builds a full carousel using individual slide renderers + wealth CTA
+// Builds a full carousel: cover + source receipt + inner slides + wealth CTA
 async function buildWealthNewsCarousel(story, gptData, folder) {
   const innerSlides = Array.isArray(gptData && gptData.slides) ? gptData.slides : [];
-  const total = 1 + innerSlides.length + 1;
+  const total = 1 + 1 + innerSlides.length + 1; // cover + source + inner + CTA
   const paths = [];
 
-  // Cover slide
-  paths.push(await renderCoverSlide(gptData, folder, 1, total));
+  // Slide 1: Cover — wealth watermark
+  paths.push(await renderCoverSlide(gptData, folder, 1, total, true, WEALTH_WATERMARK));
+  console.log('[wealthy] [carousel] Cover slide done');
 
-  // Inner slides
+  // Slide 2: Source receipt card — no "AI News" suffix
+  const sourceSlide = {
+    type:            'source',
+    source_name:     gptData.source_name || story.source || 'Source',
+    source_headline: gptData.source_headline || story.title || '',
+  };
+  paths.push(await renderInnerSlide(sourceSlide, 2, total, folder, ''));
+  console.log('[wealthy] [carousel] Source slide done');
+
+  // Slides 3+: Inner content slides — no source suffix needed
   for (let i = 0; i < innerSlides.length; i++) {
-    paths.push(await renderInnerSlide(innerSlides[i], i + 2, total, folder));
+    paths.push(await renderInnerSlide(innerSlides[i], i + 3, total, folder, ''));
+    console.log(`[wealthy] [carousel] Inner slide ${i + 3} done`);
   }
 
-  // Wealth CTA slide
+  // Final: Wealth CTA slide
   paths.push(await renderWealthCtaSlide(gptData.cta_keyword || 'BREAKING', folder, total, total));
+  console.log('[wealthy] [carousel] CTA slide done');
 
   console.log(`[wealthy] [carousel] ${total} slides saved to: ${folder}`);
   return paths;
@@ -175,6 +188,30 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const AUDIENCE_PATH = path.join(__dirname, account.audienceFile);
 if (!fs.existsSync(AUDIENCE_PATH)) {
   console.log('[wealthy] WARNING: AUDIENCE_PSYCHOLOGY_WEALTHY.md not found — using SOUL.md fallback. Create this file to improve content quality.');
+}
+
+// ── Error log path ────────────────────────────────────────────────────────────
+const WEALTHY_ERRORS_LOG = path.join(__dirname, 'memory', 'wealthy-errors.log');
+
+function wealthyLog(message) {
+  const ts   = new Date().toISOString().slice(0, 16).replace('T', ' ');
+  const line = `[${ts}] ${message}\n`;
+  fs.appendFileSync(WEALTHY_ERRORS_LOG, line);
+}
+
+function checkLogRotation() {
+  try {
+    if (!fs.existsSync(WEALTHY_ERRORS_LOG)) return;
+    const stat = fs.statSync(WEALTHY_ERRORS_LOG);
+    if (stat.size > 100 * 1024) {
+      const dateSuffix = new Date().toISOString().slice(0, 10);
+      const archivePath = path.join(__dirname, 'memory', `wealthy-errors-archive-${dateSuffix}.log`);
+      fs.renameSync(WEALTHY_ERRORS_LOG, archivePath);
+      console.log(`[wealthy] Error log rotated → ${archivePath}`);
+    }
+  } catch (err) {
+    console.warn('[wealthy] Log rotation check failed:', err.message);
+  }
 }
 
 // ── Duplicate prevention (separate file — never touches posted-stories.json) ──
@@ -215,6 +252,123 @@ function markStoryPosted(headline) {
   savePostedStories(posted);
 }
 
+// ── Photo validation helpers (Task 4) ─────────────────────────────────────────
+const CRYPTO_KEYWORDS = ['bitcoin', 'ethereum', 'blockchain', 'crypto', 'coin', 'token', 'nft', 'digital currency'];
+const SKIP_WORDS      = new Set(['the', 'a', 'an', 'federal', 'national', 'international', 'of', 'for', 'in', 'at', 'by', 'from', 'to', 'and', 'or', 'with', 'global', 'central', 'new']);
+const GENERIC_FINANCE = new Set(['reserve', 'rate', 'market', 'fund', 'decision', 'report', 'bank', 'banks', 'finance', 'financial', 'economic', 'economy', 'monetary', 'fiscal', 'index']);
+
+function isTooDark(avgColor) {
+  if (!avgColor || typeof avgColor !== 'string') return false;
+  const hex = avgColor.replace('#', '');
+  if (hex.length < 6) return false;
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+  return r <= 0x11 && g <= 0x11 && b <= 0x11;
+}
+
+function simplifySubject(subject) {
+  const words = String(subject).toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
+  const significant = words.filter(w => !SKIP_WORDS.has(w) && w.length > 2);
+  if (significant.length === 0) return 'wealth';
+  const first = significant[0];
+  if (GENERIC_FINANCE.has(first)) return 'wealth';
+  return first;
+}
+
+async function fetchPexelsWealth(query) {
+  try {
+    const res = await fetch(
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=5`,
+      { headers: { Authorization: process.env.PEXELS_API_KEY } }
+    );
+    if (!res.ok) return null;
+    const data   = await res.json();
+    const photos = data.photos || [];
+
+    for (const photo of photos) {
+      const altText     = (photo.alt || '').toLowerCase();
+      const cryptoMatch = CRYPTO_KEYWORDS.find(kw => altText.includes(kw));
+      if (cryptoMatch) {
+        const msg = `${photo.alt} — reason: crypto keyword "${cryptoMatch}"`;
+        wealthyLog(`PHOTO REJECTED: ${msg}`);
+        console.log(`[wealthy-photo] Pexels rejected (crypto): "${photo.alt}"`);
+        continue;
+      }
+      if (isTooDark(photo.avg_color)) {
+        const msg = `${photo.alt} — reason: dark avg_color ${photo.avg_color}`;
+        wealthyLog(`PHOTO REJECTED: ${msg}`);
+        console.log(`[wealthy-photo] Pexels rejected (dark bg): avg_color=${photo.avg_color}`);
+        continue;
+      }
+      const url = photo.src?.large2x;
+      if (url) {
+        console.log(`[wealthy-photo] Pexels hit for: "${query}"`);
+        return url;
+      }
+    }
+  } catch (err) {
+    console.warn(`[wealthy-photo] Pexels failed for "${query}": ${err.message}`);
+  }
+  return null;
+}
+
+// ENHANCED FALLBACK CHAIN: SerpApi → Pexels (full) → Pexels (simplified) → gradient
+async function findWealthPhoto(subject, storyTitle) {
+  if (!subject) {
+    console.log(`[wealthy-photo] No subject — gradient fallback`);
+    return null;
+  }
+
+  // Step 1: SerpApi Google Images
+  const serpKey = process.env.SERPAPI_KEY;
+  if (serpKey) {
+    try {
+      const url = `https://serpapi.com/search.json?engine=google_images&q=${encodeURIComponent(subject)}&api_key=${serpKey}`;
+      const res  = await fetch(url);
+      if (res.ok) {
+        const serpData = await res.json();
+        const imgUrl   = serpData.images_results?.[0]?.original;
+        if (imgUrl) {
+          const urlLower = imgUrl.toLowerCase();
+          if (!['logo', 'icon', 'badge', 'avatar'].some(b => urlLower.includes(b))) {
+            console.log(`[wealthy-photo] SerpApi hit for: "${subject}"`);
+            return imgUrl;
+          }
+          console.log(`[wealthy-photo] SerpApi rejected (bad URL pattern) for: "${subject}"`);
+        }
+      }
+    } catch (err) {
+      console.warn(`[wealthy-photo] SerpApi failed for "${subject}": ${err.message}`);
+    }
+  }
+
+  // Step 2: Pexels (full subject)
+  if (process.env.PEXELS_API_KEY) {
+    const fullResult = await fetchPexelsWealth(subject);
+    if (fullResult) return fullResult;
+
+    // Step 3: Pexels (simplified subject)
+    const simplified = simplifySubject(subject);
+    if (simplified !== subject.toLowerCase().trim()) {
+      console.log(`[wealthy-photo] Simplified subject retry: "${simplified}"`);
+      const simplifiedResult = await fetchPexelsWealth(simplified);
+      if (simplifiedResult) return simplifiedResult;
+    }
+
+    // Step 3b: "wealth" as last Pexels attempt
+    if (simplified !== 'wealth') {
+      console.log(`[wealthy-photo] Wealth keyword retry`);
+      const wealthResult = await fetchPexelsWealth('wealth');
+      if (wealthResult) return wealthResult;
+    }
+  }
+
+  // Step 4: Gradient fallback
+  console.log(`[wealthy-photo] Gradient fallback for: "${subject}"`);
+  return null;
+}
+
 // ── RSS fetching (wealth feeds) ───────────────────────────────────────────────
 async function fetchRssFromFeeds(feedUrls) {
   const parser = new Parser();
@@ -223,7 +377,7 @@ async function fetchRssFromFeeds(feedUrls) {
 
   for (const feedUrl of feedUrls) {
     try {
-      const feed = await parser.parseURL(feedUrl);
+      const feed  = await parser.parseURL(feedUrl);
       const items = (feed.items || []).slice(0, 10);
       if (items.length === 0) {
         console.log(`[wealthy] Empty feed: ${feedUrl}`);
@@ -246,8 +400,17 @@ async function fetchRssFromFeeds(feedUrls) {
   return { stories, failedUrls };
 }
 
+// ── Story scoring — wealth mindset criteria (augmented Brief 6) ───────────────
 async function scoreWealthStories(stories) {
-  const prompt = `You are a viral social media editor for a wealth and financial independence Instagram page targeting 25-45 year old high earners and aspiring wealthy individuals.
+  const prompt = `You are scoring news stories for a wealth mindset Instagram account targeting aspirational 24-38 year olds who want to think and live like the wealthy.
+
+SCORE 8-10 (publish): Stories about billionaire decisions and strategies, luxury market moves, wealth-building actions by named individuals, investment strategies that separate wealthy investors from average ones, how the wealthy use tax structures or assets differently.
+
+SCORE 4-6 (borderline): General business news with a wealth angle, market moves affecting investors broadly, economic trends with clear wealth implications.
+
+SCORE 1-3 (reject): Geopolitical conflicts, legal scandals at financial institutions, banking fraud cases, regulatory enforcement actions, humanitarian issues, crypto regulatory news, stories about ordinary people or poverty. This audience wants to learn HOW wealthy people think and act — not news about banks doing bad things.
+
+You are a viral social media editor for a wealth and financial independence Instagram page targeting 25-45 year old high earners and aspiring wealthy individuals.
 
 Score each story 1-10 for viral engagement potential.
 
@@ -265,6 +428,7 @@ Score LOW (1-4) for stories that are:
 - Minor regulatory updates
 - Academic economics papers with no practical angle
 - Procedural policy updates
+- Geopolitical conflicts or legal scandals with no wealth mindset angle
 
 Score MEDIUM (5-7) for everything else.
 
@@ -313,8 +477,30 @@ async function fetchWealthTopStories() {
   });
 
   const scored = await scoreWealthStories(deduped.slice(0, 20));
-  scored.sort((a, b) => b.score - a.score);
-  const top2 = scored.slice(0, 2);
+
+  // Print top 3 for validation
+  const topForLog = [...scored].sort((a, b) => b.score - a.score).slice(0, 3);
+  console.log('[wealthy-news] Top 3 scored stories:');
+  topForLog.forEach((s, i) => console.log(`  ${i + 1}. [${s.score}/10] ${s.title}`));
+
+  // ── Min-score threshold — local variable, NOT a module constant ───────────
+  // Base threshold resets to 7 at the start of every run.
+  let threshold = 7;
+  let qualifying = scored.filter(s => s.score >= threshold);
+
+  if (qualifying.length < 2) {
+    threshold = 5;
+    qualifying = scored.filter(s => s.score >= threshold);
+    console.log('[wealthy-news] Threshold lowered to 5 — insufficient high-score stories this run.');
+  }
+
+  if (qualifying.length === 0) {
+    wealthyLog('SLOT SKIPPED — no qualifying wealth stories found');
+    throw new Error('[wealthy] No qualifying wealth stories found — slot skipped');
+  }
+
+  qualifying.sort((a, b) => b.score - a.score);
+  const top2 = qualifying.slice(0, 2);
 
   return Promise.all(top2.map(async (s) => {
     const person = (s.person && s.person !== 'null') ? s.person : null;
@@ -323,7 +509,7 @@ async function fetchWealthTopStories() {
       url:        s.url,
       hook_angle: s.hook_angle || '',
       person,
-      photoUrl:   await findPhoto(person, s.title),
+      photoUrl:   await findWealthPhoto(person || s.title, s.title),
       source:     s.source,
     };
   }));
@@ -451,31 +637,33 @@ Return a JSON array of exactly 5 strings, no other text.`;
   };
 
   const folder = getOutputFolder('resource', content.hook_text);
-  const paths  = await renderResourceCarousel(content, folder);
+  // Pass WEALTH_WATERMARK — overrides "CUTTING EDGE OF AI" on cover slide
+  const paths  = await renderResourceCarousel(content, folder, WEALTH_WATERMARK);
   console.log('[wealthy] Saved resource carousel files:');
   paths.forEach(p => console.log(`  - ${p}`));
   return { ...content, paths };
 }
 
 // ── Caption post-processing ───────────────────────────────────────────────────
-// Replaces any AI-page handles or hashtags that may come from shared modules
 function fixCaptionHandle(caption) {
   if (typeof caption !== 'string') return caption;
   return caption
-    .replace(/@cuttingedgeofai/gi,      '@edgeofthewealthy')
-    .replace(/CuttingEdgeOfAI/gi,       'EdgeOfTheWealthy')
-    .replace(/#AINews\b/g,              '#WealthNews')
+    .replace(/@cuttingedgeofai/gi,         '@edgeofthewealthy')
+    .replace(/CuttingEdgeOfAI/gi,          'EdgeOfTheWealthy')
+    .replace(/#AINews\b/g,                 '#WealthNews')
     .replace(/#ArtificialIntelligence\b/g, '#FinancialFreedom')
-    .replace(/#AITools\b/g,             '#WealthMindset')
-    .replace(/#FutureOfAI\b/g,          '#WealthBuilding')
-    .replace(/#AIBreaking\b/g,          '#MoneyMoves')
-    .replace(/#AIProductivity\b/g,      '#InvestingTips');
+    .replace(/#AITools\b/g,                '#WealthMindset')
+    .replace(/#FutureOfAI\b/g,             '#WealthBuilding')
+    .replace(/#AIBreaking\b/g,             '#MoneyMoves')
+    .replace(/#AIProductivity\b/g,         '#InvestingTips');
 }
 
 // ── Run slot ──────────────────────────────────────────────────────────────────
 async function runSlot(format) {
-  const igId    = account.igAccountId;
-  const token   = account.igToken;
+  checkLogRotation();
+
+  const igId         = account.igAccountId;
+  const token        = account.igToken;
   const retryOptions = { page: 'wealthyedge', slot: format };
 
   console.log(`[wealthy] Running slot — format: ${format}`);
@@ -504,7 +692,7 @@ async function runSlot(format) {
       try {
         stories = await getWealthNewsStories();
       } catch (err) {
-        console.error('[wealthy] ERROR: All news feeds failed — skipping slot.');
+        console.error(`[wealthy] ${err.message}`);
         logError({ page: 'wealthyedge', slot: format, error: err });
         return;
       }
@@ -539,7 +727,7 @@ async function runSlot(format) {
       console.log('[wealthy] Hook image posted');
       if (hookResult && hookResult.id) console.log('[wealthy] Hook post ID:', hookResult.id);
 
-      // Post 2: carousel — wealth builder (custom CTA), fall back to legacy
+      // Post 2: carousel — wealth builder (custom watermark + CTA + source label)
       let carouselPaths;
       try {
         if (!gptData) throw new Error('No gptData available');
@@ -583,7 +771,7 @@ async function runSlot(format) {
         resource.hook_text || '',
         { ...retryOptions, caption_cta: resource.caption_cta }
       );
-      const caption      = fixCaptionHandle(rawCaption);
+      const caption        = fixCaptionHandle(rawCaption);
       const carouselResult = await postCarousel({ igId, token, imageUrls, caption }, retryOptions);
       console.log('[wealthy] Resource carousel posted');
       if (carouselResult && carouselResult.id) console.log('[wealthy] Resource post ID:', carouselResult.id);
