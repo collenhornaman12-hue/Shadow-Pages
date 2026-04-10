@@ -135,54 +135,51 @@ async function validatePhoto(imageUrl) {
 }
 
 // ── Photo fetching ────────────────────────────────────────────────────────────
-// Tries Google CSE first (if key present), falls back to Pexels with a generic
-// finance query. Raw entity name is NEVER passed to Pexels to avoid product photos.
-// Fallback chain: Google CSE (entity name) → Pexels ("finance investment wealth") → gradient
+// Tries SerpApi Google Images first (if key present), falls back to Pexels with
+// a generic finance query. Raw entity name is NEVER passed to Pexels to avoid
+// product photos (e.g. "Blackstone" returning a BBQ grill).
+// Fallback chain: SerpApi (entity name) → Pexels ("finance investment wealth") → gradient
 // Set DEBUG=true in env to enable verbose per-step logging.
 
 async function fetchPressPhoto(subject) {
   if (!subject) return null;
   const debug = process.env.DEBUG === 'true';
 
-  // 1. Google Custom Search Engine
-  const cseKey = process.env.GOOGLE_CSE_API_KEY;
-  const cseCx  = process.env.GOOGLE_CSE_CX;
-  if (cseKey && cseCx) {
-    if (debug) console.log(`[photo] Google CSE — source: Google CSE, query: "${subject}"`);
+  // 1. SerpApi Google Images
+  const serpKey = process.env.SERPAPI_KEY;
+  if (serpKey) {
+    if (debug) console.log(`[photo] SerpApi — source: Google Images, query: "${subject}"`);
     try {
-      const url = `https://www.googleapis.com/customsearch/v1?key=${cseKey}&cx=${cseCx}&q=${encodeURIComponent(subject)}&searchType=image&num=5`;
+      const url = `https://serpapi.com/search.json?engine=google_images&q=${encodeURIComponent(subject)}&api_key=${serpKey}`;
       const res  = await fetch(url);
       if (!res.ok) {
-        console.warn(`[photo] Google CSE HTTP ${res.status} for: ${subject}`);
+        console.warn(`[photo] SerpApi HTTP ${res.status} for: ${subject}`);
       } else {
-        const data  = await res.json();
-        const items = data.items || [];
-        if (debug) console.log(`[photo] Google CSE returned ${items.length} results for: ${subject}`);
-        for (const item of items) {
-          const imgUrl = item.link;
-          if (!imgUrl) continue;
+        const data   = await res.json();
+        const imgUrl = data.images_results?.[0]?.original;
+        if (debug) console.log(`[photo] SerpApi returned result: ${imgUrl ? 'yes' : 'none'}`);
+        if (imgUrl) {
           const check = await validatePhoto(imgUrl);
           if (!check.valid) {
-            if (debug) console.log(`[photo] Google CSE rejected (${check.reason}): ${imgUrl}`);
-            continue;
+            console.warn(`[photo] SerpApi rejected (${check.reason}): ${subject}`);
+          } else {
+            const tmpPath = path.join(os.tmpdir(), `serpapi_${Date.now()}.jpg`);
+            fs.writeFileSync(tmpPath, check.buf);
+            console.log(`[photo] SerpApi hit for: ${subject}`);
+            return tmpPath;
           }
-          const tmpPath = path.join(os.tmpdir(), `cse_${Date.now()}.jpg`);
-          fs.writeFileSync(tmpPath, check.buf);
-          console.log(`[photo] Google CSE hit for: ${subject}`);
-          return tmpPath;
         }
-        console.warn(`[photo] Google CSE: no valid image found for: ${subject} — falling back to Pexels`);
       }
     } catch (err) {
-      console.warn('[photo] Google CSE failed:', err.message);
+      console.warn('[photo] SerpApi failed:', err.message);
     }
   } else {
-    if (debug) console.log('[photo] Google CSE not configured (GOOGLE_CSE_API_KEY or GOOGLE_CSE_CX missing)');
+    if (debug) console.log('[photo] SerpApi not configured (SERPAPI_KEY missing)');
   }
 
   // 2. Pexels fallback — always generic query, never the raw entity name
   const PEXELS_FALLBACK = 'finance investment wealth';
-  if (debug) console.log(`[photo] Pexels fallback — source: Pexels, query: "${PEXELS_FALLBACK}"`);
+  if (debug) console.log(`[photo] Pexels fallback — query: "${PEXELS_FALLBACK}"`);
   const pexelsPath = await fetchSlideImage(PEXELS_FALLBACK);
   if (pexelsPath) {
     console.log(`[photo] Pexels hit (generic fallback) for: ${subject}`);
