@@ -47,6 +47,7 @@ const BG_COLOR = '#0d0d0d';
 const WHITE    = '#ffffff';
 const FONT_D   = '"Arial Black", Impact, Arial, sans-serif';
 const FONT_B   = 'Arial, sans-serif';
+const pad      = 40;
 
 // Register fonts once (same as news-carousel.js)
 for (const f of [
@@ -67,8 +68,7 @@ function saveCanvas(canvas, outPath) {
 async function renderWealthCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   const canvas  = createCanvas(W_CANVAS, H_CANVAS);
   const ctx     = canvas.getContext('2d');
-  const keyword = (ctaKeyword || 'BREAKING').toUpperCase();
-  const pad     = 40;
+  const keyword  = (ctaKeyword || 'BREAKING').toUpperCase();
   const textMaxW = W_CANVAS - pad * 2;
 
   ctx.fillStyle = BG_COLOR;
@@ -148,7 +148,96 @@ async function renderWealthCtaSlide(ctaKeyword, folder, slideNum, totalSlides) {
   return saveCanvas(canvas, path.join(folder, filename));
 }
 
+// ── Wealth inner slide renderer (Brief 7 — isolated from @CuttingEdgeOfAI) ───
+// Pattern B: dark narrative. Left-aligned body copy, bold opening sentence,
+// regular-weight follow-on sentences. No label tags, no italic subtitles.
+// Reads `body` field from GPT output. Falls back to `primary` for legacy data.
+
+function wrapLinesWealth(ctx, text, maxWidth) {
+  const words = String(text || '').split(' ');
+  const lines = [];
+  let current = '';
+  for (const word of words) {
+    const test = current ? `${current} ${word}` : word;
+    if (ctx.measureText(test).width <= maxWidth) {
+      current = test;
+    } else {
+      if (current) lines.push(current);
+      current = word;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
+async function renderWealthInnerSlide(data, slideNum, totalSlides, folder) {
+  const canvas = createCanvas(W_CANVAS, H_CANVAS);
+  const ctx    = canvas.getContext('2d');
+
+  ctx.fillStyle = '#0d0d0d';
+  ctx.fillRect(0, 0, W_CANVAS, H_CANVAS);
+
+  // Gold accent strip at top
+  ctx.fillStyle = GOLD;
+  ctx.fillRect(0, 0, W_CANVAS, 4);
+
+  const body      = String(data.body || data.primary || data.text || '');
+  const leftX     = 60;
+  const rightX    = W_CANVAS - 60;
+  const maxWidth  = rightX - leftX;
+  let   cursorY   = 80;
+
+  // Split at first sentence boundary: bold opener, regular follow-on
+  const firstStop = body.search(/\.\s+/);
+  let boldPart = '';
+  let restPart = '';
+  if (firstStop !== -1) {
+    boldPart = body.slice(0, firstStop + 1).trim();
+    restPart = body.slice(firstStop + 1).trim();
+  } else {
+    boldPart = body;
+    restPart = '';
+  }
+
+  // Bold opening sentence — 40px Arial Black
+  const boldSize = 40;
+  const boldLH   = Math.round(boldSize * 1.4);
+  ctx.font         = `bold ${boldSize}px ${FONT_D}`;
+  ctx.fillStyle    = WHITE;
+  ctx.textAlign    = 'left';
+  ctx.textBaseline = 'top';
+  for (const line of wrapLinesWealth(ctx, boldPart, maxWidth)) {
+    ctx.fillText(line, leftX, cursorY);
+    cursorY += boldLH;
+  }
+
+  // Regular follow-on sentences — 32px Arial, slightly dimmed
+  if (restPart) {
+    cursorY += 16;
+    const bodySize = 32;
+    const bodyLH   = Math.round(bodySize * 1.55);
+    ctx.font      = `${bodySize}px ${FONT_B}`;
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    for (const line of wrapLinesWealth(ctx, restPart, maxWidth)) {
+      ctx.fillText(line, leftX, cursorY);
+      cursorY += bodyLH;
+    }
+  }
+
+  // Slide counter — faded bottom-right
+  ctx.font         = `14px "Courier New", monospace`;
+  ctx.fillStyle    = 'rgba(255,255,255,0.20)';
+  ctx.textAlign    = 'right';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText(`${slideNum} / ${totalSlides}`, W_CANVAS - pad, H_CANVAS - pad);
+
+  const filename = `slide_${String(slideNum).padStart(2, '0')}.jpg`;
+  return saveCanvas(canvas, path.join(folder, filename));
+}
+
 // Builds a full carousel: cover + source receipt + inner slides + wealth CTA
+// Brief 7: Inner slides (3+) use renderWealthInnerSlide — isolated from @CuttingEdgeOfAI.
+// Slide 2 (source receipt) still uses shared renderInnerSlide (type: 'source', different layout).
 async function buildWealthNewsCarousel(story, gptData, folder) {
   const innerSlides = Array.isArray(gptData && gptData.slides) ? gptData.slides : [];
   const total = 1 + 1 + innerSlides.length + 1; // cover + source + inner + CTA
@@ -158,7 +247,7 @@ async function buildWealthNewsCarousel(story, gptData, folder) {
   paths.push(await renderCoverSlide(gptData, folder, 1, total, true, WEALTH_WATERMARK));
   console.log('[wealthy] [carousel] Cover slide done');
 
-  // Slide 2: Source receipt card — no "AI News" suffix
+  // Slide 2: Source receipt card — shared renderer, type: source layout
   const sourceSlide = {
     type:            'source',
     source_name:     gptData.source_name || story.source || 'Source',
@@ -167,9 +256,9 @@ async function buildWealthNewsCarousel(story, gptData, folder) {
   paths.push(await renderInnerSlide(sourceSlide, 2, total, folder, ''));
   console.log('[wealthy] [carousel] Source slide done');
 
-  // Slides 3+: Inner content slides — no source suffix needed
+  // Slides 3+: Wealth narrative slides — isolated renderer, reads `body` field
   for (let i = 0; i < innerSlides.length; i++) {
-    paths.push(await renderInnerSlide(innerSlides[i], i + 3, total, folder, ''));
+    paths.push(await renderWealthInnerSlide(innerSlides[i], i + 3, total, folder));
     console.log(`[wealthy] [carousel] Inner slide ${i + 3} done`);
   }
 
@@ -550,18 +639,15 @@ SUBTITLE LINE (below headline on cover):
 - Example: "The move that changes everything for investors"
 
 INNER SLIDES (slides 2 through N-1):
-Each slide is an object with three fields:
-- "label": 1-3 word category tag in ALL CAPS (e.g. "BREAKING", "CONTEXT", "IMPACT", "WHAT'S NEXT", "BIG PICTURE")
-- "primary": The main bold fact — maximum 10 words, declarative statement, specific numbers/names
-- "secondary": 6-10 word supporting detail or consequence
+Each slide is an object with one field:
+- "body": A dense narrative paragraph. Start with one bold declarative sentence (the hook or key fact, specific numbers/names). Follow with 2-3 sentences expanding the point. Close with a forward-momentum sentence. Total 4 sentences. No exclamation marks.
 
 Rules:
 - Lead with the most alarming or surprising fact first
 - Include specific numbers, names, dollar amounts wherever possible
-- First inner slide should be the key fact that proves the headline
-- Last inner slide should be a "why this matters" or forward-looking statement
+- First inner slide body should open with the key fact that proves the headline
+- Last inner slide body should close with a "why this matters" or forward-looking statement
 - Provide 4 to 6 inner slides
-- No exclamation marks
 
 CAPTION:
 - 4-5 short paragraphs, punchy
@@ -587,10 +673,10 @@ Return ONLY valid JSON. No markdown, no code fences, no commentary:
   "source_name": "Bloomberg",
   "source_headline": "Original article title, max 15 words",
   "slides": [
-    { "label": "BREAKING", "primary": "Key fact proving headline. Max 10 words.", "secondary": "Supporting detail or consequence, 6-10 words." },
-    { "label": "CONTEXT", "primary": "Background that makes it bigger. Max 10 words.", "secondary": "Who or what is affected, 6-10 words." },
-    { "label": "IMPACT", "primary": "Who is affected and how. Max 10 words.", "secondary": "Scale or consequence, 6-10 words." },
-    { "label": "WHAT'S NEXT", "primary": "Forward-looking implication. Max 10 words.", "secondary": "Why this matters now, 6-10 words." }
+    { "body": "Bold opening sentence with key fact and specific numbers. Follow-on sentence expanding the point. Second follow-on sentence with context or consequence. Closing sentence with forward momentum." },
+    { "body": "Bold opening sentence with background context. Follow-on sentence with who is affected. Second follow-on sentence with scale or implication. Closing sentence linking to the bigger picture." },
+    { "body": "Bold opening sentence on impact. Follow-on sentence quantifying the effect. Second follow-on sentence with a contrasting perspective or comparison. Closing sentence building toward the CTA." },
+    { "body": "Bold opening forward-looking sentence. Follow-on sentence explaining why this matters now. Second follow-on sentence on what changes next. Closing sentence with a sense of urgency or opportunity." }
   ],
   "caption": "Full Instagram caption with paragraphs separated by newlines.",
   "cta_keyword": "BREAKING"
@@ -719,15 +805,11 @@ async function runSlot(format) {
 
       const newsFolder = getOutputFolder('news', story.title);
 
-      // Post 1: hook image
-      const hookPath    = await renderNewsHookImage(story, newsFolder);
-      const hookCaption = `${story.hook_angle || story.title}.\nComment BREAKING below for the full breakdown \uD83D\uDC47\n#WealthNews #FinancialFreedom #WealthMindset #MoneyMoves #WealthBuilding`;
-      const hookUrl     = await upload(hookPath, 'shadow-pages-wealthy', retryOptions);
-      const hookResult  = await postImage({ igId, token, imageUrl: hookUrl, caption: hookCaption }, retryOptions);
-      console.log('[wealthy] Hook image posted');
-      if (hookResult && hookResult.id) console.log('[wealthy] Hook post ID:', hookResult.id);
+      // Brief 7: Single-image hook post removed — was firing a duplicate post for the same story.
+      // The carousel below is the only post for this slot. renderNewsHookImage is preserved in
+      // image-renderer.js and can be re-enabled here if a hook post is needed in future.
 
-      // Post 2: carousel — wealth builder (custom watermark + CTA + source label)
+      // Carousel — wealth builder (custom watermark + CTA + source label)
       let carouselPaths;
       try {
         if (!gptData) throw new Error('No gptData available');
