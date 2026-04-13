@@ -124,14 +124,32 @@ function loadPostedStories() {
   catch (err) { console.warn('[dedup] posted-stories.json unreadable, starting fresh:', err.message); return []; }
 }
 
-function savePostedStories(entries) {
-  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+async function savePostedStories(entries) {
+  const cutoff  = Date.now() - 48 * 60 * 60 * 1000;
   const trimmed = entries.filter(e => e.timestamp > cutoff);
+  const lockPath = POSTED_STORIES_PATH.replace('.json', '.lock');
+
+  // Lock file — wait 500ms and retry once if already held
+  if (fs.existsSync(lockPath)) {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    if (fs.existsSync(lockPath)) {
+      const lockErr = new Error('[DEDUP] posted-stories.lock held after 500ms retry — write aborted');
+      console.error(lockErr.message);
+      throw lockErr;
+    }
+  }
+
+  // Acquire lock
+  fs.writeFileSync(lockPath, String(Date.now()));
   try {
     fs.mkdirSync(path.dirname(POSTED_STORIES_PATH), { recursive: true });
     fs.writeFileSync(POSTED_STORIES_PATH, JSON.stringify(trimmed, null, 2));
+    const storyId = trimmed.length > 0 ? trimmed[trimmed.length - 1].headline.slice(0, 60) : '(trimmed)';
+    console.log('[DEDUP] Story saved to posted-stories.json:', storyId);
   } catch (err) {
-    console.warn('[dedup] Failed to write posted-stories.json:', err.message);
+    throw new Error(`[DEDUP] Failed to write posted-stories.json: ${err.message}`);
+  } finally {
+    try { fs.unlinkSync(lockPath); } catch (_) {}
   }
 }
 
@@ -145,10 +163,10 @@ function isDuplicateStory(headline) {
   return loadPostedStories().some(e => e.timestamp > cutoff && storyKey(e.headline) === key);
 }
 
-function markStoryPosted(headline) {
+async function markStoryPosted(headline) {
   const posted = loadPostedStories();
   posted.push({ headline: String(headline), timestamp: Date.now() });
-  savePostedStories(posted);
+  await savePostedStories(posted);
 }
 
 async function getNewsStories() {
@@ -263,8 +281,14 @@ async function runSlot(page, slotIndex) {
       const caption = (gptData && gptData.caption)
         ? gptData.caption
         : await generateCaption(page.niche, story.title, retryOptions);
+      // Pre-post guard — re-read disk immediately before posting to catch race conditions
+      if (story.title && isDuplicateStory(story.title)) {
+        console.log('[DEDUP] Pre-post guard blocked duplicate:', story.title.slice(0, 60));
+        return;
+      }
+
       await postCarousel({ igId: page.igAccountId, token, imageUrls, caption }, retryOptions);
-      if (story.title) markStoryPosted(story.title);
+      if (story.title) await markStoryPosted(story.title);
       console.log('[' + page.name + '] News carousel posted');
 
     } else if (format === 'resource-carousel') {

@@ -16,6 +16,7 @@ pages.forEach(function(page) {
     cron.schedule(expr, async function() {
       const adjMinStr = String(adjMin).padStart(2, '0');
       console.log('[' + page.name + '] Firing slot ' + slotIndex + ' at ' + hour + ':' + adjMinStr);
+      console.log('[SCHEDULER] Slot fired:', page.name, 'slot', slotIndex, new Date().toISOString());
       try {
         await runSlot(page, slotIndex);
       } catch (err) {
