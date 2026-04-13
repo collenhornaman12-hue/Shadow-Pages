@@ -60,6 +60,24 @@ function roundRectFill(ctx, x, y, w, h, r) {
   ctx.closePath(); ctx.fill();
 }
 
+// ── Per-type cover photo queries — editorial/dark, never hookText raw ────────
+const COVER_PHOTO_QUERIES = {
+  'stat-carousel':      'technology data analytics dark',
+  'tool-spotlight':     'AI software technology innovation dark',
+  'how-to-guide':       'workflow productivity morning workspace dark',
+  'copy-paste-prompts': 'AI prompts productivity workspace dark',
+};
+
+// URL patterns that indicate a screenshot or infographic rather than a photo
+const RESOURCE_PHOTO_BLOCKLIST = [
+  'infographic', 'chart', 'graph', 'statistics', 'screenshot',
+  'logo', 'icon', 'badge', 'avatar', 'bitcoin', 'crypto',
+];
+function isResourcePhotoBlocked(url) {
+  const u = (url || '').toLowerCase();
+  return RESOURCE_PHOTO_BLOCKLIST.some(term => u.includes(term));
+}
+
 // ── Photo fetching: SerpApi → Pexels → null ───────────────────────────────────
 async function fetchResourcePhoto(query) {
   const serpKey = process.env.SERPAPI_KEY;
@@ -71,12 +89,16 @@ async function fetchResourcePhoto(query) {
         const data   = await res.json();
         const imgUrl = data.images_results?.[0]?.original;
         if (imgUrl) {
-          const check = await validatePhoto(imgUrl);
-          if (!check.valid) {
-            console.warn(`[resource-carousel] SerpApi rejected (${check.reason}): ${query}`);
+          if (isResourcePhotoBlocked(imgUrl)) {
+            console.warn(`[resource-carousel] SerpApi blocked (infographic/screenshot URL): ${imgUrl.slice(0, 80)}`);
           } else {
-            console.log(`[resource-carousel] SerpApi photo: ${query}`);
-            return await loadImage(check.buf);
+            const check = await validatePhoto(imgUrl);
+            if (!check.valid) {
+              console.warn(`[resource-carousel] SerpApi rejected (${check.reason}): ${query}`);
+            } else {
+              console.log(`[resource-carousel] SerpApi photo: ${query}`);
+              return await loadImage(check.buf);
+            }
           }
         }
       }
@@ -136,8 +158,9 @@ async function renderResourceCoverSlide(postType, hookText, folder, watermarkTex
   base.addColorStop(0, '#0d0d0d'); base.addColorStop(1, '#1a1a1a');
   ctx.fillStyle = base; ctx.fillRect(0, 0, W, H);
 
-  // Photo — search on tool/concept from hookText
-  const query = hookText.toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
+  // Photo — use per-type editorial query, never raw hookText (prevents infographic results)
+  const query = COVER_PHOTO_QUERIES[postType] || hookText.toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
+  console.log(`[resource-carousel] COVER RENDERER: renderResourceCoverSlide [modules/resource-carousel.js] — post_type="${postType}" query="${query}"`);
   const img   = await fetchResourcePhoto(query);
   if (img) {
     drawImageCover(ctx, img, 0, 0, W, H);
@@ -206,7 +229,7 @@ async function renderResourceCoverSlide(postType, hookText, folder, watermarkTex
 
 // ── Inner slide ───────────────────────────────────────────────────────────────
 // data: { label?, primary?, secondary? } | { label?, text? } | string
-async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
+async function renderResourceInnerSlide(data, slideNum, totalSlides, folder, suppressLabel = false) {
   const canvas = createCanvas(W, H);
   const ctx    = canvas.getContext('2d');
 
@@ -224,18 +247,20 @@ async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
 
   if (!hasPrimary) {
     // ── BACKWARD COMPAT: legacy single centered text block ──────────────────
-    // Draw label at top
-    ctx.font = `bold 16px ${FONT_DISPLAY}`; ctx.fillStyle = GOLD;
-    ctx.textBaseline = 'top'; ctx.textAlign = 'left';
-    const labelLetters = labelText.split('');
-    const charSpacing  = 3;
-    const rawLabelW    = ctx.measureText(labelText).width;
-    const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
-    let   lx           = W / 2 - labelW / 2;
-    const labelY       = PAD + 16;
-    for (const ch of labelLetters) {
-      ctx.fillText(ch, lx, labelY);
-      lx += ctx.measureText(ch).width + charSpacing;
+    // Draw label at top (suppressed on inner slides)
+    if (!suppressLabel) {
+      ctx.font = `bold 16px ${FONT_DISPLAY}`; ctx.fillStyle = GOLD;
+      ctx.textBaseline = 'top'; ctx.textAlign = 'left';
+      const labelLetters = labelText.split('');
+      const charSpacing  = 3;
+      const rawLabelW    = ctx.measureText(labelText).width;
+      const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
+      let   lx           = W / 2 - labelW / 2;
+      const labelY       = PAD + 16;
+      for (const ch of labelLetters) {
+        ctx.fillText(ch, lx, labelY);
+        lx += ctx.measureText(ch).width + charSpacing;
+      }
     }
 
     const rawWords = String(data.text || '').split(/\s+/).slice(0, 12);
@@ -261,21 +286,23 @@ async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
 
   } else {
     // ── NEW THREE-LAYER LAYOUT ──────────────────────────────────────────────
-    // Layer 1: Label — GOLD, Arial Black, 16px, letter-spaced, centered at top
-    const labelSize    = 16;
-    const labelY       = PAD + 16;
-    ctx.font           = `bold ${labelSize}px ${FONT_DISPLAY}`;
-    ctx.fillStyle      = GOLD;
-    ctx.textBaseline   = 'top';
-    ctx.textAlign      = 'left';
-    const labelLetters = labelText.split('');
-    const charSpacing  = 3;
-    const rawLabelW    = ctx.measureText(labelText).width;
-    const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
-    let   lx           = W / 2 - labelW / 2;
-    for (const ch of labelLetters) {
-      ctx.fillText(ch, lx, labelY);
-      lx += ctx.measureText(ch).width + charSpacing;
+    // Layer 1: Label — GOLD, Arial Black, 16px, letter-spaced, centered at top (suppressed on inner slides)
+    if (!suppressLabel) {
+      const labelSize    = 16;
+      const labelY       = PAD + 16;
+      ctx.font           = `bold ${labelSize}px ${FONT_DISPLAY}`;
+      ctx.fillStyle      = GOLD;
+      ctx.textBaseline   = 'top';
+      ctx.textAlign      = 'left';
+      const labelLetters = labelText.split('');
+      const charSpacing  = 3;
+      const rawLabelW    = ctx.measureText(labelText).width;
+      const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
+      let   lx           = W / 2 - labelW / 2;
+      for (const ch of labelLetters) {
+        ctx.fillText(ch, lx, labelY);
+        lx += ctx.measureText(ch).width + charSpacing;
+      }
     }
 
     // Layer 2: Primary — WHITE, Arial Black, large, vertically centered
@@ -298,22 +325,27 @@ async function renderResourceInnerSlide(data, slideNum, totalSlides, folder) {
     const hasSecondary    = data.secondary && String(data.secondary).trim().length > 0;
     const secondarySize   = 28;
     const secondaryLH     = secondarySize * 1.35;
-    const secondaryReserve = hasSecondary ? secondaryLH * 2 + 20 : 0;
+    const secondaryReserve = hasSecondary ? secondaryLH * 3 + 20 : 0;
     let   ty = (H - pTotalH - secondaryReserve) / 2;
 
     ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     for (const ln of pLines) { ctx.fillText(ln, W / 2, ty); ty += pLH; }
 
-    // Layer 3: Secondary — GOLD, italic Arial, 28px, below primary
+    // Layer 3: Secondary — GOLD, italic Arial, 28px, below primary (max 3 lines, 20 words)
     if (hasSecondary) {
       ty += 20;
       ctx.font = `italic ${secondarySize}px ${FONT_BODY}`; ctx.fillStyle = GOLD;
       ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      const secWords = String(data.secondary).split(/\s+/).slice(0, 12);
+      const secWords = String(data.secondary).split(/\s+/).slice(0, 20);
       const secStr   = secWords.join(' ');
-      const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 2);
-      for (const ln of secLines) { ctx.fillText(ln, W / 2, ty); ty += secondaryLH; }
+      const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 3);
+      const bottomBoundary = H - PAD - 30; // leave room for slide counter
+      for (const ln of secLines) {
+        if (ty + secondaryLH > bottomBoundary) break; // canvas boundary guard
+        ctx.fillText(ln, W / 2, ty);
+        ty += secondaryLH;
+      }
     }
   }
 
@@ -451,7 +483,7 @@ async function renderResourceCarousel(content, folder, watermarkText = 'CUTTING 
         text: slideData?.one_liner || slideData?.stat || slideData?.text || '',
       };
     }
-    paths.push(await renderResourceInnerSlide(slideObj, i + 2, totalSlides, folder));
+    paths.push(await renderResourceInnerSlide(slideObj, i + 2, totalSlides, folder, true));
     console.log(`[resource-carousel] Inner slide ${i + 2} done`);
   }
 

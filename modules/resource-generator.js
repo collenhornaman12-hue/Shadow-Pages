@@ -40,8 +40,10 @@ const TYPE_CONFIG = {
       `Generate 5 copy-paste AI prompts for ${sub}.
 Each prompt must be immediately usable — paste it directly into ChatGPT or Claude and get results.
 These should feel like insider secrets.
-Format: plain prompt text only, no explanation, no numbering. Max 25 words each. Start with a verb.
-Return a JSON array of exactly 5 strings, no other text.`,
+Return a JSON array of exactly 5 objects. Each object must have exactly two fields:
+- "title": the core prompt action phrase, max 8 words, starts with a verb
+- "body": exactly 2 sentences. Sentence 1: what this prompt does. Sentence 2: the concrete result or time saved. No generic filler. No questions. Forward momentum only.
+Return only a valid JSON array, no markdown, no preamble.`,
   },
 
   'tool-spotlight': {
@@ -63,9 +65,11 @@ Return only a valid JSON array, no other text.`,
     cta:       "Save this. Comment WORKFLOW and I'll send you 5 more 👇",
     buildPrompt: (sub) =>
       `Write a 5-step AI workflow for ${sub}.
-Each step: max 10 words, starts with a verb, feels like a pro tip not basic advice.
-Steps should build on each other — tell a story of transformation from start to finish.
-Return as JSON array of 5 step strings, no other text.`,
+Each step starts with a verb, feels like a pro tip not basic advice. Steps build on each other — tell a story of transformation from start to finish.
+Return a JSON array of exactly 5 objects. Each object must have exactly two fields:
+- "title": the step action phrase, max 8 words, starts with a verb
+- "body": exactly 2 sentences. Sentence 1: what this step does concretely. Sentence 2: the specific benefit or result. No generic filler. No questions. Forward momentum only. Maximum 20 words total for the body field.
+Return only a valid JSON array, no markdown, no preamble.`,
   },
 
   'stat-carousel': {
@@ -80,6 +84,7 @@ Rules:
 - Stats must be specific with exact numbers
 - Each stat should make someone say 'wait, really?'
 - Focus on: job displacement, productivity gains, adoption rates, revenue impact, or speed comparisons human vs AI
+- The stat field must be exactly one complete sentence, maximum 10 words, must end with a period. The key number must appear within those 10 words. No em-dashes, no colons, no fragments.
 Return JSON array with fields: stat, source
 Return only a valid JSON array, no other text.`,
   },
@@ -126,6 +131,17 @@ function sanitizeText(text) {
     .trim();
 }
 
+// Enforces stat-carousel sentence rules: max 10 words, ends with a period.
+// Truncates at last word boundary if too long, appends '.' if missing terminal punctuation.
+function enforceStatSentence(text) {
+  if (!text) return text;
+  const words = String(text).trim().split(/\s+/);
+  const capped = words.slice(0, 10).join(' ');
+  // Strip trailing comma, colon, em-dash before checking for sentence end
+  const cleaned = capped.replace(/[,:\u2014\u2013]+$/, '').trim();
+  return /[.?!]$/.test(cleaned) ? cleaned : cleaned + '.';
+}
+
 // ─── GPT generation ───────────────────────────────────────────────────────────
 
 async function generateSlidesFromGPT(post_type, subcategory) {
@@ -149,9 +165,51 @@ async function generateSlidesFromGPT(post_type, subcategory) {
   const parsed  = JSON.parse(jsonStr);
 
   if (post_type === 'copy-paste-prompts' || post_type === 'how-to-guide') {
-    return parsed.map(s => sanitizeText(s));
+    // GPT now returns { title, body } objects for these types
+    return parsed.map(s => ({
+      title: sanitizeText(typeof s === 'string' ? s : (s.title || String(s))),
+      body:  s.body ? sanitizeText(s.body) : null,
+    }));
   }
-  return parsed; // objects for tool-spotlight and stat-carousel
+  if (post_type === 'stat-carousel') {
+    // Enforce: complete sentence, max 10 words, ends with period
+    return parsed.map(s => ({
+      stat:   enforceStatSentence(sanitizeText(s.stat || '')),
+      source: s.source || '',
+    }));
+  }
+  return parsed; // objects for tool-spotlight
+}
+
+// ─── Slide normalizer — maps per-type GPT output to renderer's { primary, secondary, label } ───
+function normalizeSlide(slide, postType, carouselLabel) {
+  switch (postType) {
+    case 'tool-spotlight':
+      return {
+        primary:   `${slide.tool_name} — ${slide.one_liner}`,
+        secondary: slide.wow_factor || null,
+        label:     carouselLabel,
+      };
+    case 'how-to-guide':
+    case 'copy-paste-prompts':
+      return {
+        primary:   slide.title,
+        secondary: slide.body || null,
+        label:     carouselLabel,
+      };
+    case 'stat-carousel':
+      return {
+        primary:   slide.stat,
+        secondary: `Source: ${slide.source}`,
+        label:     carouselLabel,
+      };
+    default:
+      return {
+        primary:   slide.primary || slide.text || slide.title || String(slide),
+        secondary: slide.secondary || slide.body || null,
+        label:     carouselLabel,
+      };
+  }
 }
 
 // ─── Main export ─────────────────────────────────────────────────────────────
@@ -184,8 +242,10 @@ async function generateResourceCarousel() {
 
   // Render carousel images and save to output/ (always — even on cache hit)
   try {
-    const folder = getOutputFolder('resource', content.hook_text);
-    const paths  = await renderResourceCarousel(content, folder);
+    const folder         = getOutputFolder('resource', content.hook_text);
+    const carouselLabel  = content.post_type === 'tool-spotlight' ? 'TOOL SPOTLIGHT' : 'HOW TO GUIDE';
+    const normalizedSlides = (content.slides || []).map(s => normalizeSlide(s, content.post_type, carouselLabel));
+    const paths  = await renderResourceCarousel({ ...content, slides: normalizedSlides }, folder);
     console.log('[resource-generator] Saved 7 carousel files:');
     paths.forEach(p => console.log(`  - ${p}`));
     return { ...content, paths };

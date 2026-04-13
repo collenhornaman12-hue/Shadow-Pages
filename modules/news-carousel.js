@@ -26,6 +26,13 @@ const FONT_DISPLAY = '"Arial Black", Impact, Arial, sans-serif';
 const FONT_BODY    = 'Arial, sans-serif';
 const PAD          = 40;
 
+// URL keywords that indicate a visually mismatched image (crypto, tablet, etc.)
+const VISUAL_BLOCKLIST = ['bitcoin', 'crypto', 'coin', 'financial-freedom', 'financial_freedom', 'tablet'];
+function isBlockedPhotoUrl(url, queryLower) {
+  const u = (url || '').toLowerCase();
+  return VISUAL_BLOCKLIST.some(term => u.includes(term) && !queryLower.includes(term));
+}
+
 // ── Utilities ─────────────────────────────────────────────────────────────────
 
 function saveCanvas(canvas, outPath) {
@@ -143,9 +150,10 @@ async function validatePhoto(imageUrl) {
 
 async function fetchPressPhoto(subject) {
   if (!subject) return null;
-  const debug = process.env.DEBUG === 'true';
+  const debug      = process.env.DEBUG === 'true';
+  const queryLower = subject.toLowerCase();
 
-  // 1. SerpApi Google Images
+  // 1. SerpApi Google Images — blocklist checked on URL before downloading
   const serpKey = process.env.SERPAPI_KEY;
   if (serpKey) {
     if (debug) console.log(`[photo] SerpApi — source: Google Images, query: "${subject}"`);
@@ -159,14 +167,18 @@ async function fetchPressPhoto(subject) {
         const imgUrl = data.images_results?.[0]?.original;
         if (debug) console.log(`[photo] SerpApi returned result: ${imgUrl ? 'yes' : 'none'}`);
         if (imgUrl) {
-          const check = await validatePhoto(imgUrl);
-          if (!check.valid) {
-            console.warn(`[photo] SerpApi rejected (${check.reason}): ${subject}`);
+          if (isBlockedPhotoUrl(imgUrl, queryLower)) {
+            console.warn(`[photo] SerpApi blocked (visual mismatch): ${imgUrl.slice(0, 80)}`);
           } else {
-            const tmpPath = path.join(os.tmpdir(), `serpapi_${Date.now()}.jpg`);
-            fs.writeFileSync(tmpPath, check.buf);
-            console.log(`[photo] SerpApi hit for: ${subject}`);
-            return tmpPath;
+            const check = await validatePhoto(imgUrl);
+            if (!check.valid) {
+              console.warn(`[photo] SerpApi rejected (${check.reason}): ${subject}`);
+            } else {
+              const tmpPath = path.join(os.tmpdir(), `serpapi_${Date.now()}.jpg`);
+              fs.writeFileSync(tmpPath, check.buf);
+              console.log(`[photo] SerpApi hit for: ${subject}`);
+              return tmpPath;
+            }
           }
         }
       }
@@ -177,13 +189,37 @@ async function fetchPressPhoto(subject) {
     if (debug) console.log('[photo] SerpApi not configured (SERPAPI_KEY missing)');
   }
 
-  // 2. Pexels fallback — always generic query, never the raw entity name
-  const PEXELS_FALLBACK = 'finance investment wealth';
-  if (debug) console.log(`[photo] Pexels fallback — query: "${PEXELS_FALLBACK}"`);
-  const pexelsPath = await fetchSlideImage(PEXELS_FALLBACK);
-  if (pexelsPath) {
-    console.log(`[photo] Pexels hit (generic fallback) for: ${subject}`);
-    return pexelsPath;
+  // 2. Pexels fallback — inlined to expose URL for blocklist check
+  // Query is generic/editorial to avoid crypto/tablet imagery as press photo fallback
+  const PEXELS_FALLBACK = 'technology executive professional';
+  const pexelsKey = process.env.PEXELS_API_KEY;
+  if (pexelsKey) {
+    if (debug) console.log(`[photo] Pexels fallback — query: "${PEXELS_FALLBACK}"`);
+    try {
+      const searchRes = await fetch(
+        `https://api.pexels.com/v1/search?query=${encodeURIComponent(PEXELS_FALLBACK)}&per_page=5`,
+        { headers: { Authorization: pexelsKey } }
+      );
+      if (searchRes.ok) {
+        const data = await searchRes.json();
+        for (const photo of (data.photos || [])) {
+          const photoUrl = photo.src?.large2x;
+          if (!photoUrl) continue;
+          if (isBlockedPhotoUrl(photoUrl, queryLower)) {
+            console.warn(`[photo] Pexels blocked (visual mismatch): ${photoUrl.slice(0, 80)}`);
+            continue;
+          }
+          const imgRes = await fetch(photoUrl);
+          if (!imgRes.ok) continue;
+          const tmpPath = path.join(os.tmpdir(), `pexels_${Date.now()}.jpg`);
+          fs.writeFileSync(tmpPath, Buffer.from(await imgRes.arrayBuffer()));
+          console.log(`[photo] Pexels hit (fallback) for: ${subject}`);
+          return tmpPath;
+        }
+      }
+    } catch (err) {
+      console.warn('[photo] Pexels failed:', err.message);
+    }
   }
 
   console.log(`[photo] No photo found for: ${subject} — using gradient fallback`);
@@ -203,6 +239,16 @@ async function loadPhotoImage(subject) {
   }
 }
 
+// ── Cover photo query builder ─────────────────────────────────────────────────
+function buildPhotoQuery(subject, personName) {
+  const base = personName || subject || null;
+  if (!base) return null;
+  const cleaned = base.replace(/\b(AI|the|a|an|of|in|for|and|or)\b/gi, '').trim();
+  // Require at least 3 characters after stripping — otherwise use base unsanitized
+  const query = cleaned.length >= 3 ? cleaned : base;
+  return `${query} press photo`;
+}
+
 // ── SLIDE 1 — Cover (full-bleed press photo) ─────────────────────────────────
 async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = true, watermarkText = 'CUTTING EDGE OF AI') {
   const canvas = createCanvas(W, H);
@@ -216,7 +262,9 @@ async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = t
   ctx.fillRect(0, 0, W, H);
 
   // Full-bleed press photo + overlay (only when photo is available)
-  const img = await loadPhotoImage(d.photo_subject || d.person_name || null);
+  const photoQuery = buildPhotoQuery(d.photo_subject, d.person_name);
+  console.log(`[PHOTO QUERY] cover: "${photoQuery}"`);
+  let img = await loadPhotoImage(photoQuery);
   if (img) {
     drawImageCover(ctx, img, 0, 0, W, H);
     // Dark gradient overlay: transparent at top → 85% opacity at bottom
@@ -372,7 +420,24 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder, sourceSuffi
 
     const innerX  = cardX + 48;
     const innerW  = cardW - 96;
-    let   cursorY = cardY + 56;
+
+    // Pre-measure headline to calculate total content height for vertical centering
+    ctx.font = `36px ${FONT_BODY}`;
+    const hLines = wrapLines(ctx, String(data.source_headline || ''), innerW).slice(0, 3);
+    const sourceLabelH  = 50;   // gold label + gap
+    const dividerH      = 28;   // rule + gap
+    const headlineH     = hLines.length * 48;
+    const postHeadlineH = 20;   // gap after headline
+    const attributionH  = 28;   // footer line
+    const totalContentH = sourceLabelH + dividerH + headlineH + postHeadlineH + attributionH;
+
+    // Vertically center within card; fall back to original top-aligned if content is too tall
+    let cursorY;
+    if (totalContentH > cardH * 0.85) {
+      cursorY = cardY + 56;
+    } else {
+      cursorY = cardY + Math.round((cardH - totalContentH) / 2);
+    }
 
     // Outlet name — gold, Arial Black, 36px, all caps
     ctx.font         = `bold 36px ${FONT_DISPLAY}`;
@@ -399,7 +464,6 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder, sourceSuffi
     ctx.fillStyle    = WHITE;
     ctx.textAlign    = 'left';
     ctx.textBaseline = 'top';
-    const hLines = wrapLines(ctx, String(data.source_headline || ''), innerW).slice(0, 3);
     for (const ln of hLines) {
       ctx.fillText(ln, innerX, cursorY);
       cursorY += 48;
