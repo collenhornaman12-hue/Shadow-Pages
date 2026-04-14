@@ -4,7 +4,7 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const path  = require('path');
 const fs    = require('fs');
 const os    = require('os');
-const { fetchSlideImage }  = require('./carousel-builder');
+const { fetchSlideImage, buildPhotoQuery, VISUAL_BLOCKLIST, isBlockedPhotoUrl } = require('./carousel-builder');
 const { getOutputFolder }  = require('./image-renderer');
 
 // ── Font registration ─────────────────────────────────────────────────────────
@@ -25,13 +25,6 @@ const WHITE        = '#ffffff';
 const FONT_DISPLAY = '"Arial Black", Impact, Arial, sans-serif';
 const FONT_BODY    = 'Arial, sans-serif';
 const PAD          = 40;
-
-// URL keywords that indicate a visually mismatched image (crypto, tablet, etc.)
-const VISUAL_BLOCKLIST = ['bitcoin', 'crypto', 'coin', 'financial-freedom', 'financial_freedom', 'tablet'];
-function isBlockedPhotoUrl(url, queryLower) {
-  const u = (url || '').toLowerCase();
-  return VISUAL_BLOCKLIST.some(term => u.includes(term) && !queryLower.includes(term));
-}
 
 // ── Utilities ─────────────────────────────────────────────────────────────────
 
@@ -86,6 +79,13 @@ function roundRectFill(ctx, x, y, w, h, r) {
   ctx.closePath();
   ctx.fill();
 }
+
+// ── Person map — hardcoded press photo URLs for known subjects ────────────────
+// Keys must be lowercase. Lookup checks if subject.toLowerCase() includes the key.
+const PERSON_MAP = {
+  'sam altman': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sam_Altman_CropEdit.jpg/440px-Sam_Altman_CropEdit.jpg',
+};
+console.log('[PERSON MAP KEYS]', Object.keys(PERSON_MAP));
 
 // ── Photo validation ──────────────────────────────────────────────────────────
 // Returns { valid: true, buf } on pass, or { valid: false, reason } on reject.
@@ -152,6 +152,23 @@ async function fetchPressPhoto(subject) {
   if (!subject) return null;
   const debug      = process.env.DEBUG === 'true';
   const queryLower = subject.toLowerCase();
+
+  // 0. Person map lookup — known subjects bypass SerpApi entirely
+  console.log('[PERSON LOOKUP] Checking for:', subject);
+  const matchedKey = Object.keys(PERSON_MAP).find(k => queryLower.includes(k));
+  if (matchedKey) {
+    const mapUrl = PERSON_MAP[matchedKey];
+    console.log('[PERSON LOOKUP] Hit:', mapUrl);
+    const check = await validatePhoto(mapUrl);
+    if (check.valid) {
+      const tmpPath = path.join(os.tmpdir(), `personmap_${Date.now()}.jpg`);
+      fs.writeFileSync(tmpPath, check.buf);
+      return tmpPath;
+    }
+    console.warn(`[PERSON LOOKUP] Hit URL failed validation (${check.reason}) — falling to SerpApi`);
+  } else {
+    console.log('[PERSON LOOKUP] Miss — falling to SerpApi');
+  }
 
   // 1. SerpApi Google Images — blocklist checked on URL before downloading
   const serpKey = process.env.SERPAPI_KEY;
@@ -239,16 +256,6 @@ async function loadPhotoImage(subject) {
   }
 }
 
-// ── Cover photo query builder ─────────────────────────────────────────────────
-function buildPhotoQuery(subject, personName) {
-  const base = personName || subject || null;
-  if (!base) return null;
-  const cleaned = base.replace(/\b(AI|the|a|an|of|in|for|and|or)\b/gi, '').trim();
-  // Require at least 3 characters after stripping — otherwise use base unsanitized
-  const query = cleaned.length >= 3 ? cleaned : base;
-  return `${query} press photo`;
-}
-
 // ── SLIDE 1 — Cover (full-bleed press photo) ─────────────────────────────────
 async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = true, watermarkText = 'CUTTING EDGE OF AI') {
   const canvas = createCanvas(W, H);
@@ -263,7 +270,9 @@ async function renderCoverSlide(d, folder, slideNum, totalSlides, isCarousel = t
 
   // Full-bleed press photo + overlay (only when photo is available)
   const photoQuery = buildPhotoQuery(d.photo_subject, d.person_name);
-  console.log(`[PHOTO QUERY] cover: "${photoQuery}"`);
+  console.log('[STORY SHAPE]', Object.keys(d));
+  const isWealthy = (watermarkText || '').toUpperCase().includes('WEALTHY');
+  console.log(`${isWealthy ? '[WEALTHY PHOTO QUERY]' : '[PHOTO QUERY]'} cover: "${photoQuery}"`);
   let img = await loadPhotoImage(photoQuery);
   if (img) {
     drawImageCover(ctx, img, 0, 0, W, H);
@@ -521,25 +530,7 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder, sourceSuffi
       // ── NEW THREE-LAYER LAYOUT ────────────────────────────────────────────
       const textMaxW = W - 2 * (PAD + 20);
 
-      // Layer 1: Label — GOLD, Arial Black, 16px, letter-spaced, centered at top
-      const labelText    = String(data.label || 'FACT').toUpperCase();
-      const labelSize    = 16;
-      const labelY       = PAD + 16;
-      ctx.font           = `bold ${labelSize}px ${FONT_DISPLAY}`;
-      ctx.fillStyle      = GOLD;
-      ctx.textBaseline   = 'top';
-      ctx.textAlign      = 'left';
-      const labelLetters = labelText.split('');
-      const charSpacing  = 3;
-      const rawLabelW    = ctx.measureText(labelText).width;
-      const labelW       = rawLabelW + charSpacing * (labelLetters.length - 1);
-      let   lx           = W / 2 - labelW / 2;
-      for (const ch of labelLetters) {
-        ctx.fillText(ch, lx, labelY);
-        lx += ctx.measureText(ch).width + charSpacing;
-      }
-
-      // Layer 2: Primary — WHITE, Arial Black, large, vertically centered
+      // Layer 2: Primary — WHITE, Arial Black, top-anchored
       const primaryWords = String(data.primary).split(/\s+/).slice(0, 10);
       const primaryStr   = primaryWords.join(' ');
 
@@ -554,14 +545,12 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder, sourceSuffi
       pLines = pLines.slice(0, 4);
 
       const pLH     = Math.round(fontSize * 1.15);
-      const pTotalH = pLines.length * pLH;
 
-      // Center primary block vertically, offset up to leave room for secondary
-      const hasSecondary     = data.secondary && String(data.secondary).trim().length > 0;
-      const secondarySize    = 28;
-      const secondaryLH      = secondarySize * 1.35;
-      const secondaryReserve = hasSecondary ? secondaryLH * 2 + 20 : 0;
-      let   ty               = (H - pTotalH - secondaryReserve) / 2;
+      // Top-anchored — no vertical centering math
+      const hasSecondary  = data.secondary && String(data.secondary).trim().length > 0;
+      const secondarySize = 28;
+      const secondaryLH   = secondarySize * 1.35;
+      let   ty            = 160;
 
       ctx.font         = `bold ${fontSize}px ${FONT_DISPLAY}`;
       ctx.fillStyle    = WHITE;
@@ -579,9 +568,9 @@ async function renderInnerSlide(data, slideNum, totalSlides, folder, sourceSuffi
         ctx.fillStyle    = GOLD;
         ctx.textAlign    = 'center';
         ctx.textBaseline = 'top';
-        const secWords = String(data.secondary).split(/\s+/).slice(0, 12);
+        const secWords = String(data.secondary).split(/\s+/).slice(0, 20);
         const secStr   = secWords.join(' ');
-        const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 2);
+        const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 3);
         for (const ln of secLines) {
           ctx.fillText(ln, W / 2, ty);
           ty += secondaryLH;

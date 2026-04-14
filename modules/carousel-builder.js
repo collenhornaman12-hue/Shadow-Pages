@@ -3,6 +3,26 @@ const fs = require('fs');
 const os = require('os');
 const { renderQuoteImage } = require('./image-renderer');
 
+// ─── Photo query utilities (shared with news-carousel.js) ────────────────────
+// VISUAL_BLOCKLIST: URL keywords that indicate a visually mismatched image
+const VISUAL_BLOCKLIST = ['bitcoin', 'crypto', 'coin', 'financial-freedom', 'financial_freedom', 'tablet'];
+
+function isBlockedPhotoUrl(url, queryLower) {
+  const u = (url || '').toLowerCase();
+  return VISUAL_BLOCKLIST.some(term => u.includes(term) && !queryLower.includes(term));
+}
+
+// Constructs a clean press photo search query from a subject or person name.
+// Strips common filler words and appends "press photo" suffix.
+function buildPhotoQuery(subject, personName) {
+  const base = personName || subject || null;
+  if (!base) return null;
+  const cleaned = base.replace(/\b(AI|the|a|an|of|in|for|and|or)\b/gi, '').trim();
+  // Require at least 3 characters after stripping — otherwise use base unsanitized
+  const query = cleaned.length >= 3 ? cleaned : base;
+  return `${query} press photo`;
+}
+
 // ─── Pexels image fetcher ─────────────────────────────────────────────────────
 // Returns a local temp file path if successful, null on any failure.
 // Gracefully no-ops when PEXELS_API_KEY is absent.
@@ -95,4 +115,4 @@ async function buildCarousel({
   return paths;
 }
 
-module.exports = { buildCarousel, fetchSlideImage };
+module.exports = { buildCarousel, fetchSlideImage, buildPhotoQuery, VISUAL_BLOCKLIST, isBlockedPhotoUrl };

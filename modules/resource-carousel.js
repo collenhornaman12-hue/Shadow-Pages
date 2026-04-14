@@ -325,21 +325,21 @@ async function renderResourceInnerSlide(data, slideNum, totalSlides, folder, sup
     const hasSecondary    = data.secondary && String(data.secondary).trim().length > 0;
     const secondarySize   = 28;
     const secondaryLH     = secondarySize * 1.35;
-    const secondaryReserve = hasSecondary ? secondaryLH * 3 + 20 : 0;
+    const secondaryReserve = hasSecondary ? secondaryLH * 4 + 20 : 0;
     let   ty = (H - pTotalH - secondaryReserve) / 2;
 
     ctx.font = `bold ${fontSize}px ${FONT_DISPLAY}`; ctx.fillStyle = WHITE;
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     for (const ln of pLines) { ctx.fillText(ln, W / 2, ty); ty += pLH; }
 
-    // Layer 3: Secondary — GOLD, italic Arial, 28px, below primary (max 3 lines, 20 words)
+    // Layer 3: Secondary — GOLD, italic Arial, 28px, below primary (max 4 lines, 28 words)
     if (hasSecondary) {
       ty += 20;
       ctx.font = `italic ${secondarySize}px ${FONT_BODY}`; ctx.fillStyle = GOLD;
       ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      const secWords = String(data.secondary).split(/\s+/).slice(0, 20);
+      const secWords = String(data.secondary).split(/\s+/).slice(0, 28);
       const secStr   = secWords.join(' ');
-      const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 3);
+      const secLines = wrapLines(ctx, secStr, textMaxW).slice(0, 4);
       const bottomBoundary = H - PAD - 30; // leave room for slide counter
       for (const ln of secLines) {
         if (ty + secondaryLH > bottomBoundary) break; // canvas boundary guard
