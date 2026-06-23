@@ -1,0 +1,1252 @@
+[2026-03-24T02:30:58.782Z] [system] [slot:-] [OpenAI] All 3 attempts failed: Connection error.
+Error: [OpenAI] All 3 attempts failed: Connection error.
+    at withRetry (/sessions/practical-affectionate-ride/mnt/shadow-pages/modules/retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async generateContent (/sessions/practical-affectionate-ride/mnt/shadow-pages/modules/content-generator.js:144:13)
+    at async testQuote (/sessions/practical-affectionate-ride/mnt/shadow-pages/test-new-design.js:11:21)
+    at async main (/sessions/practical-affectionate-ride/mnt/shadow-pages/test-new-design.js:72:17)
+[2026-03-24T02:31:23.584Z] [system] [slot:-] [OpenAI] All 3 attempts failed: Connection error.
+Error: [OpenAI] All 3 attempts failed: Connection error.
+    at withRetry (/sessions/practical-affectionate-ride/mnt/shadow-pages/modules/retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async generateContent (/sessions/practical-affectionate-ride/mnt/shadow-pages/modules/content-generator.js:144:13)
+    at async testCarousel (/sessions/practical-affectionate-ride/mnt/shadow-pages/test-new-design.js:28:16)
+    at async main (/sessions/practical-affectionate-ride/mnt/shadow-pages/test-new-design.js:84:21)
+[2026-03-24T02:53:34.915Z] [system] [slot:-] [Cloudinary] All 3 attempts failed: undefined
+Error: [Cloudinary] All 3 attempts failed: undefined
+    at withRetry (/sessions/loving-blissful-fermat/mnt/shadow-pages/modules/retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async /sessions/loving-blissful-fermat/mnt/shadow-pages/post-now.js:23:22
+[2026-03-25T22:47:09.490Z] [system] [slot:-] JSON parse failed: Unexpected token '`', "```json
+[
+"... is not valid JSON. Raw: ```json
+[
+    "Melania Trump proposes robot homeschooling for children.",
+    "Proposal emerges amid ongoing debates over education technology.",
+    "Parents and educators express concern over robot 
+Error: JSON parse failed: Unexpected token '`', "```json
+[
+"... is not valid JSON. Raw: ```json
+[
+    "Melania Trump proposes robot homeschooling for children.",
+    "Proposal emerges amid ongoing debates over education technology.",
+    "Parents and educators express concern over robot 
+    at generateContent (C:\Users\colle\shadow-pages\modules\content-generator.js:234:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async run ([eval]:23:18)
+[2026-04-08T18:26:26.777Z] [system] [slot:-] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Unsupported post request. Object with ID 'undefined' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AOwVRV22t0URJFCrfmGwDMu"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Unsupported post request. Object with ID 'undefined' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AOwVRV22t0URJFCrfmGwDMu"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async [eval]:26:19
+[2026-04-08T18:27:05.472Z] [system] [slot:-] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Unsupported post request. Object with ID 'undefined' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AXPQPWUxU6gneTzPR_dVJ86"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Unsupported post request. Object with ID 'undefined' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api","type":"GraphMethodException","code":100,"error_subcode":33,"fbtrace_id":"AXPQPWUxU6gneTzPR_dVJ86"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async [eval]:22:19
+[2026-04-09T19:22:43.284Z] [wealthyedge] [slot:news-carousel-morning] text.split is not a function
+TypeError: text.split is not a function
+    at wrapLines (C:\Users\colle\shadow-pages\modules\image-renderer.js:75:22)
+    at renderNewsCarousel (C:\Users\colle\shadow-pages\modules\image-renderer.js:463:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:549:25)
+[2026-04-13T17:04:02.685Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AL-OrKp6R9KZb4VT7v2EhGb"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AL-OrKp6R9KZb4VT7v2EhGb"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:835:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:891:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-13T17:04:02.700Z] [wealthyedge] [slot:news-carousel-morning] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AL-OrKp6R9KZb4VT7v2EhGb"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AL-OrKp6R9KZb4VT7v2EhGb"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:835:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:891:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-13T21:03:54.861Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AaTAG-uPOPB0jHDZ89HCRSX"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AaTAG-uPOPB0jHDZ89HCRSX"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-13T21:03:54.862Z] [wealthyedge] [slot:resource-carousel] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AaTAG-uPOPB0jHDZ89HCRSX"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AaTAG-uPOPB0jHDZ89HCRSX"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-14T00:04:49.309Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AyIlxvtP5CU8jonenj-N_2o"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AyIlxvtP5CU8jonenj-N_2o"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-14T00:04:49.309Z] [wealthyedge] [slot:news-carousel-evening] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AyIlxvtP5CU8jonenj-N_2o"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AyIlxvtP5CU8jonenj-N_2o"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-14T12:01:04.474Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhXRT54e-pmnAEQmk8EECXY"}
+Error: [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhXRT54e-pmnAEQmk8EECXY"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-14T12:01:04.475Z] [wealthyedge] [slot:viral_demo] Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhXRT54e-pmnAEQmk8EECXY"}
+Error: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhXRT54e-pmnAEQmk8EECXY"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:41:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-14T17:03:56.596Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Acy4-6xXOHTk3wWbwp0yM9-"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Acy4-6xXOHTk3wWbwp0yM9-"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-14T17:03:56.597Z] [wealthyedge] [slot:news-carousel-morning] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Acy4-6xXOHTk3wWbwp0yM9-"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Acy4-6xXOHTk3wWbwp0yM9-"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T00:05:07.961Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Ar7A8mDbxueUGNaxVBDKxb6"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Ar7A8mDbxueUGNaxVBDKxb6"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T00:05:07.976Z] [wealthyedge] [slot:news-carousel-evening] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Ar7A8mDbxueUGNaxVBDKxb6"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"Ar7A8mDbxueUGNaxVBDKxb6"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T12:01:33.010Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbUwSBaXYSQGzOG8-rXlUlk"}
+Error: [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbUwSBaXYSQGzOG8-rXlUlk"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T12:01:33.010Z] [wealthyedge] [slot:viral_demo] Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbUwSBaXYSQGzOG8-rXlUlk"}
+Error: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbUwSBaXYSQGzOG8-rXlUlk"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:41:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T17:04:28.414Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ApCgTCg5mhgTqjl-vDiehAT"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ApCgTCg5mhgTqjl-vDiehAT"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T17:04:28.429Z] [wealthyedge] [slot:news-carousel-morning] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ApCgTCg5mhgTqjl-vDiehAT"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ApCgTCg5mhgTqjl-vDiehAT"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T21:03:45.245Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhgystFgJtcTrLoq599FuqY"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhgystFgJtcTrLoq599FuqY"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-15T21:03:45.245Z] [wealthyedge] [slot:resource-carousel] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhgystFgJtcTrLoq599FuqY"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AhgystFgJtcTrLoq599FuqY"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T00:04:49.251Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AD1CyUHadxCCy4lddOxxMS0"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AD1CyUHadxCCy4lddOxxMS0"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T00:04:49.252Z] [wealthyedge] [slot:news-carousel-evening] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AD1CyUHadxCCy4lddOxxMS0"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AD1CyUHadxCCy4lddOxxMS0"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T12:01:06.455Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OMLfLH04Stb3ORKvmThj-"}
+Error: [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OMLfLH04Stb3ORKvmThj-"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T12:01:06.470Z] [wealthyedge] [slot:viral_demo] Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OMLfLH04Stb3ORKvmThj-"}
+Error: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OMLfLH04Stb3ORKvmThj-"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:41:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T17:03:23.827Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OBcm-e0obESfAnhGnqWlH"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OBcm-e0obESfAnhGnqWlH"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T17:03:23.827Z] [wealthyedge] [slot:news-carousel-morning] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OBcm-e0obESfAnhGnqWlH"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A3OBcm-e0obESfAnhGnqWlH"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T21:02:27.555Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AG-ble0q9daV72FLmSWOalr"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AG-ble0q9daV72FLmSWOalr"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-16T21:02:27.556Z] [wealthyedge] [slot:resource-carousel] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AG-ble0q9daV72FLmSWOalr"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AG-ble0q9daV72FLmSWOalr"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T00:04:43.262Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbNGtKB0y8dTAo5eUw8Sfwa"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbNGtKB0y8dTAo5eUw8Sfwa"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T00:04:43.262Z] [wealthyedge] [slot:news-carousel-evening] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbNGtKB0y8dTAo5eUw8Sfwa"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AbNGtKB0y8dTAo5eUw8Sfwa"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T12:01:05.787Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ALNgA4vJhwUcpomNRm-dNnO"}
+Error: [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ALNgA4vJhwUcpomNRm-dNnO"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T12:01:05.787Z] [wealthyedge] [slot:viral_demo] Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ALNgA4vJhwUcpomNRm-dNnO"}
+Error: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"ALNgA4vJhwUcpomNRm-dNnO"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:41:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T17:02:24.926Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AoBNzFvuURLz6D_raxJyuru"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AoBNzFvuURLz6D_raxJyuru"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T17:02:24.927Z] [wealthyedge] [slot:news-carousel-morning] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AoBNzFvuURLz6D_raxJyuru"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AoBNzFvuURLz6D_raxJyuru"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T21:02:13.599Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AigFQ1PEj74Sy2eGiXjFjKv"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AigFQ1PEj74Sy2eGiXjFjKv"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-17T21:02:13.599Z] [wealthyedge] [slot:resource-carousel] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AigFQ1PEj74Sy2eGiXjFjKv"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AigFQ1PEj74Sy2eGiXjFjKv"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T00:05:06.326Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AEMWEuOga-TXQdP5dPtepkJ"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AEMWEuOga-TXQdP5dPtepkJ"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T00:05:06.326Z] [wealthyedge] [slot:news-carousel-evening] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AEMWEuOga-TXQdP5dPtepkJ"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AEMWEuOga-TXQdP5dPtepkJ"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T12:01:13.481Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"At-FPdPcaLZMytXONQOZXVC"}
+Error: [Instagram:postImage] All 3 attempts failed: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"At-FPdPcaLZMytXONQOZXVC"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T12:01:13.482Z] [wealthyedge] [slot:viral_demo] Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"At-FPdPcaLZMytXONQOZXVC"}
+Error: Publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"At-FPdPcaLZMytXONQOZXVC"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:41:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T17:02:21.956Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AYyKiZJ-ELn4na6lUfvF80s"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AYyKiZJ-ELn4na6lUfvF80s"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T17:02:21.956Z] [wealthyedge] [slot:news-carousel-morning] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AYyKiZJ-ELn4na6lUfvF80s"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AYyKiZJ-ELn4na6lUfvF80s"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T21:02:17.268Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A43spL9OwuWf-oI_emeZ8pS"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A43spL9OwuWf-oI_emeZ8pS"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-18T21:02:17.268Z] [wealthyedge] [slot:resource-carousel] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A43spL9OwuWf-oI_emeZ8pS"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"A43spL9OwuWf-oI_emeZ8pS"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-19T00:05:25.005Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AsSXsQo0Lbrvy1N8opJlUcL"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AsSXsQo0Lbrvy1N8opJlUcL"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-19T00:05:25.006Z] [wealthyedge] [slot:news-carousel-evening] Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AsSXsQo0Lbrvy1N8opJlUcL"}
+Error: Carousel publish error: {"message":"Application request limit reached","type":"OAuthException","is_transient":false,"code":4,"error_subcode":2207051,"error_user_title":"action is blocked","error_user_msg":"We restrict certain activity to protect our community. Tell us if you think we made a mistake.","fbtrace_id":"AsSXsQo0Lbrvy1N8opJlUcL"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:83:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-24T21:01:27.917Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Only photo or video can be accepted as media type.","type":"OAuthException","code":9004,"error_subcode":2207052,"is_transient":false,"error_user_title":"Media download has failed. The media URI doesn't meet our requirements.","error_user_msg":"The media could not be fetched from this URI: https://res.cloudinary.com/dbqu7xgib/image/upload/v1777064412/shadow-pages-wealthy/emtvnknfprgm4g7nogxv.jpg.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating","fbtrace_id":"AGkekUz2lAoeqpdqmLoR8Vk"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Only photo or video can be accepted as media type.","type":"OAuthException","code":9004,"error_subcode":2207052,"is_transient":false,"error_user_title":"Media download has failed. The media URI doesn't meet our requirements.","error_user_msg":"The media could not be fetched from this URI: https://res.cloudinary.com/dbqu7xgib/image/upload/v1777064412/shadow-pages-wealthy/emtvnknfprgm4g7nogxv.jpg.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating","fbtrace_id":"AGkekUz2lAoeqpdqmLoR8Vk"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-04-24T21:01:27.932Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Only photo or video can be accepted as media type.","type":"OAuthException","code":9004,"error_subcode":2207052,"is_transient":false,"error_user_title":"Media download has failed. The media URI doesn't meet our requirements.","error_user_msg":"The media could not be fetched from this URI: https://res.cloudinary.com/dbqu7xgib/image/upload/v1777064412/shadow-pages-wealthy/emtvnknfprgm4g7nogxv.jpg.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating","fbtrace_id":"AGkekUz2lAoeqpdqmLoR8Vk"}
+Error: Child container error: {"message":"Only photo or video can be accepted as media type.","type":"OAuthException","code":9004,"error_subcode":2207052,"is_transient":false,"error_user_title":"Media download has failed. The media URI doesn't meet our requirements.","error_user_msg":"The media could not be fetched from this URI: https://res.cloudinary.com/dbqu7xgib/image/upload/v1777064412/shadow-pages-wealthy/emtvnknfprgm4g7nogxv.jpg.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating","fbtrace_id":"AGkekUz2lAoeqpdqmLoR8Vk"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-23T12:07:02.841Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Container timed out
+Error: [Instagram:postImage] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-23T12:07:02.843Z] [wealthyedge] [slot:viral_demo] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:32:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-23T17:07:03.635Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-23T17:07:03.651Z] [wealthyedge] [slot:news-carousel-morning] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-23T21:06:49.034Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-23T21:06:49.049Z] [wealthyedge] [slot:resource-carousel] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T00:07:47.590Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T00:07:47.591Z] [wealthyedge] [slot:news-carousel-evening] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T12:06:50.885Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Container timed out
+Error: [Instagram:postImage] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T12:06:50.886Z] [wealthyedge] [slot:viral_demo] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:32:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T17:07:00.316Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T17:07:00.320Z] [wealthyedge] [slot:news-carousel-morning] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T21:06:45.137Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-24T21:06:45.138Z] [wealthyedge] [slot:resource-carousel] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T00:07:37.360Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T00:07:37.361Z] [wealthyedge] [slot:news-carousel-evening] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T12:06:57.650Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Container timed out
+Error: [Instagram:postImage] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T12:06:57.653Z] [wealthyedge] [slot:viral_demo] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:32:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T17:06:58.291Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T17:06:58.292Z] [wealthyedge] [slot:news-carousel-morning] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T21:06:53.018Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-25T21:06:53.019Z] [wealthyedge] [slot:resource-carousel] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T00:07:48.685Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T00:07:48.685Z] [wealthyedge] [slot:news-carousel-evening] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T12:06:48.162Z] [wealthyedge] [slot:viral_demo] [Instagram:postImage] All 3 attempts failed: Container timed out
+Error: [Instagram:postImage] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T12:06:48.162Z] [wealthyedge] [slot:viral_demo] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:32:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:789:24)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:912:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T17:06:54.615Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T17:06:54.631Z] [wealthyedge] [slot:news-carousel-morning] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T21:06:59.560Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Container timed out
+Error: [Instagram:postCarousel] All 3 attempts failed: Container timed out
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-05-26T21:06:59.562Z] [wealthyedge] [slot:resource-carousel] Container timed out
+Error: Container timed out
+    at waitForContainer (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:15:9)
+    at async withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:60:7)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T16:01:16.071Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 09:01:15 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuuL4HL6Sb5PtPI7-IFJmeK"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 09:01:15 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuuL4HL6Sb5PtPI7-IFJmeK"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T16:01:16.072Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 09:01:15 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuuL4HL6Sb5PtPI7-IFJmeK"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 09:01:15 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuuL4HL6Sb5PtPI7-IFJmeK"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T17:01:25.933Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 10:01:25 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AYss1T0vaxw8XsuMr0hc8rG"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 10:01:25 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AYss1T0vaxw8XsuMr0hc8rG"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T17:01:25.947Z] [wealthyedge] [slot:news-carousel-morning] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 10:01:25 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AYss1T0vaxw8XsuMr0hc8rG"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 10:01:25 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AYss1T0vaxw8XsuMr0hc8rG"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T21:00:40.884Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 14:00:39 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHp4dIMaq_lkpWV56vxbkyW"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 14:00:39 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHp4dIMaq_lkpWV56vxbkyW"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T21:00:40.885Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 14:00:39 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHp4dIMaq_lkpWV56vxbkyW"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 14:00:39 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHp4dIMaq_lkpWV56vxbkyW"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T22:03:36.020Z] [CuttingEdgeOfAI] [slot:2] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 15:03:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AqMTAH-fAB95YTKRVlxFIKg"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 15:03:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AqMTAH-fAB95YTKRVlxFIKg"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-10T22:03:36.020Z] [CuttingEdgeOfAI] [slot:2] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 15:03:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AqMTAH-fAB95YTKRVlxFIKg"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 15:03:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AqMTAH-fAB95YTKRVlxFIKg"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T00:01:50.316Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 17:01:49 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Aobd9G41_eL_G1VQg0_jTb3"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 17:01:49 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Aobd9G41_eL_G1VQg0_jTb3"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T00:01:50.316Z] [wealthyedge] [slot:news-carousel-evening] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 17:01:49 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Aobd9G41_eL_G1VQg0_jTb3"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 17:01:49 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Aobd9G41_eL_G1VQg0_jTb3"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T01:01:07.670Z] [CuttingEdgeOfAI] [slot:3] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 18:01:06 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A3cxvkU1mCVb7aHQ2cDDqGD"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 18:01:06 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A3cxvkU1mCVb7aHQ2cDDqGD"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T01:01:07.671Z] [CuttingEdgeOfAI] [slot:3] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 18:01:06 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A3cxvkU1mCVb7aHQ2cDDqGD"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 10-Jun-26 18:01:06 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A3cxvkU1mCVb7aHQ2cDDqGD"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T16:00:30.985Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AOMwx_cSjs_rhjCe2zK17qB"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AOMwx_cSjs_rhjCe2zK17qB"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T16:00:30.986Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AOMwx_cSjs_rhjCe2zK17qB"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AOMwx_cSjs_rhjCe2zK17qB"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T17:00:39.203Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A5eSezWFyBhtxy997eGk9lM"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A5eSezWFyBhtxy997eGk9lM"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T17:00:39.203Z] [wealthyedge] [slot:news-carousel-morning] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A5eSezWFyBhtxy997eGk9lM"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A5eSezWFyBhtxy997eGk9lM"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T21:00:33.224Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-4KU8YttcNNs579NOwT6sb"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-4KU8YttcNNs579NOwT6sb"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T21:00:33.225Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-4KU8YttcNNs579NOwT6sb"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-4KU8YttcNNs579NOwT6sb"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T22:03:41.712Z] [CuttingEdgeOfAI] [slot:2] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 15:03:40 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ar9Iw-Tu0fYf9oX6uaS-DOp"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 15:03:40 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ar9Iw-Tu0fYf9oX6uaS-DOp"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-11T22:03:41.712Z] [CuttingEdgeOfAI] [slot:2] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 15:03:40 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ar9Iw-Tu0fYf9oX6uaS-DOp"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 15:03:40 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ar9Iw-Tu0fYf9oX6uaS-DOp"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T00:01:57.432Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 17:01:56 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHOCaDijlEaGijxU0bZSY6C"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 17:01:56 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHOCaDijlEaGijxU0bZSY6C"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T00:01:57.432Z] [wealthyedge] [slot:news-carousel-evening] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 17:01:56 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHOCaDijlEaGijxU0bZSY6C"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 17:01:56 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AHOCaDijlEaGijxU0bZSY6C"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T01:00:59.248Z] [CuttingEdgeOfAI] [slot:3] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 18:00:57 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkPbDCmEeGw0Y2JUWPjnujr"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 18:00:57 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkPbDCmEeGw0Y2JUWPjnujr"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T01:00:59.248Z] [CuttingEdgeOfAI] [slot:3] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 18:00:57 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkPbDCmEeGw0Y2JUWPjnujr"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 11-Jun-26 18:00:57 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkPbDCmEeGw0Y2JUWPjnujr"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T16:00:33.705Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 09:00:33 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Awh1ZbYgT9JyXxo-qFRUfSF"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 09:00:33 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Awh1ZbYgT9JyXxo-qFRUfSF"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T16:00:33.706Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 09:00:33 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Awh1ZbYgT9JyXxo-qFRUfSF"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 09:00:33 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Awh1ZbYgT9JyXxo-qFRUfSF"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T17:00:44.722Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 10:00:44 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"An7ZqU5obeM1zmwHZrcOzMQ"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 10:00:44 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"An7ZqU5obeM1zmwHZrcOzMQ"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T17:00:44.723Z] [wealthyedge] [slot:news-carousel-morning] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 10:00:44 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"An7ZqU5obeM1zmwHZrcOzMQ"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 10:00:44 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"An7ZqU5obeM1zmwHZrcOzMQ"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T21:00:35.885Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 14:00:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ACmn8suq4QZ6W1DwnCg2psg"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 14:00:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ACmn8suq4QZ6W1DwnCg2psg"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T21:00:35.886Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 14:00:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ACmn8suq4QZ6W1DwnCg2psg"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 14:00:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ACmn8suq4QZ6W1DwnCg2psg"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T22:03:46.043Z] [CuttingEdgeOfAI] [slot:2] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 15:03:45 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-fA5_Wu66JkgZMQikXVmbN"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 15:03:45 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-fA5_Wu66JkgZMQikXVmbN"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-12T22:03:46.044Z] [CuttingEdgeOfAI] [slot:2] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 15:03:45 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-fA5_Wu66JkgZMQikXVmbN"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 15:03:45 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A-fA5_Wu66JkgZMQikXVmbN"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T00:01:21.875Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 17:01:20 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AapGjdIdxPDM84rAQr0uoRY"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 17:01:20 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AapGjdIdxPDM84rAQr0uoRY"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T00:01:21.875Z] [wealthyedge] [slot:news-carousel-evening] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 17:01:20 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AapGjdIdxPDM84rAQr0uoRY"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 17:01:20 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AapGjdIdxPDM84rAQr0uoRY"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T01:01:33.070Z] [CuttingEdgeOfAI] [slot:3] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 18:01:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AIoDfMwt7kemMUF2bxG-vbW"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 18:01:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AIoDfMwt7kemMUF2bxG-vbW"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T01:01:33.070Z] [CuttingEdgeOfAI] [slot:3] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 18:01:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AIoDfMwt7kemMUF2bxG-vbW"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Friday, 12-Jun-26 18:01:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AIoDfMwt7kemMUF2bxG-vbW"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T16:00:32.092Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 09:00:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AnAyoxYO30q-k9zHXQHPSqE"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 09:00:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AnAyoxYO30q-k9zHXQHPSqE"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T16:00:32.106Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 09:00:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AnAyoxYO30q-k9zHXQHPSqE"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 09:00:31 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AnAyoxYO30q-k9zHXQHPSqE"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T17:00:39.380Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiNTWyi2LlgPvDqyRjwPhU3"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiNTWyi2LlgPvDqyRjwPhU3"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T17:00:39.381Z] [wealthyedge] [slot:news-carousel-morning] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiNTWyi2LlgPvDqyRjwPhU3"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiNTWyi2LlgPvDqyRjwPhU3"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T21:00:32.964Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuNXlW0U-ExNuVhicgXVjkK"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuNXlW0U-ExNuVhicgXVjkK"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T21:00:32.964Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuNXlW0U-ExNuVhicgXVjkK"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AuNXlW0U-ExNuVhicgXVjkK"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T22:03:38.738Z] [CuttingEdgeOfAI] [slot:2] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 15:03:37 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ANLJIZ7OIi8ZyKfrZaM6ETt"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 15:03:37 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ANLJIZ7OIi8ZyKfrZaM6ETt"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-13T22:03:38.739Z] [CuttingEdgeOfAI] [slot:2] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 15:03:37 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ANLJIZ7OIi8ZyKfrZaM6ETt"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 15:03:37 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ANLJIZ7OIi8ZyKfrZaM6ETt"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-14T00:01:22.789Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AbpMQiWAzW9C2jP_Yjp9_km"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AbpMQiWAzW9C2jP_Yjp9_km"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-14T00:01:22.790Z] [wealthyedge] [slot:news-carousel-evening] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AbpMQiWAzW9C2jP_Yjp9_km"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AbpMQiWAzW9C2jP_Yjp9_km"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-14T01:01:20.434Z] [CuttingEdgeOfAI] [slot:3] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 18:01:19 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Af7y-uEUDsg55FWfLEYK1M3"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 18:01:19 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Af7y-uEUDsg55FWfLEYK1M3"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-14T01:01:20.434Z] [CuttingEdgeOfAI] [slot:3] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 18:01:19 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Af7y-uEUDsg55FWfLEYK1M3"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Saturday, 13-Jun-26 18:01:19 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Af7y-uEUDsg55FWfLEYK1M3"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-15T16:01:16.440Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 09:01:16 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhsAVGe3j59vpOhA0kL2iKS"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 09:01:16 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhsAVGe3j59vpOhA0kL2iKS"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-15T16:01:16.441Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 09:01:16 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhsAVGe3j59vpOhA0kL2iKS"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 09:01:16 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhsAVGe3j59vpOhA0kL2iKS"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-15T21:00:39.108Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 14:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AGT8ejiEUVwaY3ODsRAVjnH"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 14:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AGT8ejiEUVwaY3ODsRAVjnH"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-15T21:00:39.122Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 14:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AGT8ejiEUVwaY3ODsRAVjnH"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 14:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AGT8ejiEUVwaY3ODsRAVjnH"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-15T22:00:35.940Z] [CuttingEdgeOfAI] [slot:2] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 15:00:35 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ag6KpXmR0ZAlCblSuF_7H6y"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 15:00:35 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ag6KpXmR0ZAlCblSuF_7H6y"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-15T22:00:35.940Z] [CuttingEdgeOfAI] [slot:2] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 15:00:35 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ag6KpXmR0ZAlCblSuF_7H6y"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 15:00:35 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ag6KpXmR0ZAlCblSuF_7H6y"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T00:01:22.254Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A6EuYpmZVrfriBrsIgzWGe4"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A6EuYpmZVrfriBrsIgzWGe4"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T00:01:22.254Z] [wealthyedge] [slot:news-carousel-evening] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A6EuYpmZVrfriBrsIgzWGe4"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 17:01:21 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A6EuYpmZVrfriBrsIgzWGe4"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T01:03:19.725Z] [CuttingEdgeOfAI] [slot:3] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 18:03:18 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AogZpUQhHeAGfyT4ClemCXx"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 18:03:18 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AogZpUQhHeAGfyT4ClemCXx"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T01:03:19.725Z] [CuttingEdgeOfAI] [slot:3] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 18:03:18 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AogZpUQhHeAGfyT4ClemCXx"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Monday, 15-Jun-26 18:03:18 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AogZpUQhHeAGfyT4ClemCXx"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T16:00:31.007Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ap_RY_YTsW44zmeFjhR5vl8"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ap_RY_YTsW44zmeFjhR5vl8"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T16:00:31.008Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ap_RY_YTsW44zmeFjhR5vl8"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ap_RY_YTsW44zmeFjhR5vl8"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T17:00:37.470Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A4C_B1-mLIZWEkoy_lB5Z2Y"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A4C_B1-mLIZWEkoy_lB5Z2Y"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T17:00:37.472Z] [wealthyedge] [slot:news-carousel-morning] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A4C_B1-mLIZWEkoy_lB5Z2Y"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A4C_B1-mLIZWEkoy_lB5Z2Y"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T21:00:37.612Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 14:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AWJQJxesDp9DDnA4k6RAtYM"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 14:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AWJQJxesDp9DDnA4k6RAtYM"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T21:00:37.613Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 14:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AWJQJxesDp9DDnA4k6RAtYM"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 14:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AWJQJxesDp9DDnA4k6RAtYM"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T22:00:47.243Z] [CuttingEdgeOfAI] [slot:2] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 15:00:46 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AVX852-WBOcK_bt0n7hdU1C"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 15:00:46 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AVX852-WBOcK_bt0n7hdU1C"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-16T22:00:47.244Z] [CuttingEdgeOfAI] [slot:2] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 15:00:46 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AVX852-WBOcK_bt0n7hdU1C"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 15:00:46 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AVX852-WBOcK_bt0n7hdU1C"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T00:01:36.059Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 17:01:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AoMe2KM3_cqt9ke34w0pI0f"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 17:01:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AoMe2KM3_cqt9ke34w0pI0f"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T00:01:36.060Z] [wealthyedge] [slot:news-carousel-evening] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 17:01:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AoMe2KM3_cqt9ke34w0pI0f"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 17:01:34 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AoMe2KM3_cqt9ke34w0pI0f"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T01:03:08.971Z] [CuttingEdgeOfAI] [slot:3] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 18:03:07 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkbaLJTl9n23WCFAlJJRsUV"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 18:03:07 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkbaLJTl9n23WCFAlJJRsUV"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T01:03:08.972Z] [CuttingEdgeOfAI] [slot:3] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 18:03:07 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkbaLJTl9n23WCFAlJJRsUV"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Tuesday, 16-Jun-26 18:03:07 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AkbaLJTl9n23WCFAlJJRsUV"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T16:00:30.681Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ATsNXYjG0W8yuCwWlfVmZZY"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ATsNXYjG0W8yuCwWlfVmZZY"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T16:00:30.682Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ATsNXYjG0W8yuCwWlfVmZZY"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"ATsNXYjG0W8yuCwWlfVmZZY"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T17:00:37.550Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A1GAwn5aZTagMeKq5gMOEgD"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A1GAwn5aZTagMeKq5gMOEgD"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T17:00:37.550Z] [wealthyedge] [slot:news-carousel-morning] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A1GAwn5aZTagMeKq5gMOEgD"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 10:00:36 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A1GAwn5aZTagMeKq5gMOEgD"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T21:00:33.799Z] [wealthyedge] [slot:resource-carousel] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AysQ4qzPG-HJngMaizNYTiP"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AysQ4qzPG-HJngMaizNYTiP"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T21:00:33.800Z] [wealthyedge] [slot:resource-carousel] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AysQ4qzPG-HJngMaizNYTiP"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 14:00:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AysQ4qzPG-HJngMaizNYTiP"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:881:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:922:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T22:00:42.039Z] [CuttingEdgeOfAI] [slot:2] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 15:00:41 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AblUhIFkN0rCfg9H6W1WXcl"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 15:00:41 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AblUhIFkN0rCfg9H6W1WXcl"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-17T22:00:42.040Z] [CuttingEdgeOfAI] [slot:2] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 15:00:41 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AblUhIFkN0rCfg9H6W1WXcl"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 15:00:41 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AblUhIFkN0rCfg9H6W1WXcl"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:311:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T00:01:33.714Z] [wealthyedge] [slot:news-carousel-evening] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 17:01:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiRcio60QswGjhM-XHlkBqp"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 17:01:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiRcio60QswGjhM-XHlkBqp"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T00:01:33.732Z] [wealthyedge] [slot:news-carousel-evening] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 17:01:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiRcio60QswGjhM-XHlkBqp"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 17:01:32 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AiRcio60QswGjhM-XHlkBqp"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:927:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T01:03:02.423Z] [CuttingEdgeOfAI] [slot:3] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 18:03:01 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhJ8c9Z4uHvc831r1hFgQJS"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 18:03:01 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhJ8c9Z4uHvc831r1hFgQJS"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T01:03:02.424Z] [CuttingEdgeOfAI] [slot:3] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 18:03:01 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhJ8c9Z4uHvc831r1hFgQJS"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Wednesday, 17-Jun-26 18:03:01 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AhJ8c9Z4uHvc831r1hFgQJS"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T16:00:31.243Z] [CuttingEdgeOfAI] [slot:1] [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ajad2uPacOblFfm5boGOFDp"}
+Error: [Instagram:postImage] All 3 attempts failed: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ajad2uPacOblFfm5boGOFDp"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T16:00:31.260Z] [CuttingEdgeOfAI] [slot:1] Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ajad2uPacOblFfm5boGOFDp"}
+Error: Create error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 09:00:30 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"Ajad2uPacOblFfm5boGOFDp"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:27:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator.js:259:7)
+    at async C:\Users\colle\shadow-pages\scheduler.js:21:9
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T17:00:38.665Z] [wealthyedge] [slot:news-carousel-morning] [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AUJCr_Lzfg0CH3x5nMqZb7p"}
+Error: [Instagram:postCarousel] All 3 attempts failed: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AUJCr_Lzfg0CH3x5nMqZb7p"}
+    at withRetry (C:\Users\colle\shadow-pages\modules\retry.js:24:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)
+[2026-06-18T17:00:38.680Z] [wealthyedge] [slot:news-carousel-morning] Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AUJCr_Lzfg0CH3x5nMqZb7p"}
+Error: Child container error: {"message":"Error validating access token: Session has expired on Monday, 08-Jun-26 11:39:41 PDT. The current time is Thursday, 18-Jun-26 10:00:38 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AUJCr_Lzfg0CH3x5nMqZb7p"}
+    at withRetry.label (C:\Users\colle\shadow-pages\modules\instagram-publisher.js:59:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async withRetry (C:\Users\colle\shadow-pages\modules\retry.js:11:14)
+    at async runSlot (C:\Users\colle\shadow-pages\orchestrator-wealthy.js:859:30)
+    at async C:\Users\colle\shadow-pages\orchestrator-wealthy.js:917:11
+    at async Timeout._onTimeout (C:\Users\colle\shadow-pages\node_modules\node-cron\dist\cjs\scheduler\runner.js:70:44)

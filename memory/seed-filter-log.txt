@@ -2,3 +2,38 @@
 [2026-04-09 17:11] REJECTED: "New AI model Mythos targets cybersecurity—are you updated?" — reason: ends with question mark
 [2026-04-09 17:11] REJECTED: "Spotify's playlists use AI to curate—stay ahead of trends effortlessly" — reason: contains "effortlessly"
 [2026-04-09 17:11] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-04-09 19:26] REJECTED: "OpenAI's safety blueprint vs. Anthropic’s Mythos — which is more robust?" — reason: ends with question mark
+[2026-04-09 19:26] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-04-10 14:27] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-04-13 20:22] REJECTED: "Claude dominated conversations at HumanX conference—what’s next?" — reason: ends with question mark
+[2026-04-13 20:22] REJECTED: "AI code wars suggest peak innovation—are you prepared?" — reason: ends with question mark
+[2026-04-13 20:22] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-04-14 22:34] REJECTED: "Anthropic's Mythos may transform finance — here's how." — reason: contains "here's how"
+[2026-04-14 22:34] REJECTED: "Google’s AI Skills can automate your workflows effortlessly." — reason: contains "effortlessly"
+[2026-04-14 22:34] REJECTED: "Max Hodak is pushing brain-sensor boundaries — are you ready?" — reason: ends with question mark
+[2026-04-14 22:34] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-04-23 16:18] REJECTED: "Failing to leverage AI tools now means falling behind competitors" — reason: contains "leverage"
+[2026-04-23 16:18] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-05-01 13:51] REJECTED: "Leverage legal AI tools like Legora for faster document reviews." — reason: contains "leverage"
+[2026-05-01 13:51] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-05-06 18:17] REJECTED: "Google’s search now quotes Reddit — is this the future?" — reason: ends with question mark
+[2026-05-06 18:17] REJECTED: "OpenAI claims significant reduction in ChatGPT hallucinations—user trust?" — reason: ends with question mark
+[2026-05-06 18:17] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-05-11 15:56] REJECTED: "Leverage OpenAI API's voice features now to stay ahead of competitors." — reason: contains "leverage"
+[2026-05-11 15:56] REJECTED: "Intel’s comeback story outshines Nvidia's — here's why you should care." — reason: contains "here's why"
+[2026-05-11 15:56] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-05-12 13:08] REJECTED: "Leverage GM's AI-skilling shift to future-proof your career" — reason: contains "leverage"
+[2026-05-12 13:08] REJECTED: "Digg's relaunch as an AI aggregator — is it worth your attention?" — reason: ends with question mark
+[2026-05-12 13:08] REJECTED: "Court battle between Musk and Altman — will it reshape AI?" — reason: ends with question mark
+[2026-05-12 13:08] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-05-13 12:58] REJECTED: ""Gemini’s latest updates let you control your phone effortlessly."" — reason: contains "effortlessly"
+[2026-05-13 12:58] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-05-15 14:52] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-05-28 11:13] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-06-10 12:56] REJECTED: "Claude Fable vs. Siri: which model better understands nuance?" — reason: ends with question mark
+[2026-06-10 12:56] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"
+[2026-06-15 15:30] REJECTED: "Apple’s AI photo editing: users praise or critique unclear results?" — reason: ends with question mark
+[2026-06-15 15:30] REJECTED: "India’s AI unicorn Sarvam raises $234M — is this the next big market?" — reason: ends with question mark
+[2026-06-15 15:30] REJECTED: "Leverage Fin for customer service to elevate your entire sales strategy." — reason: contains "leverage"
+[2026-06-15 15:30] REJECTED: "Anthropic vs. OpenAI: Which AI models dominate real-world applications?" — reason: ends with question mark
+[2026-06-15 15:30] REJECTED: "Here is how leverage will change everything effortlessly" — reason: contains "effortlessly"

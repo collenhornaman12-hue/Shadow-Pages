@@ -1,0 +1,1679 @@
+{
+  "2026-03-24": [
+    {
+      "type": "hook",
+      "text": "5 AI Prompts That Will Save You Hours",
+      "photoQuery": "productive person laptop"
+    },
+    {
+      "type": "prompt",
+      "number": 1,
+      "text": "Generate a list of 10 catchy headlines for a new organic skincare product launch."
+    },
+    {
+      "type": "prompt",
+      "number": 2,
+      "text": "Create a detailed social media calendar for promoting a summer sale over three months."
+    },
+    {
+      "type": "prompt",
+      "number": 3,
+      "text": "Draft an email campaign targeting previous customers to re-engage them with personalized offers."
+    },
+    {
+      "type": "prompt",
+      "number": 4,
+      "text": "Analyze the engagement metrics from the last campaign and suggest improvements for future efforts."
+    },
+    {
+      "type": "prompt",
+      "number": 5,
+      "text": "Develop a customer persona for our target audience in the eco-friendly home goods market."
+    },
+    {
+      "type": "cta",
+      "text": "Save this. Your future self will thank you."
+    }
+  ],
+  "2026-03-25": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      "Prioritize tasks for today by creating a list based on urgency and importance using the Eisenhower Matrix.",
+      "Generate a personalized daily schedule that optimizes my work hours and incorporates breaks for maximum productivity.",
+      "Summarize my goals for this week and outline actionable steps to achieve them efficiently.",
+      "Create a time-blocking plan for my upcoming project, allocating specific hours for each task.",
+      "List five strategies to minimize distractions while working from home and boost focus."
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-03-26": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      "Organize my weekly schedule by prioritizing tasks based on urgency and importance.",
+      "Create a detailed daily plan with time blocks for focused work and breaks.",
+      "Analyze my current productivity habits and suggest improvements for better time management.",
+      "Summarize key strategies for overcoming procrastination and maintaining focus throughout the day.",
+      "Generate a list of tools and apps to enhance my productivity and streamline workflows."
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-04-07": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "AI-driven productivity for remote teams.",
+        "wow_factor": "Translates conversations in real-time."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create stunning presentations effortlessly.",
+        "wow_factor": "Generates slides based on your notes."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://elevenlabs.io",
+        "one_liner": "High-quality voice synthesis technology.",
+        "wow_factor": "Creates voiceovers from text in multiple styles."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code smarter with AI assistance.",
+        "wow_factor": "Autocompletes code snippets contextually."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://descript.com",
+        "one_liner": "All-in-one audio and video editing tool.",
+        "wow_factor": "Edit audio by editing text transcripts."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-04-08": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      "Identify target audience using AI analytics tools.",
+      "Generate personalized content with Notion AI insights.",
+      "Automate outreach campaigns via Zapier integrations.",
+      "Analyze engagement metrics using Perplexity for optimization.",
+      "Refine strategies through continuous feedback from AI models."
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-04-10": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      "Create a compelling blog post outline about the future of AI in everyday life.",
+      "Draft an engaging social media post promoting a new eco-friendly product launch.",
+      "Generate a list of creative video ideas for a travel vlog focusing on hidden gems.",
+      "Write a captivating email newsletter introducing a new online course on digital marketing.",
+      "Outline a short story featuring a time traveler who visits the year 2125."
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-04-11": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      "Define research goals using Notion AI insights.",
+      "Gather data with ChatGPT and Perplexity queries.",
+      "Analyze findings through Gamma presentations and visualizations.",
+      "Synthesize knowledge via Cursor for structured summaries.",
+      "Share insights using Descript for impactful storytelling."
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-04-12": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "AI for personalized conversation experiences.",
+        "wow_factor": "Creates unique dialogues with user personality."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Next-gen presentation tool powered by AI.",
+        "wow_factor": "Transforms text into stunning visual slides."
+      },
+      {
+        "tool_name": "Make.com",
+        "website_url": "https://www.make.com",
+        "one_liner": "Automate workflows visually without coding.",
+        "wow_factor": "Connects 1,000+ apps with drag-and-drop simplicity."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code faster with AI-assisted coding.",
+        "wow_factor": "Generates code snippets in real-time."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Audio and video editing reimagined with AI.",
+        "wow_factor": "Edit audio by editing text transcripts."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-04-13": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI could boost global GDP by $15.7 trillion.",
+        "source": "PwC"
+      },
+      {
+        "stat": "Companies using AI see 40% productivity increases.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "Over 50% of firms plan to adopt AI by 2024.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI processes tasks 20 times faster than humans.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-04-15": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "AI-powered conversation analysis tool.",
+        "wow_factor": "Analyzes emotional tone in real-time chats."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create presentations with AI assistance.",
+        "wow_factor": "Generates slide decks from text prompts instantly."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code faster with AI-powered suggestions.",
+        "wow_factor": "Transforms natural language into functioning code."
+      },
+      {
+        "tool_name": "Make.com",
+        "website_url": "https://www.make.com",
+        "one_liner": "Automate workflows across multiple apps.",
+        "wow_factor": "Visual interface for complex automations without coding."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Edit audio and video like text.",
+        "wow_factor": "Transcribes spoken words into editable text instantly."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-04-16": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Identify key topics for exploration",
+        "body": "Pinpoint specific subjects that spark your curiosity. This focuses your research and enhances engagement with the material."
+      },
+      {
+        "title": "Leverage AI tools for information gathering",
+        "body": "Utilize ChatGPT or Claude to gather diverse perspectives and data. This accelerates your understanding and enriches your insights."
+      },
+      {
+        "title": "Organize insights in a structured format",
+        "body": "Use Notion AI or Gamma to compile and categorize findings. This creates a clear framework for deeper analysis and retention."
+      },
+      {
+        "title": "Create content to synthesize knowledge",
+        "body": "Employ Cursor or Descript to draft articles or presentations. This transforms raw information into articulate expressions of your understanding."
+      },
+      {
+        "title": "Automate follow-up tasks for continuous learning",
+        "body": "Implement Make.com or Zapier to schedule reminders and curate further resources. This fosters a sustainable learning habit and ongoing growth."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-04-17": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI could boost global GDP by $15.7 trillion by 2030.",
+        "source": "PwC"
+      },
+      {
+        "stat": "72% of companies report AI adoption in 2023.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI can increase productivity by up to 40%.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI processes data 10 times faster than humans.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-04-18": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Create a viral marketing campaign idea",
+        "body": "This prompt generates a unique and engaging concept for a viral marketing campaign tailored to your brand. Save hours of brainstorming and get actionable insights to boost your reach."
+      },
+      {
+        "title": "Draft a high-converting email sequence",
+        "body": "This prompt produces a series of compelling email templates designed to increase conversions. Reduce writing time by 75% while ensuring your messaging resonates with your audience."
+      },
+      {
+        "title": "Generate social media content calendar",
+        "body": "This prompt creates a comprehensive content calendar for your social media platforms, complete with post ideas and schedules. Streamline your content planning process and maintain consistency effortlessly."
+      },
+      {
+        "title": "Analyze competitors' marketing strategies",
+        "body": "This prompt provides a detailed analysis of your competitors' marketing tactics and performance metrics. Gain valuable insights in minutes, enabling you to refine your own strategies effectively."
+      },
+      {
+        "title": "Craft engaging blog post titles",
+        "body": "This prompt generates a list of attention-grabbing blog post titles tailored to your topic. Save precious time and increase your click-through rates with irresistible headlines."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-04-19": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Define objectives with clarity",
+        "body": "Identify and articulate your key goals. This ensures your efforts are aligned, maximizing focus and productivity."
+      },
+      {
+        "title": "Automate repetitive tasks",
+        "body": "Leverage tools like Zapier or Make.com to streamline routine workflows. This saves time and reduces errors, enhancing efficiency."
+      },
+      {
+        "title": "Utilize AI for data analysis",
+        "body": "Employ tools like Perplexity or Notion AI to extract insights from your data. This enables informed decision-making and strategic planning."
+      },
+      {
+        "title": "Create a dynamic task list",
+        "body": "Use Gamma or Notion AI to prioritize and update tasks in real-time. This fosters adaptability and ensures nothing is overlooked."
+      },
+      {
+        "title": "Reflect and optimize workflows",
+        "body": "Regularly assess your productivity with tools like Claude or Cursor. This continuous improvement leads to sustained efficiency and goal achievement."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-04-20": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "Transform conversations into actionable workflows.",
+        "wow_factor": "Automates meeting notes into task lists."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create stunning presentations effortlessly.",
+        "wow_factor": "Generates full presentations from text prompts."
+      },
+      {
+        "tool_name": "Perplexity",
+        "website_url": "https://www.perplexity.ai",
+        "one_liner": "AI-powered search engine for precise answers.",
+        "wow_factor": "Cites sources for every answer provided."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://elevenlabs.io",
+        "one_liner": "Generate realistic voiceovers from text.",
+        "wow_factor": "Mimics specific voices with remarkable accuracy."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code faster with AI-assisted coding.",
+        "wow_factor": "Suggests code completions in real-time."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-04-21": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 300 million jobs globally.",
+        "source": "Goldman Sachs"
+      },
+      {
+        "stat": "AI has the potential to increase productivity by 40%.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "Over 70% of companies plan to adopt AI by 2025.",
+        "source": "PwC"
+      },
+      {
+        "stat": "AI could add $15.7 trillion to global economy.",
+        "source": "PwC"
+      },
+      {
+        "stat": "AI processes data 1,000 times faster than humans.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-04-22": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Generate a Python script for data analysis",
+        "body": "This prompt creates a Python script that automates data analysis using popular libraries like pandas and NumPy. You can save hours by having the script handle data cleaning, visualization, and statistical calculations for you."
+      },
+      {
+        "title": "Create a Zapier automation workflow",
+        "body": "This prompt designs a Zapier workflow that connects your email and project management tools to automate task creation from incoming messages. By implementing this, you can streamline your task management process and reduce manual entry time significantly."
+      },
+      {
+        "title": "Draft a REST API specification",
+        "body": "This prompt generates a detailed REST API specification including endpoints, parameters, and response formats. It accelerates your API development process by providing a clear framework that can be directly used for implementation."
+      },
+      {
+        "title": "Automate report generation in Notion",
+        "body": "This prompt creates a Notion template that automatically pulls data from different sources and formats it into a comprehensive report. You can save significant time by eliminating the need for manual data entry and formatting."
+      },
+      {
+        "title": "Build a chatbot using ChatGPT",
+        "body": "This prompt outlines the steps to create a customizable chatbot using ChatGPT for customer support on your website. By deploying this solution, you can enhance user experience while reducing response time and support workload."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-04-23": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "AI-driven coding assistant for developers.",
+        "wow_factor": "Transforms natural language into code snippets."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "AI tool for creating presentations effortlessly.",
+        "wow_factor": "Generates slide decks from text inputs."
+      },
+      {
+        "tool_name": "Make.com",
+        "website_url": "https://www.make.com",
+        "one_liner": "Visual automation for complex workflows.",
+        "wow_factor": "Connects multiple apps with visual scenarios."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code with AI assistance in your IDE.",
+        "wow_factor": "Suggests code in real-time as you type."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Audio and video editing with AI transcription.",
+        "wow_factor": "Edit audio by editing the text transcript."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-04-24": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Identify key priorities using AI insights",
+        "body": "Utilize tools like Notion AI to analyze tasks and determine priorities. This sharpens focus on what truly drives results."
+      },
+      {
+        "title": "Automate repetitive tasks with workflows",
+        "body": "Implement Make.com or Zapier to automate routine actions and notifications. This saves time and reduces mental load significantly."
+      },
+      {
+        "title": "Enhance collaboration through shared platforms",
+        "body": "Leverage tools like Gamma or Claude for real-time teamwork and document sharing. This fosters seamless communication and boosts productivity."
+      },
+      {
+        "title": "Analyze performance metrics regularly",
+        "body": "Use Perplexity or Cursor to evaluate task completion and efficiency. This provides insights for continuous improvement and better decision-making."
+      },
+      {
+        "title": "Optimize future planning with AI predictions",
+        "body": "Engage tools like ChatGPT or Kling AI to forecast project timelines and resource needs. This enhances strategic planning and reduces bottlenecks."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-04-25": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "Companies using AI can increase productivity by 40%.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI adoption rate reached 50% among businesses in 2023.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI could add $15.7 trillion to global economy by 2030.",
+        "source": "PwC"
+      },
+      {
+        "stat": "AI processes tasks 10 times faster than humans.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-04-26": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Summarize complex research papers",
+        "body": "This prompt condenses intricate research papers into digestible summaries. Save hours of reading by understanding key findings quickly."
+      },
+      {
+        "title": "Generate quiz questions from text",
+        "body": "This prompt creates quiz questions based on provided text. Enhance your learning and retention in minutes rather than hours."
+      },
+      {
+        "title": "Outline a research project proposal",
+        "body": "This prompt constructs a structured outline for your research project proposal. Streamline your planning process and focus on content creation."
+      },
+      {
+        "title": "Create flashcards for study material",
+        "body": "This prompt generates flashcards from specified study material. Improve your memorization efficiency and review time significantly."
+      },
+      {
+        "title": "Translate academic articles into simpler language",
+        "body": "This prompt translates complex academic articles into more accessible language. Save time by grasping concepts without sifting through jargon."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-04-27": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Analyze requirements with AI tools",
+        "body": "Utilize AI like ChatGPT to dissect project specifications. This ensures clarity and aligns development efforts with user needs."
+      },
+      {
+        "title": "Generate code snippets using AI",
+        "body": "Leverage tools like Claude or Notion AI to create efficient code blocks. This accelerates the development process and reduces errors."
+      },
+      {
+        "title": "Automate testing procedures effectively",
+        "body": "Implement automation frameworks via Make.com or Zapier for testing. This enhances reliability and minimizes manual oversight in deployments."
+      },
+      {
+        "title": "Optimize performance with AI insights",
+        "body": "Use Perplexity or Cursor for performance analysis of your code. This identifies bottlenecks, leading to improved application speed and efficiency."
+      },
+      {
+        "title": "Deploy and monitor continuously",
+        "body": "Utilize tools like Gamma and Descript for deployment and monitoring. This ensures seamless updates and real-time feedback on application performance."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-04-28": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "AI-powered voice assistant for productivity.",
+        "wow_factor": "Offers real-time language translation during calls."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create stunning presentations effortlessly.",
+        "wow_factor": "Generates slide decks from simple text prompts."
+      },
+      {
+        "tool_name": "Perplexity",
+        "website_url": "https://www.perplexity.ai",
+        "one_liner": "Conversational search engine with AI insights.",
+        "wow_factor": "Combines search results with personalized recommendations."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "AI-enhanced coding for developers.",
+        "wow_factor": "Autocompletes multi-line code with context awareness."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Edit audio and video as text.",
+        "wow_factor": "Automatically removes filler words from recordings."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-04-29": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "Companies using AI can increase productivity by 40%.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI adoption in businesses reached 50% in 2023.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI could contribute $15.7 trillion to global economy.",
+        "source": "PwC"
+      },
+      {
+        "stat": "AI can process data 1,000 times faster than humans.",
+        "source": "MIT"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-04-30": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Generate engaging blog post ideas",
+        "body": "This prompt produces a list of unique and engaging blog post ideas tailored to your niche. Save hours of brainstorming by receiving ready-to-use topics in seconds."
+      },
+      {
+        "title": "Create a compelling product description",
+        "body": "This prompt crafts a persuasive product description that highlights key features and benefits. Get enticing copy that boosts conversion rates in just minutes."
+      },
+      {
+        "title": "Summarize lengthy articles efficiently",
+        "body": "This prompt condenses long articles into concise summaries that capture essential points. Save time by quickly grasping the main ideas without reading the entire text."
+      },
+      {
+        "title": "Draft a professional email response",
+        "body": "This prompt generates a polished email response for various professional scenarios. Eliminate the guesswork and cut down on writing time with tailored replies."
+      },
+      {
+        "title": "Outline a comprehensive social media strategy",
+        "body": "This prompt provides a structured outline for an effective social media strategy tailored to your goals. Streamline your planning process and enhance your online presence with clear steps."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-05-01": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://www.kling.ai",
+        "one_liner": "AI-powered voice assistant for productivity.",
+        "wow_factor": "Transcribes and summarizes meetings in real-time."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://www.gamma.app",
+        "one_liner": "Create stunning presentations effortlessly.",
+        "wow_factor": "Generates entire presentations from a simple outline."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://www.cursor.so",
+        "one_liner": "AI tool for coding assistance.",
+        "wow_factor": "Autocompletes code in multiple programming languages."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Edit audio/video like text.",
+        "wow_factor": "Allows editing by simply deleting text segments."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://www.elevenlabs.io",
+        "one_liner": "AI voice generation for any content.",
+        "wow_factor": "Creates hyper-realistic voiceovers from text."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-05-02": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Identify repetitive tasks for automation",
+        "body": "Analyze your workflow to pinpoint tasks that consume time. This focus streamlines your efforts and enhances productivity."
+      },
+      {
+        "title": "Leverage AI tools for coding assistance",
+        "body": "Utilize AI coding assistants like ChatGPT or Claude for generating code snippets. This accelerates development and reduces errors significantly."
+      },
+      {
+        "title": "Integrate automation platforms for task execution",
+        "body": "Use tools like Make.com or Zapier to automate workflows. This minimizes manual intervention and ensures consistency across tasks."
+      },
+      {
+        "title": "Refine processes with AI-driven insights",
+        "body": "Analyze performance data with tools like Perplexity or Notion AI for optimization. This leads to better decision-making and resource allocation."
+      },
+      {
+        "title": "Monitor and iterate for continuous improvement",
+        "body": "Set up feedback loops to assess automation effectiveness regularly. This ensures your systems evolve and adapt to changing needs."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-05-03": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI adoption could boost global GDP by $15.7 trillion.",
+        "source": "PwC"
+      },
+      {
+        "stat": "AI can increase productivity by up to 40% annually.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "Over 70% of organizations plan to adopt AI by 2025.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI processes data 1,000 times faster than humans.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-05-04": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Create a focused daily schedule",
+        "body": "This prompt generates a structured daily plan based on your tasks and priorities. You’ll save at least an hour by eliminating decision fatigue and maintaining a clear focus."
+      },
+      {
+        "title": "Prioritize tasks with urgency and importance",
+        "body": "This prompt helps you categorize your tasks using the Eisenhower Matrix. You’ll quickly identify what to tackle first, saving time on less critical activities."
+      },
+      {
+        "title": "Draft an efficient meeting agenda",
+        "body": "This prompt creates a concise agenda for your upcoming meeting, ensuring all key topics are covered. You’ll cut meeting time by 30% and improve productivity."
+      },
+      {
+        "title": "Automate repetitive email responses",
+        "body": "This prompt helps you design templates for common email inquiries. You’ll save hours each week by reducing the time spent on repetitive tasks."
+      },
+      {
+        "title": "Summarize weekly goals and achievements",
+        "body": "This prompt compiles your goals and accomplishments into a clear weekly summary. You’ll streamline your review process, saving time when planning for the next week."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-05-06": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "Transform voice into interactive video content.",
+        "wow_factor": "Creates stories from voice recordings instantly."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create beautiful presentations effortlessly.",
+        "wow_factor": "Generates slide decks from text prompts."
+      },
+      {
+        "tool_name": "Make.com",
+        "website_url": "https://www.make.com",
+        "one_liner": "Automate workflows without coding expertise.",
+        "wow_factor": "Connects apps with seamless visual workflows."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Edit audio and video like text.",
+        "wow_factor": "Transcribes spoken words into editable text."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://elevenlabs.io",
+        "one_liner": "Generate lifelike voiceovers with AI.",
+        "wow_factor": "Can mimic any voice with precision."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-05-07": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2030.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI can increase global GDP by $15.7 trillion by 2030.",
+        "source": "PwC"
+      },
+      {
+        "stat": "By 2025, 70% of companies will adopt AI solutions.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI can boost productivity by up to 40 percent.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI processes data 120 times faster than humans.",
+        "source": "MIT"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-05-08": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Generate compelling ad copy",
+        "body": "This prompt creates engaging and persuasive ad copy tailored to your target audience. It can save hours of brainstorming and revisions."
+      },
+      {
+        "title": "Craft a viral social media post",
+        "body": "This prompt produces a creative and shareable social media post designed to maximize engagement. You'll accelerate your content creation process significantly."
+      },
+      {
+        "title": "Outline a comprehensive marketing strategy",
+        "body": "This prompt outlines a detailed marketing strategy based on your business goals and target market. It streamlines your planning efforts, saving you days of research."
+      },
+      {
+        "title": "Generate email marketing sequences",
+        "body": "This prompt creates a series of persuasive email marketing messages tailored to your audience's journey. You’ll save time on writing and increase your conversion rates."
+      },
+      {
+        "title": "Create a customer persona template",
+        "body": "This prompt develops a detailed customer persona template that captures essential demographics and behaviors. It accelerates your audience understanding, enhancing your targeting efforts."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-05-09": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "Transforming audio into interactive narratives.",
+        "wow_factor": "Creates immersive audio experiences with AI."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "AI-driven presentations made easy.",
+        "wow_factor": "Generates entire presentations in seconds."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://descript.com",
+        "one_liner": "Edit audio and video like a document.",
+        "wow_factor": "Text-based editing for audio and video."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "AI coding assistant for developers.",
+        "wow_factor": "Writes and debugs code in real-time."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://elevenlabs.io",
+        "one_liner": "Voice synthesis that sounds human.",
+        "wow_factor": "Generates lifelike voiceovers from text."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-05-10": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Research your topic with AI tools",
+        "body": "Utilize AI-driven platforms like Perplexity to gather insights. This ensures your content is informed and relevant."
+      },
+      {
+        "title": "Generate a detailed outline",
+        "body": "Use Notion AI to create a structured outline based on your research. A clear outline streamlines the writing process."
+      },
+      {
+        "title": "Draft content using advanced AI writing",
+        "body": "Leverage tools like ChatGPT or Claude to write the first draft. This accelerates your writing while maintaining quality."
+      },
+      {
+        "title": "Refine with editing AI",
+        "body": "Employ Descript or Grammarly to polish your draft. Enhanced clarity and professionalism elevate your content's impact."
+      },
+      {
+        "title": "Visualize and publish seamlessly",
+        "body": "Use Gamma or Midjourney to create compelling visuals and publish effortlessly. This enhances engagement and reaches a wider audience."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-05-11": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI adoption could boost global GDP by $15.7 trillion.",
+        "source": "PwC"
+      },
+      {
+        "stat": "Companies using AI report 40% productivity gains on average.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "87% of organizations plan to adopt AI by 2025.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI completes tasks 20 times faster than humans typically.",
+        "source": "OpenAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-05-12": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Generate Python script for data cleaning",
+        "body": "This prompt creates a Python script that automates data cleaning tasks such as removing duplicates and filling missing values. It can save hours of manual data preparation work."
+      },
+      {
+        "title": "Automate email responses for support queries",
+        "body": "This prompt designs an email response template that automatically replies to common customer support inquiries. It reduces response time by up to 70%, improving customer satisfaction."
+      },
+      {
+        "title": "Create a Zapier integration workflow",
+        "body": "This prompt generates a step-by-step Zapier workflow to connect your favorite apps and automate repetitive tasks. It streamlines processes, saving you significant time and reducing human error."
+      },
+      {
+        "title": "Build a web scraper in JavaScript",
+        "body": "This prompt provides a complete JavaScript code snippet for scraping data from a specified website. It enables quick data collection, reducing research time drastically."
+      },
+      {
+        "title": "Design a SQL query for sales analysis",
+        "body": "This prompt constructs a SQL query that analyzes sales data, extracting insights like total revenue and trends. It accelerates decision-making by providing actionable data instantly."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-05-13": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Analyze customer data trends",
+        "body": "Use AI tools to dissect customer behavior patterns. This uncovers actionable insights that drive targeted marketing strategies."
+      },
+      {
+        "title": "Craft personalized content",
+        "body": "Leverage insights to create tailored messaging for distinct customer segments. This enhances engagement and boosts conversion rates."
+      },
+      {
+        "title": "Automate marketing campaigns",
+        "body": "Implement AI-driven automation for multichannel campaigns. This streamlines processes and maximizes reach with minimal effort."
+      },
+      {
+        "title": "Optimize based on real-time feedback",
+        "body": "Utilize AI analytics to adjust campaigns dynamically. This ensures maximum effectiveness and continuous improvement in performance."
+      },
+      {
+        "title": "Scale successful strategies",
+        "body": "Identify high-performing tactics and expand them systematically. This accelerates growth and solidifies market presence effectively."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-05-14": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://www.kling.ai",
+        "one_liner": "AI for real-time language translation.",
+        "wow_factor": "Translates multiple languages in real-time."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://www.gamma.app",
+        "one_liner": "Create beautiful presentations effortlessly.",
+        "wow_factor": "Generates entire presentations from simple prompts."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://www.elevenlabs.io",
+        "one_liner": "AI voice synthesis for any text.",
+        "wow_factor": "Realistic voice generation in multiple styles."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Edit audio and video like a document.",
+        "wow_factor": "Transcribes and edits audio via text editing."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://www.cursor.so",
+        "one_liner": "Code faster with AI-powered assistance.",
+        "wow_factor": "Autocompletes code with intelligent suggestions."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-05-15": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI adoption could increase global GDP by $15.7 trillion.",
+        "source": "PwC"
+      },
+      {
+        "stat": "Companies leveraging AI report productivity gains of 40%.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI can outperform humans in tasks 20 times faster.",
+        "source": "Stanford HAI"
+      },
+      {
+        "stat": "Goldman Sachs predicts 300 million jobs affected by AI.",
+        "source": "Goldman Sachs"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-05-16": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Summarize complex research articles",
+        "body": "This prompt condenses lengthy research articles into concise summaries. Save hours of reading time while retaining essential insights."
+      },
+      {
+        "title": "Generate quiz questions from texts",
+        "body": "This prompt creates quiz questions based on specific texts or topics. Enhance your study efficiency by quickly testing your understanding."
+      },
+      {
+        "title": "Create a study schedule",
+        "body": "This prompt designs a personalized study schedule based on your goals and deadlines. Optimize your learning process and stay on track effortlessly."
+      },
+      {
+        "title": "Extract key terms from documents",
+        "body": "This prompt identifies and lists key terms from any given document. Streamline your research by focusing on the most relevant terminology."
+      },
+      {
+        "title": "Draft an annotated bibliography",
+        "body": "This prompt helps you create an annotated bibliography for your research topics. Save time organizing sources while providing essential context for each reference."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-05-17": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "Automate your meetings and notes effortlessly.",
+        "wow_factor": "Summarizes and organizes discussions in real-time."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create stunning presentations in minutes.",
+        "wow_factor": "Generates visually appealing slides from text."
+      },
+      {
+        "tool_name": "Make.com",
+        "website_url": "https://www.make.com",
+        "one_liner": "Automate workflows visually with ease.",
+        "wow_factor": "Connects apps without complex coding required."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "Edit audio and video like a doc.",
+        "wow_factor": "Transcribes audio to edit as text."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://beta.elevenlabs.io",
+        "one_liner": "Create lifelike voiceovers with AI.",
+        "wow_factor": "Generate voiceovers in multiple languages seamlessly."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-05-18": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Analyze audience behavior patterns",
+        "body": "Utilize AI analytics tools to dissect user interactions. This uncovers key insights that drive targeted marketing strategies."
+      },
+      {
+        "title": "Generate personalized content recommendations",
+        "body": "Leverage AI models to create tailored content for distinct audience segments. This enhances engagement and conversion rates significantly."
+      },
+      {
+        "title": "Automate multi-channel marketing campaigns",
+        "body": "Implement tools like Zapier or Make.com to streamline marketing workflows across platforms. This maximizes reach while saving time and effort."
+      },
+      {
+        "title": "Optimize campaigns with real-time analytics",
+        "body": "Use AI-driven dashboards to monitor campaign performance continuously. This allows for immediate adjustments that improve ROI."
+      },
+      {
+        "title": "Scale growth through targeted outreach",
+        "body": "Employ AI tools to identify and connect with high-potential leads. This accelerates customer acquisition and boosts overall growth."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-05-19": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI adoption could increase global GDP by $15.7 trillion.",
+        "source": "PwC"
+      },
+      {
+        "stat": "Productivity could increase by 40% due to AI.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI tools can increase employee productivity by 30%.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI can process data 100 times faster than humans.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-05-20": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Generate a blog post outline",
+        "body": "This prompt creates a structured outline for a blog post based on a given topic. You can save hours of planning and jump straight into writing."
+      },
+      {
+        "title": "Craft engaging social media captions",
+        "body": "This prompt generates catchy captions tailored for specific platforms and audiences. It streamlines your content creation process and enhances engagement in minutes."
+      },
+      {
+        "title": "Summarize complex articles succinctly",
+        "body": "This prompt condenses lengthy articles into concise summaries that capture key points. You can quickly grasp essential information without reading the entire text."
+      },
+      {
+        "title": "Brainstorm unique video ideas",
+        "body": "This prompt provides a list of creative video concepts tailored to your niche. It accelerates your content planning and boosts your creative output significantly."
+      },
+      {
+        "title": "Draft professional email responses",
+        "body": "This prompt formulates polished email replies for various scenarios. You can enhance your communication efficiency and maintain professionalism effortlessly."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-05-21": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Identify key topics for exploration",
+        "body": "Pinpoint specific subjects that align with your goals. This focused approach streamlines your research efforts and enhances relevance."
+      },
+      {
+        "title": "Leverage AI tools for initial insights",
+        "body": "Utilize ChatGPT or Claude to gather foundational information on your topics. This accelerates understanding and highlights critical areas for deeper study."
+      },
+      {
+        "title": "Organize findings with Notion AI",
+        "body": "Compile and categorize your research using Notion AI's organizational features. This creates a structured knowledge base for efficient retrieval and review."
+      },
+      {
+        "title": "Visualize concepts using Gamma or Midjourney",
+        "body": "Create visual representations of your research data and ideas. This enhances comprehension and aids in communicating complex information effectively."
+      },
+      {
+        "title": "Summarize and share insights with Descript",
+        "body": "Use Descript to distill your research into concise presentations or reports. This ensures clarity and maximizes the impact of your findings."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-05-22": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "Transform text into engaging audio.",
+        "wow_factor": "Creates lifelike voiceovers from any text."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Instantly create beautiful presentations.",
+        "wow_factor": "Generates slides from text in seconds."
+      },
+      {
+        "tool_name": "Perplexity",
+        "website_url": "https://www.perplexity.ai",
+        "one_liner": "AI-powered search engine with context.",
+        "wow_factor": "Answers questions with contextualized information."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code with AI assistance in your IDE.",
+        "wow_factor": "Autocompletes code and suggests improvements."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://elevenlabs.io",
+        "one_liner": "Create realistic speech from text.",
+        "wow_factor": "Synthesizes voices that mimic human emotions."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-05-23": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI can boost global GDP by $15.7 trillion by 2030.",
+        "source": "PwC"
+      },
+      {
+        "stat": "Companies incorporating AI see productivity gains of 40%.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI adoption rates among companies increased to 50% in 2023.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI can perform tasks in 10% of human time.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-05-24": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Summarize my weekly tasks",
+        "body": "This prompt condenses your weekly to-do list into key actionable items. Save time by focusing on what truly matters and eliminate distractions."
+      },
+      {
+        "title": "Create a prioritized project timeline",
+        "body": "This prompt generates a detailed timeline for your ongoing projects, prioritizing tasks based on deadlines and importance. You’ll gain clarity and save hours of planning time."
+      },
+      {
+        "title": "Draft a meeting agenda",
+        "body": "This prompt outlines a structured agenda for your next meeting based on your goals and participants. Enhance productivity and cut down on meeting time by staying focused."
+      },
+      {
+        "title": "Generate a daily productivity routine",
+        "body": "This prompt creates a customized daily routine designed to maximize your productivity based on your preferences and peak performance times. Streamline your day and reclaim valuable hours."
+      },
+      {
+        "title": "Outline a focus session plan",
+        "body": "This prompt develops a focused work session plan with clear objectives and break times. Increase your efficiency and reduce burnout by structuring your work intervals effectively."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-05-25": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "AI-powered team collaboration tool.",
+        "wow_factor": "Automatically summarizes meetings in real-time."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create stunning presentations effortlessly.",
+        "wow_factor": "Transforms text into visual slide decks instantly."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://www.descript.com",
+        "one_liner": "All-in-one audio and video editing software.",
+        "wow_factor": "Edit audio by editing text transcripts."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://elevenlabs.io",
+        "one_liner": "Realistic AI voice generation platform.",
+        "wow_factor": "Creates lifelike voiceovers from text inputs."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code faster with AI assistance.",
+        "wow_factor": "Generates code snippets from natural language prompts."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-05-26": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Define your research objective clearly",
+        "body": "Articulate a specific question or problem to guide your inquiry. This sharp focus increases the effectiveness of your subsequent research."
+      },
+      {
+        "title": "Leverage AI tools for data gathering",
+        "body": "Utilize tools like Perplexity and Notion AI to aggregate relevant information quickly. This accelerates the data collection phase, enhancing your foundational knowledge."
+      },
+      {
+        "title": "Analyze insights with AI-driven analytics",
+        "body": "Employ tools such as Gamma and Claude to distill complex data into actionable insights. This enables you to identify trends and make informed decisions."
+      },
+      {
+        "title": "Synthesize findings into structured outputs",
+        "body": "Use Notion AI or Cursor to organize your insights into cohesive documents or presentations. This clarity facilitates deeper understanding and communication of your research."
+      },
+      {
+        "title": "Automate follow-ups using integration tools",
+        "body": "Set up workflows with Make.com or Zapier to automate ongoing research tasks and notifications. This ensures continuous learning and engagement in your subject area."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-05-27": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 300 million jobs globally by 2030.",
+        "source": "Goldman Sachs"
+      },
+      {
+        "stat": "AI adoption could boost global GDP by $15.7 trillion.",
+        "source": "PwC"
+      },
+      {
+        "stat": "72% of companies report increased productivity with AI tools.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI can complete tasks 10 times faster than humans.",
+        "source": "Stanford HAI"
+      },
+      {
+        "stat": "Businesses using AI saw a 20% revenue increase on average.",
+        "source": "McKinsey"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-05-28": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Generate high-converting ad copy",
+        "body": "This prompt creates compelling ad copy tailored for your target audience. Expect to save hours on brainstorming and revisions while boosting your campaign's effectiveness."
+      },
+      {
+        "title": "Outline a growth strategy plan",
+        "body": "This prompt crafts a detailed growth strategy based on your business goals and market analysis. You will streamline your planning process and focus on execution faster."
+      },
+      {
+        "title": "Create engaging email sequences",
+        "body": "This prompt develops a series of engaging email sequences designed to nurture leads and drive conversions. You'll save time on content creation and improve your email marketing results."
+      },
+      {
+        "title": "Analyze competitor marketing tactics",
+        "body": "This prompt evaluates your competitors' marketing strategies and identifies their strengths and weaknesses. Gain insights quickly, allowing you to adapt your approach and outperform them."
+      },
+      {
+        "title": "Draft social media content calendar",
+        "body": "This prompt generates a month-long social media content calendar with post ideas and themes. You will enhance your social media presence while reducing planning time significantly."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-06-10": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "Transform text into engaging audio.",
+        "wow_factor": "Creates realistic voiceovers in minutes."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Generate stunning presentations effortlessly.",
+        "wow_factor": "AI designs slides based on your content."
+      },
+      {
+        "tool_name": "Descript",
+        "website_url": "https://descript.com",
+        "one_liner": "Edit audio and video like text.",
+        "wow_factor": "Transcribes and edits simultaneously in real-time."
+      },
+      {
+        "tool_name": "Perplexity",
+        "website_url": "https://perplexity.ai",
+        "one_liner": "AI-powered search engine for instant answers.",
+        "wow_factor": "Interprets complex queries beyond keywords."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code smarter with AI-assisted development.",
+        "wow_factor": "Suggests entire code blocks automatically."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-06-11": {
+    "post_type": "how-to-guide",
+    "hook_text": "DO THIS WITH AI EVERY MORNING",
+    "slides": [
+      {
+        "title": "Define your automation goals clearly",
+        "body": "Identify specific tasks or processes to automate. This clarity streamlines your efforts and maximizes productivity."
+      },
+      {
+        "title": "Select the right AI tools",
+        "body": "Choose tools like ChatGPT or Make.com tailored to your needs. Utilizing the right tools accelerates development and enhances efficiency."
+      },
+      {
+        "title": "Design a structured workflow",
+        "body": "Map out each step of the automation process. A structured workflow reduces errors and ensures smooth execution."
+      },
+      {
+        "title": "Implement iterative testing phases",
+        "body": "Continuously test your automation at each stage. Iterative testing identifies issues early, improving overall reliability."
+      },
+      {
+        "title": "Optimize and scale your solution",
+        "body": "Analyze performance metrics to refine your automation. Optimization allows for scalability and long-term sustainability of your workflows."
+      }
+    ],
+    "caption_cta": "Save this. Comment WORKFLOW and I'll send you 5 more 👇"
+  },
+  "2026-06-12": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "Businesses using AI see a 40% productivity increase.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "AI adoption rates reached 50% among enterprises in 2023.",
+        "source": "Gartner"
+      },
+      {
+        "stat": "AI could contribute $15.7 trillion to global GDP by 2030.",
+        "source": "PwC"
+      },
+      {
+        "stat": "AI can analyze data 10 times faster than humans.",
+        "source": "Stanford HAI"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-06-13": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Prioritize my tasks for the week",
+        "body": "This prompt analyzes your current tasks and ranks them by importance and urgency. You will save time by focusing on what truly matters first."
+      },
+      {
+        "title": "Generate a daily schedule for productivity",
+        "body": "This prompt creates a structured daily schedule based on your goals and commitments. You will optimize your time and increase focus throughout the day."
+      },
+      {
+        "title": "Summarize meeting notes into action items",
+        "body": "This prompt distills lengthy meeting notes into concise action items with deadlines. You will streamline follow-up processes and ensure accountability."
+      },
+      {
+        "title": "Create a project timeline with milestones",
+        "body": "This prompt outlines a clear project timeline, including key milestones and deadlines. You will enhance project clarity and improve on-time delivery."
+      },
+      {
+        "title": "Draft email responses for common inquiries",
+        "body": "This prompt generates template responses for frequently received emails. You will significantly reduce the time spent on email management."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  },
+  "2026-06-15": {
+    "post_type": "tool-spotlight",
+    "hook_text": "5 AI TOOLS YOU'VE NEVER HEARD OF",
+    "slides": [
+      {
+        "tool_name": "Kling AI",
+        "website_url": "https://kling.ai",
+        "one_liner": "AI-powered conversational agent for businesses.",
+        "wow_factor": "Can understand context over long conversations."
+      },
+      {
+        "tool_name": "Gamma",
+        "website_url": "https://gamma.app",
+        "one_liner": "Create stunning presentations effortlessly.",
+        "wow_factor": "Generates slides based on text input instantly."
+      },
+      {
+        "tool_name": "Perplexity",
+        "website_url": "https://www.perplexity.ai",
+        "one_liner": "AI-powered search engine for information.",
+        "wow_factor": "Answers queries with conversational context."
+      },
+      {
+        "tool_name": "Cursor",
+        "website_url": "https://cursor.so",
+        "one_liner": "Code faster with AI-powered coding assistant.",
+        "wow_factor": "Autocompletes code snippets in real-time."
+      },
+      {
+        "tool_name": "ElevenLabs",
+        "website_url": "https://elevenlabs.io",
+        "one_liner": "Advanced voice synthesis for creators.",
+        "wow_factor": "Creates realistic and expressive voiceovers."
+      }
+    ],
+    "caption_cta": "Comment TOOLS and I'll DM you the full list with links 👇"
+  },
+  "2026-06-16": {
+    "post_type": "stat-carousel",
+    "hook_text": "5 AI STATS THAT WILL SHOCK YOU",
+    "slides": [
+      {
+        "stat": "AI could displace 85 million jobs by 2025.",
+        "source": "World Economic Forum"
+      },
+      {
+        "stat": "AI adoption could boost global GDP by $15.7 trillion.",
+        "source": "Goldman Sachs"
+      },
+      {
+        "stat": "Companies using AI report 40% productivity gains.",
+        "source": "McKinsey"
+      },
+      {
+        "stat": "72% of organizations are adopting AI tools rapidly.",
+        "source": "PwC"
+      },
+      {
+        "stat": "AI can process data 100 times faster than humans.",
+        "source": "MIT"
+      }
+    ],
+    "caption_cta": "Which stat shocked you most? Comment below 👇"
+  },
+  "2026-06-17": {
+    "post_type": "copy-paste-prompts",
+    "hook_text": "5 AI PROMPTS WORTH SAVING",
+    "slides": [
+      {
+        "title": "Craft compelling email subject lines",
+        "body": "This prompt generates high-converting email subject lines tailored to your audience. Expect to save hours on brainstorming and testing."
+      },
+      {
+        "title": "Generate a week’s worth of social posts",
+        "body": "This prompt creates seven engaging social media posts that align with your brand voice. It eliminates the daily hassle of content creation."
+      },
+      {
+        "title": "Outline a comprehensive marketing strategy",
+        "body": "This prompt produces a detailed marketing strategy based on your business goals and target audience. It drastically reduces planning time and enhances focus."
+      },
+      {
+        "title": "Create persuasive ad copy for campaigns",
+        "body": "This prompt crafts persuasive ad copy that resonates with your target demographics. It streamlines the ad creation process, saving you significant revision time."
+      },
+      {
+        "title": "Analyze competitors’ marketing tactics",
+        "body": "This prompt evaluates your competitors’ marketing strategies and identifies gaps in your approach. It accelerates your market analysis, allowing for quicker adjustments."
+      }
+    ],
+    "caption_cta": "Comment PROMPTS below and I'll DM you 100 more for free 👇"
+  }
+}

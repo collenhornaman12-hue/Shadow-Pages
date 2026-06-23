@@ -24,7 +24,7 @@ const CAPTION    = 'Your competitor uses AI. You use Google.';
 
 async function uploadToCloudinary(filePath) {
   console.log('[1/3] Uploading to Cloudinary...');
-  const result = await cloudinary.uploader.upload(filePath, {
+  const result = await cloudinary.v2.uploader.upload(filePath, {
     folder: 'shadow-pages',
     resource_type: 'image',
   });
@@ -99,6 +99,6 @@ async function publishContainer(containerId) {
   } catch (err) {
     console.error('\n✗ Failed:', err.message);
     console.error(err.stack);
-    process.exit(1);
+      process.exit(1);
   }
 })();
