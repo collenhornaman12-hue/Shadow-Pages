@@ -7,6 +7,7 @@
 
 const fs   = require('fs');
 const path = require('path');
+const { LEARNING_STATUS } = require('./learning-lifecycle');
 
 // ─── Paths ────────────────────────────────────────────────────────────────────
 
@@ -211,7 +212,7 @@ async function main() {
         url:    result.url,
         title:  result.title,
         score:  result.score,
-        status: 'staged',
+        status: LEARNING_STATUS.STAGED,
       });
       newCount++;
     }

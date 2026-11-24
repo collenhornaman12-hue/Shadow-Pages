@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { withRetry } = require('./retry');
+const { containerStep } = require('./post-states');
 
 const BASE = 'https://graph.facebook.com/v25.0';
 
@@ -8,8 +9,9 @@ async function waitForContainer(containerId, token, maxWait = 120000) {
   while (Date.now() - start < maxWait) {
     const r = await fetch(`${BASE}/${containerId}?fields=status_code&access_token=${token}`);
     const d = await r.json();
-    if (d.status_code === 'FINISHED') return true;
-    if (d.status_code === 'ERROR') throw new Error('Container error: ' + JSON.stringify(d));
+    const step = containerStep(d.status_code); // see modules/post-states.js
+    if (step === 'ready') return true;
+    if (step === 'failed') throw new Error('Container error: ' + JSON.stringify(d));
     await new Promise(res => setTimeout(res, 5000));
   }
   throw new Error('Container timed out');

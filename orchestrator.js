@@ -20,6 +20,7 @@ const { logError } = require('./modules/logger');
 const { fetchTopStories } = require('./modules/news-fetcher');
 const { generateResourceCarousel } = require('./modules/resource-generator');
 const { generateViralDemoPost }    = require('./modules/viral-demo-generator');
+const { FORMATS, formatForSlot, preferredStoryIndex } = require('./modules/post-states');
 
 const pages = require('./config/pages.json');
 
@@ -111,7 +112,7 @@ async function createReelVideo(framePaths, outputPath) {
   }
 }
 
-const FORMAT_SCHEDULE = ['viral_demo', 'news-carousel', 'resource-carousel', 'news-carousel'];
+// Slot → format rotation lives in modules/post-states.js (see STATE_MACHINES.md).
 
 // Daily news stories cache — shared between slots 1 and 3
 let _newsCache = { date: null, stories: null };
@@ -180,7 +181,7 @@ async function getNewsStories() {
 }
 
 async function runSlot(page, slotIndex) {
-  const format = FORMAT_SCHEDULE[slotIndex % FORMAT_SCHEDULE.length];
+  const format = formatForSlot(slotIndex);
   const retryOptions = { page: page.name, slot: slotIndex };
 
   // Validate background folder
@@ -198,7 +199,7 @@ async function runSlot(page, slotIndex) {
   console.log('[' + page.name + '] Running slot ' + slotIndex + ' — format: ' + format);
 
   try {
-    if (format === 'viral_demo') {
+    if (format === FORMATS.VIRAL_DEMO) {
       console.log('[' + page.name + '] Generating viral demo post...');
       const demo = await generateViralDemoPost(page.niche);
 
@@ -211,7 +212,7 @@ async function runSlot(page, slotIndex) {
       await postImage({ igId: page.igAccountId, token, imageUrl, caption: demo.caption }, retryOptions);
       console.log('[' + page.name + '] Viral demo posted: ' + demo.headline);
 
-    } else if (format === 'quote') {
+    } else if (format === FORMATS.QUOTE) {
       const quote = await generateContent('quote', page.niche, '', retryOptions);
       console.log('[' + page.name + '] Quote: ' + quote);
 
@@ -224,10 +225,10 @@ async function runSlot(page, slotIndex) {
       await postImage({ igId: page.igAccountId, token, imageUrl, caption }, retryOptions);
       console.log('[' + page.name + '] Quote posted');
 
-    } else if (format === 'news-carousel') {
+    } else if (format === FORMATS.NEWS_CAROUSEL) {
       const stories = await getNewsStories();
       // Slot 1 → story[0], slot 3 → story[1]
-      const preferredIndex = (slotIndex % FORMAT_SCHEDULE.length) === 1 ? 0 : 1;
+      const preferredIndex = preferredStoryIndex(slotIndex);
       let story = null;
       for (let si = preferredIndex; si < stories.length; si++) {
         if (!isDuplicateStory(stories[si].title)) { story = stories[si]; break; }
@@ -291,7 +292,7 @@ async function runSlot(page, slotIndex) {
       if (story.title) await markStoryPosted(story.title);
       console.log('[' + page.name + '] News carousel posted');
 
-    } else if (format === 'resource-carousel') {
+    } else if (format === FORMATS.RESOURCE_CAROUSEL) {
       console.log('[' + page.name + '] Building resource carousel...');
       const resource = await generateResourceCarousel();
 
@@ -311,7 +312,7 @@ async function runSlot(page, slotIndex) {
       await postCarousel({ igId: page.igAccountId, token, imageUrls, caption }, retryOptions);
       console.log('[' + page.name + '] Resource carousel posted');
 
-    } else if (format === 'reel') {
+    } else if (format === FORMATS.REEL) {
       console.log('[' + page.name + '] Generating reel content...');
       const data = await generateContent('reel', page.niche, '', retryOptions);
       const frames = data.frames;
